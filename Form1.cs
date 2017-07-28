@@ -21,28 +21,27 @@ namespace ExcelHandler
 
         private void Btn_open_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
             OpenFileDialog fd = new OpenFileDialog();
             if (fd.ShowDialog() == DialogResult.OK)
             {
                 Console.WriteLine(fd.FileName);
                 txbx_path.Text = fd.FileName;
                 try
-                {
-                    if ((myStream = fd.OpenFile()) != null)
+                {   // Open the text file using a stream reader.
+                    using (StreamReader sr = new StreamReader(txbx_path.Text))
                     {
-                        using (myStream)
-                        {
-                            // Insert code to read the stream here.
-                        }
+                        // Read the stream to a string, and write the string to the console.
+                        String line = sr.ReadToEnd();
+                        Console.WriteLine(line);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception eee)
                 {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    Console.WriteLine("The file could not be read:");
+                    Console.WriteLine(eee.Message);
                 }
-            }
 
+            }
         }
     }
 }
