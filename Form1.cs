@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelHandler
 {
     public partial class Form1 : Form
     {
+        Excel.Application excellApp = new Excel.Application();
+
         public Form1()
         {
+            //excellApp.Visible = true;
+
             InitializeComponent();
             btn_open.Click += Btn_open_Click;
         }
@@ -24,15 +23,12 @@ namespace ExcelHandler
             OpenFileDialog fd = new OpenFileDialog();
             if (fd.ShowDialog() == DialogResult.OK)
             {
-                Console.WriteLine(fd.FileName);
                 txbx_path.Text = fd.FileName;
                 try
                 {   // Open the text file using a stream reader.
                     using (StreamReader sr = new StreamReader(txbx_path.Text))
                     {
-                        // Read the stream to a string, and write the string to the console.
-                        String line = sr.ReadToEnd();
-                        Console.WriteLine(line);
+                        excellApp.Workbooks.Open(txbx_path.Text);
                     }
                 }
                 catch (Exception eee)
@@ -41,6 +37,28 @@ namespace ExcelHandler
                     Console.WriteLine(eee.Message);
                 }
 
+                for (int row = 1; row < 10; row++)
+                {
+                    List<List<string>> maping = new List<List<string>>();
+                    Excel.Worksheet currentSheet = (Excel.Worksheet)excellApp.Workbooks[1].Worksheets[1];
+                    List<string> tempList = new List<string>();
+                    for (int column = 1; column < 3; column++)
+                    {
+                        string cellValue = "";
+
+                        Excel.Range cellRange = (Excel.Range)currentSheet.Cells[row, column];
+                        if (cellRange != null)
+                        {
+                            cellValue = cellRange.Text;
+                            //Console.Write("["+row+","+column+"]= "+ cellValue+" ");
+                            Console.Write("[{0},{1}]={2}; ", row, column, cellValue);
+                        }
+                    }
+                    Console.WriteLine();
+                    maping.Add(tempList);
+                }
+
+                excellApp.Quit();
             }
         }
     }

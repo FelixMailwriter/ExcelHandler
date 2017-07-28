@@ -7,3 +7,4 @@ Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.Pr
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.csproj.GenerateResource.Cache
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.exe
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.pdb
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.csproj.ResolveComReference.cache
