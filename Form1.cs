@@ -61,5 +61,18 @@ namespace ExcelHandler
                 excellApp.Quit();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string a=listBox1.Text.Insert(0,"sss");
+            listBox1.Update();
+            listBox1.Refresh();
+            listBox1.Items.Insert(0, "ddd");
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

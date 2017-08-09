@@ -8,3 +8,4 @@ Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.cs
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.exe
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.pdb
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.csproj.ResolveComReference.cache
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.AddRule.resources
