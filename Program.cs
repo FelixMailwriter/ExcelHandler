@@ -16,7 +16,9 @@ namespace ExcelHandler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            MainForm form = new MainForm();
+            Application.Run(form);
+            
         }
     }
 }

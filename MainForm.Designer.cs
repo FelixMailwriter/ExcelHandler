@@ -1,6 +1,6 @@
 ﻿namespace ExcelHandler
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -84,7 +84,6 @@
             this.label.Size = new System.Drawing.Size(26, 13);
             this.label.TabIndex = 3;
             this.label.Text = "Тип";
-            this.label.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -94,7 +93,6 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listBox2
             // 
@@ -116,7 +114,6 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "-";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -126,7 +123,6 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "+";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button1_Click);
             // 
             // button4
             // 
@@ -136,7 +132,6 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "-";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -146,7 +141,6 @@
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Псевдонимы";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // listBox3
             // 
@@ -164,7 +158,6 @@
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Правила";
-            this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
             // button5
             // 
@@ -174,7 +167,6 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "+";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button1_Click);
             // 
             // button6
             // 
@@ -184,7 +176,6 @@
             this.button6.TabIndex = 4;
             this.button6.Text = "-";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button1_Click);
             // 
             // button7
             // 
