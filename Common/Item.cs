@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExcelHandler.Common
 {
-    class Item
+    public class Item
     {
        public Dictionary<int, string> ItemProperties { get; private set; }
        public bool Changed { get; set; }

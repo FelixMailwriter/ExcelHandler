@@ -6,7 +6,7 @@ using ExcelHandler.ItmComparator;
 
 namespace ExcelHandler
 {
-    class ExcelHandler
+    public class ExcelHandler
     {
         private FileParser fp;
         public List<Item> SourceItemsList { get; private set; }

@@ -9,7 +9,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelHandler.FParser
 {
-    class FileParser
+    public class FileParser
     {
         Excel.Application excellApp = new Excel.Application();
         internal List<Item> parseFile(string filename)

@@ -53,6 +53,19 @@
     </Compile>
     <Compile Include="Common\Item.cs" />
     <Compile Include="ExcelHandler.cs" />
+    <Compile Include="ItmComparator\Action.cs" />
+    <Compile Include="ItmComparator\Actions\ActionChange.cs" />
+    <Compile Include="ItmComparator\Actions\ActionCopy.cs" />
+    <Compile Include="ItmComparator\Actions\ActionSkip.cs" />
+    <Compile Include="ItmComparator\Condition.cs" />
+    <Compile Include="ItmComparator\Conditions\OperationBetween.cs" />
+    <Compile Include="ItmComparator\Conditions\OperationContain.cs" />
+    <Compile Include="ItmComparator\Conditions\OperationEqual.cs" />
+    <Compile Include="ItmComparator\Conditions\OperationLess.cs" />
+    <Compile Include="ItmComparator\Conditions\OperationMore.cs" />
+    <Compile Include="ItmComparator\Operation.cs" />
+    <Compile Include="ItmComparator\ProductTypeRuleList.cs" />
+    <Compile Include="ItmComparator\Rule.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
