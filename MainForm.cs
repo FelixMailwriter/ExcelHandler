@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-
+using ExcelHandler.ItmComparator;
 
 namespace ExcelHandler
 {
@@ -10,12 +10,16 @@ namespace ExcelHandler
     {
         public delegate void FileSelectedHandler(String filename);
         public event FileSelectedHandler FileSelected;
+        
 
         public MainForm()
         {
             InitializeComponent();
             btn_open.Click += Btn_open_Click;
-            ExcelHandler eh = new ExcelHandler(this);
+            main eh = new main(this);
+            //Binding b = new Binding("Items", eh.ic, "ProductTypeRule");
+            //lsbx_Type.DataBindings.Add( b);
+            
         }
 
         private void Btn_open_Click(object sender, EventArgs e)
@@ -42,5 +46,6 @@ namespace ExcelHandler
         {
             throw new NotImplementedException();
         }
+
     }
 }

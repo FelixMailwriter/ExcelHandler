@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ExcelHandler.Common;
 
-namespace ExcelHandler.ItmComparator
+namespace ExcelHandler
 
 {
     public class Rule

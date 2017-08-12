@@ -6,15 +6,17 @@ using ExcelHandler.ItmComparator;
 
 namespace ExcelHandler
 {
-    public class ExcelHandler
+    public class main
     {
         private FileParser fp;
         public List<Item> SourceItemsList { get; private set; }
         public List<Item> ProductItemsList { get; private set; }
-        private ItemComparator ic;
+        public ItemComparator ic { get; set; }
         private MainForm form;
 
-    public ExcelHandler(MainForm form)
+        public List<ProductTypeRuleList> ptrl { get; set; }
+
+        public main(MainForm form)
     {
             this.form =  form;
             this.form.Visible = true;
@@ -22,7 +24,9 @@ namespace ExcelHandler
             this.ProductItemsList = new List<Item>();
             this.ic = new ItemComparator();
             form.FileSelected += parseFile;
-    }
+
+            ptrl = ic.ProductTypeRules;
+        }
 
         private void parseFile(string filename)
         {

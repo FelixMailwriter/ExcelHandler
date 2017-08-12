@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExcelHandler.ItmComparator
+namespace ExcelHandler
 {
     public class Condition
     {

@@ -1,6 +1,6 @@
 ﻿using ExcelHandler.Common;
 
-namespace ExcelHandler.ItmComparator
+namespace ExcelHandler
 {
     public interface Action
     {
