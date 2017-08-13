@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExcelHandler.ItmComparator.Conditions
 {
-    public class OperationLess : Operation
+    public class BeginsWith : Operation
     {
         public bool doCompare(string param1, string param2, string parameter)
         {
@@ -14,16 +14,7 @@ namespace ExcelHandler.ItmComparator.Conditions
             {
                 return false;
             }
-            double p1 = Double.MaxValue;
-            double param = 0;
-            try
-            {
-                p1 = Double.Parse(param1);
-                param = Double.Parse(parameter);
-            }
-            catch (ArgumentException) { }
-
-            return ((p1 < param));
+            return param1.StartsWith(parameter);
         }
     }
 }

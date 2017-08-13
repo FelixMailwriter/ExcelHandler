@@ -4,6 +4,6 @@ namespace ExcelHandler
 {
     public interface Action
     {
-        Item doAction(ItemComparator Item);
+        void doAction(ref Item Item, Condition condition, string column);
     }
 }

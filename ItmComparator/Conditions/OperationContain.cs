@@ -8,9 +8,13 @@ namespace ExcelHandler.ItmComparator.Conditions
 {
     public class OperationContain : Operation
     {
-        public bool doCompare()
+        public bool doCompare(string param1, string param2, string parameter)
         {
-            throw new NotImplementedException();
+            if ((param1 == null) || (parameter == null))
+            {
+                return false;
+            }
+            return param1.Contains(parameter);
         }
     }
 }

@@ -47,5 +47,12 @@ namespace ExcelHandler
             throw new NotImplementedException();
         }
 
+        private void ItemComparatorBSource_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        {
+            Console.WriteLine("Список изменился");
+
+            var d = ItemComparatorBSource.DataSource;
+            int y = 0;
+        }
     }
 }

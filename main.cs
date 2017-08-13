@@ -11,6 +11,7 @@ namespace ExcelHandler
         private FileParser fp;
         public List<Item> SourceItemsList { get; private set; }
         public List<Item> ProductItemsList { get; private set; }
+        //public List<ProductTypeRuleList> PrTypeRules { get; private set; }
         public ItemComparator ic { get; set; }
         private MainForm form;
 
@@ -20,9 +21,9 @@ namespace ExcelHandler
     {
             this.form =  form;
             this.form.Visible = true;
-            this.SourceItemsList = new List<Item>();
-            this.ProductItemsList = new List<Item>();
-            this.ic = new ItemComparator();
+            SourceItemsList = new List<Item>();
+            ProductItemsList = new List<Item>();
+            ic = new ItemComparator();
             form.FileSelected += parseFile;
 
             ptrl = ic.ProductTypeRules;
@@ -30,7 +31,7 @@ namespace ExcelHandler
 
         private void parseFile(string filename)
         {
-            this.fp = new FileParser();
+            fp = new FileParser();
             SourceItemsList = fp.parseFile(filename);
         }
     }

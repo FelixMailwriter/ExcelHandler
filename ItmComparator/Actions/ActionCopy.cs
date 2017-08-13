@@ -9,9 +9,9 @@ namespace ExcelHandler.ItmComparator.Actions
 {
     public class ActionCopy : Action
     {
-        public Item doAction(ItemComparator Item)
+        public void doAction(ref Item Item, Condition condition, string column)
         {
-            throw new NotImplementedException();
+            Item.Changed = true;
         }
     }
 }

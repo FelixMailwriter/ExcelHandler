@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExcelHandler.ItmComparator.Conditions
 {
-    public class OperationLess : Operation
+    public class MoreOrEqual:Operation
     {
         public bool doCompare(string param1, string param2, string parameter)
         {
@@ -23,7 +23,7 @@ namespace ExcelHandler.ItmComparator.Conditions
             }
             catch (ArgumentException) { }
 
-            return ((p1 < param));
+            return ((p1 >= param));
         }
     }
 }

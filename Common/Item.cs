@@ -21,7 +21,7 @@ namespace ExcelHandler.Common
         }
 
 
-        string this [int pos]
+        public string this [int pos]
         {
             get
             {

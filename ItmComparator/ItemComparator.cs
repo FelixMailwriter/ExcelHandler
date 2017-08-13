@@ -23,5 +23,11 @@ namespace ExcelHandler
             ptrl.Add(new ProductTypeRuleList( "Name1", new List<string>(), new List<Rule>() ));
             return ptrl;
         }
+
+        private void addRuleType(string name)
+        {
+            if (name.Equals("")) { return; }
+            ProductTypeRules.Add(new ProductTypeRuleList(name));
+        }
     }
 }

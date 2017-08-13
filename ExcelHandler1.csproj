@@ -67,6 +67,11 @@
       <DependentUpon>AddRule.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Item.cs" />
+    <Compile Include="ItmComparator\Conditions\BeginsWith.cs" />
+    <Compile Include="ItmComparator\Conditions\LessOrEqual.cs" />
+    <Compile Include="ItmComparator\Conditions\MoreOrEqual.cs" />
+    <Compile Include="ItmComparator\Exceptions\ActionException.cs" />
+    <Compile Include="ItmComparator\Exceptions\ConditionException.cs" />
     <Compile Include="main.cs" />
     <Compile Include="ItmComparator\Action.cs" />
     <Compile Include="ItmComparator\Actions\ActionChange.cs" />
