@@ -12,9 +12,25 @@ namespace ExcelHandler
 {
     public partial class AddRule : Form
     {
-        public AddRule()
+        private RulesManager rm;
+        private string typeName;
+        private string ruleDescription;
+
+        public AddRule(RulesManager rm, string typeName, string ruleDescription)
         {
-            InitializeComponent();
+            this.rm = rm;
+            this.typeName = typeName;
+            this.ruleDescription = ruleDescription;
+            if (!ruleDescription.Equals(""))
+            {
+                fillForm();
+            }
+        }
+
+        private void fillForm()
+        {
+            ProductTypeRuleList Type = rm.getType(typeName);
+            Rule rule = ProductTypeRuleList.getRuleByDescription(ruleDescription);
         }
     }
 }

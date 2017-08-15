@@ -7,15 +7,17 @@ namespace ExcelHandler
 {
     public class Rule
     {
-        public List<Condition> MainCondition { get; private set; }
+        private string Description;
+        public Condition MainCondition { get; private set; }
         public List<Condition> ConditionList { get; private set; }
         public string ActionColumn { get; set; }
         public Action Action { get; set; }
         public string Suffix { get; set; }
 
-        public Rule(List<Condition> mainCondition, List<Condition> conditionList, 
+        public Rule(Condition mainCondition, List<Condition> conditionList, 
                     string actionColumn, Action action, string suffix)
         {
+            Description = getDescription();
             MainCondition = mainCondition;
             ConditionList = conditionList;
             ActionColumn = actionColumn;
@@ -23,18 +25,15 @@ namespace ExcelHandler
             Suffix = suffix;
         }
 
-        public void addMainCondition(Condition condition)
+        private string getDescription()
         {
-            MainCondition.Add(condition);
-        }
-
-        public void removeMainCondition(Condition condition)
-        {
-            Condition RemovedCondition = MainCondition.Find(p => p == condition);
-            if (RemovedCondition != null)
+            string description = "";
+            description += MainCondition.Param1 + " " + MainCondition.CondOperation + " " + MainCondition.Param2;
+            if (!Suffix.Equals(""))
             {
-                MainCondition.Remove(RemovedCondition);
+                description += " = " + Suffix;
             }
+            return description;
         }
 
         public void addCondition(Condition condition)
@@ -57,11 +56,16 @@ namespace ExcelHandler
             {
                 if (condition.makeCompare())
                 {
-                    Action.doAction(ref Item, condition);
+                    Action.doAction(ref Item, condition, ActionColumn);
                     return Item;
                 }
             }
             return Item;
+        }
+
+        public override string ToString()
+        {
+            return getDescription();
         }
 
     }

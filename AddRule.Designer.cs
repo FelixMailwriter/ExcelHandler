@@ -31,7 +31,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbx_TargetColumn = new System.Windows.Forms.TextBox();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -47,6 +47,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_Ok = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -73,12 +75,12 @@
             this.textBox2.Size = new System.Drawing.Size(31, 20);
             this.textBox2.TabIndex = 15;
             // 
-            // textBox1
+            // txbx_TargetColumn
             // 
-            this.textBox1.Location = new System.Drawing.Point(117, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(39, 20);
-            this.textBox1.TabIndex = 16;
+            this.txbx_TargetColumn.Location = new System.Drawing.Point(117, 28);
+            this.txbx_TargetColumn.Name = "txbx_TargetColumn";
+            this.txbx_TargetColumn.Size = new System.Drawing.Size(39, 20);
+            this.txbx_TargetColumn.TabIndex = 16;
             // 
             // listBox4
             // 
@@ -136,7 +138,7 @@
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txbx_TargetColumn);
             this.groupBox1.Location = new System.Drawing.Point(21, 21);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(473, 105);
@@ -230,11 +232,31 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Дополнительные условия";
             // 
+            // btn_Ok
+            // 
+            this.btn_Ok.Location = new System.Drawing.Point(298, 293);
+            this.btn_Ok.Name = "btn_Ok";
+            this.btn_Ok.Size = new System.Drawing.Size(75, 23);
+            this.btn_Ok.TabIndex = 24;
+            this.btn_Ok.Text = "ОК";
+            this.btn_Ok.UseVisualStyleBackColor = true;
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.Location = new System.Drawing.Point(388, 293);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_Cancel.TabIndex = 24;
+            this.btn_Cancel.Text = "Отмена";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
+            // 
             // AddRule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 328);
+            this.Controls.Add(this.btn_Cancel);
+            this.Controls.Add(this.btn_Ok);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddRule";
@@ -252,7 +274,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbx_TargetColumn;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
@@ -268,5 +290,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btn_Ok;
+        private System.Windows.Forms.Button btn_Cancel;
     }
 }

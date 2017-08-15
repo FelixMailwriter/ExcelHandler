@@ -33,6 +33,11 @@ namespace ExcelHandler
             Aliases.Sort();
         }
 
+        internal static Rule getRuleByDescription(string ruleDescription)
+        {
+            throw new NotImplementedException();
+        }
+
         public void addRule(Rule rule)
         {
             if (rule != null)

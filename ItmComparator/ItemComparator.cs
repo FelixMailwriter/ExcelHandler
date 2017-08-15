@@ -14,15 +14,15 @@ namespace ExcelHandler
 
         public ItemComparator()
         {
-            ProductTypeRules=loadRulesList();
+            //ProductTypeRules=loadRulesList();
         }
 
-        private List<ProductTypeRuleList> loadRulesList()
-        {
-            List<ProductTypeRuleList> ptrl = new List<ProductTypeRuleList>();
-            ptrl.Add(new ProductTypeRuleList( "Name1", new List<string>(), new List<Rule>() ));
-            return ptrl;
-        }
+        //private List<ProductTypeRuleList> loadRulesList()
+        //{
+        //    List<ProductTypeRuleList> ptrl = new List<ProductTypeRuleList>();
+        //    ptrl.Add(new ProductTypeRuleList( "Name1", new List<string>(), new List<Rule>() ));
+        //    return ptrl;
+        //}
 
         private void addRuleType(string name)
         {

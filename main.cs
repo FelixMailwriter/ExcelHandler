@@ -9,9 +9,10 @@ namespace ExcelHandler
     public class main
     {
         private FileParser fp;
+        public RulesManager rm { get; set; }
         public List<Item> SourceItemsList { get; private set; }
         public List<Item> ProductItemsList { get; private set; }
-        //public List<ProductTypeRuleList> PrTypeRules { get; private set; }
+        public List<ProductTypeRuleList> PrTypeRules { get; private set; }
         public ItemComparator ic { get; set; }
         private MainForm form;
 
@@ -24,6 +25,7 @@ namespace ExcelHandler
             SourceItemsList = new List<Item>();
             ProductItemsList = new List<Item>();
             ic = new ItemComparator();
+            rm = new RulesManager("");
             form.FileSelected += parseFile;
 
             ptrl = ic.ProductTypeRules;
