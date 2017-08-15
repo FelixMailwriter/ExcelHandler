@@ -8,6 +8,7 @@ namespace ExcelHandler.ItmComparator.Conditions
 {
     public class OperationBetween : Operation
     {
+        public static string description = "Между";
         public bool doCompare(string param1, string param2, string parameter)
         { 
              if ((param1 == null) || (param2==null)||(parameter == null))

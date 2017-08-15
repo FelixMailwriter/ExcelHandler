@@ -114,14 +114,26 @@ namespace ExcelHandler
 
         private void btn_addRule_Click(object sender, EventArgs e)
         {
+            if (lsbx_Type.SelectedIndex < 0)
+            {
+                MessageBox.Show("Не указан тип", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string TypeName = lsbx_Type.SelectedItem.ToString();
             string RuleDescription = "";
             if (lsbx_Rule.SelectedIndex >= 0)
             {
                 RuleDescription = lsbx_Rule.SelectedItem.ToString();
             }
-            AddRule ARForm = new AddRule(rm, TypeName, RuleDescription);
-            typeof(Operation).
+            Rule rule = new Rule();
+            AddRule ARForm = new AddRule(rule);
+            
+             if (ARForm.ShowDialog() == DialogResult.OK)
+            {
+                Console.WriteLine("Closed");
+            }
+            //ARForm.Show();
+            //typeof(Operation).
         }
     }
 }

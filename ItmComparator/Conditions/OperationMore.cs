@@ -8,6 +8,7 @@ namespace ExcelHandler.ItmComparator.Conditions
 {
     public class OperationMore : Operation
     {
+        public static string description = ">";
         public bool doCompare(string param1, string param2, string parameter)
         {
             if ((param1 == null) || (parameter == null))

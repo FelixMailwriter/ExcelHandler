@@ -9,7 +9,7 @@ namespace ExcelHandler.ItmComparator.Actions
 {
     public class ActionSkip : Action
     {
-        const string NAME = "Пропустить";
+        public static string description = "Пропустить";
         public void doAction(ref Item Item, Condition condition, string column)
         {
             Item = null;

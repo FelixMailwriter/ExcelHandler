@@ -9,7 +9,7 @@ namespace ExcelHandler.ItmComparator.Actions
 {
     public class ActionCopy : Action
     {
-        const string NAME = "Копировать";
+        public static string description = "Копировать";
         public void doAction(ref Item Item, Condition condition, string column)
         {
             Item.Changed = true;

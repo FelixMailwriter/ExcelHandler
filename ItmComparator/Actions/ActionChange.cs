@@ -5,7 +5,7 @@ namespace ExcelHandler.ItmComparator.Actions
 {
     public class ActionChange : Action
     {
-        const string NAME= "Изменить";
+        public static string description= "Изменить";
         public void doAction(ref Item Item, Condition condition, string column)
         {
             int ColumnNumber = 0;

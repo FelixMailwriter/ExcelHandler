@@ -11,6 +11,15 @@ namespace ExcelHandler
         public Operation CondOperation { get; private set; }
         public string Suffix { get; private set; }
 
+        public Condition()
+        {
+            Param1 = "";
+            Param2 = "";
+            Parameter = "=";
+            CondOperation = null;
+            Suffix = "";
+        }
+
         public Condition(string param1, string param2, string parameter, Operation condOperation, string suffix)
         {
             Param1 = param1;
