@@ -17,5 +17,12 @@ namespace ExcelHandler.ItmComparator.Conditions
             }
             return param1.Contains(parameter);
         }
+
+        public string getDescription()
+        {
+            return GetType().GetField("description").GetValue(null).ToString();
+        }
     }
+
+
 }

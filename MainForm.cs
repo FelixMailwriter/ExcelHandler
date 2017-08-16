@@ -4,6 +4,8 @@ using System.IO;
 using System.Windows.Forms;
 using ExcelHandler.ItmComparator;
 
+using ExcelHandler.ItmComparator.Conditions;
+
 namespace ExcelHandler
 {
     public partial class MainForm : Form

@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExcelHandler
@@ -17,6 +12,7 @@ namespace ExcelHandler
         private List<string> mainConditionList;
         private List<string> conditionList;
         private List<string> actionList;
+        private List<string> additionRulesDescriptionLsit;
 
         public AddRule()
         {
@@ -27,10 +23,11 @@ namespace ExcelHandler
 
         public AddRule(Rule rule)
         {
+            this.rule = rule;
             InitializeComponent();
             prepareForm();
             fillForm();
-            this.rule = rule;
+            
         }
 
         private void prepareForm()
@@ -41,6 +38,8 @@ namespace ExcelHandler
             cmbx_Conditions.DataSource = conditionList;
             actionList = getListActionsDescriptions();
             cmbx_Actions.DataSource = actionList;
+            additionRulesDescriptionLsit = getListAdditionalRulesDescription();
+            lsbx_AdditionalRules.DataSource = additionRulesDescriptionLsit;
         }
 
         private List<string> getListOperationsDescriptions()
@@ -88,17 +87,30 @@ namespace ExcelHandler
             }
             return actDescriptionList;
         }
+
+        private List<string> getListAdditionalRulesDescription()
+        {
+            List<string> rd = new List<string>();
+            foreach (Condition cond in rule.ConditionList)
+            {
+                rd.Add(cond.ToString() + " -> " + rule.ActionColumn);
+            }
+            return rd;
+        }
+
         private void fillForm()
         {
             if(rule==null) { return; }
             txbx_TargetColumn.Text = rule.ActionColumn;
             txbx_MainParameter.Text = rule.MainCondition.Parameter;
-            string opAlias=rule.MainCondition.CondOperation.GetType().GetField("description").GetValue(null).ToString();
-            if (mainConditionList.Contains(opAlias)){
-                cmbx_MainCondition.SelectedItem = opAlias;
+            string opAlias = "";
+            if (rule.MainCondition.CondOperation != null) { 
+                opAlias=rule.MainCondition.CondOperation.GetType().GetField("description").GetValue(null).ToString();
+                if (mainConditionList.Contains(opAlias))
+                {
+                    cmbx_MainCondition.SelectedItem = opAlias;
+                }
             }
-
-
         }
 
         private void btn_Ok_Click(object sender, EventArgs e)
@@ -117,6 +129,38 @@ namespace ExcelHandler
             {
                 gb_additionCondition.Enabled = false;
             }
+        }
+
+        private void cmbx_Conditions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbx_Conditions.SelectedItem.Equals("Между"))
+            {
+                txbx_Param2.Enabled = true;
+            }
+            else
+            {
+                txbx_Param2.Enabled = false;
+            }
+        }
+
+        private void lsbx_AdditionalRules_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_addCondition_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_RemoveCondition_Click(object sender, EventArgs e)
+        {
+            string TargetColumn = txbx_Column.Text;
+            string ConditionName = cmbx_Conditions.Text;
+            string Param1 = txbx_Param1.Text;
+            string Param2 = txbx_Param2.Text;
+            string Parameter = txbx_Value.Text;
+            
         }
     }
 }

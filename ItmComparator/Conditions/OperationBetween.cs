@@ -29,5 +29,11 @@ namespace ExcelHandler.ItmComparator.Conditions
 
             return ((p1 <= param) && (p2 >= param));
         }
+
+        public string getDescription()
+        {
+            return GetType().GetField("description").GetValue(null).ToString();
+
+        }
     }
 }

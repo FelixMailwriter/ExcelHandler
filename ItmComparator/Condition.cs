@@ -41,5 +41,12 @@ namespace ExcelHandler
             }
             return result;
         }
+
+        public override string ToString()
+        {
+            string opDescription = CondOperation.getDescription();
+            return "Если "+ Param1+" "+ Parameter+" "+ Param2+" "+ opDescription+ " "+ Suffix;
+        }
     }
+
 }

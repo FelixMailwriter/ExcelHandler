@@ -9,6 +9,7 @@ namespace ExcelHandler.ItmComparator.Conditions
     public class OperationLess : Operation
     {
         public static string description = "<";
+
         public bool doCompare(string param1, string param2, string parameter)
         {
             if ((param1 == null) || (parameter == null))
@@ -25,6 +26,12 @@ namespace ExcelHandler.ItmComparator.Conditions
             catch (ArgumentException) { }
 
             return ((p1 < param));
+        }
+
+        public string getDescription()
+        {
+            return GetType().GetField("description").GetValue(null).ToString();
+
         }
     }
 }

@@ -23,5 +23,9 @@ namespace ExcelHandler.ItmComparator.Conditions
             return param1.Equals(parameter);
         }
 
+        public string getDescription()
+        {
+            return GetType().GetField("description").GetValue(null).ToString();
+        }
     }
 }
