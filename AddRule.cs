@@ -9,8 +9,8 @@ namespace ExcelHandler
     public partial class AddRule : Form
     {
         private Rule rule;
-        private List<string> mainConditionList;
-        private List<string> conditionList;
+        //private List<string> mainConditionList;
+        private Dictionary<string, Operation> conditionList;
         private List<string> actionList;
         private List<string> additionRulesDescriptionLsit;
 
@@ -32,20 +32,20 @@ namespace ExcelHandler
 
         private void prepareForm()
         {
-            mainConditionList = getListOperationsDescriptions();
+            //mainConditionList = getListOperationsDescriptions();
             conditionList = getListOperationsDescriptions();
-            cmbx_MainCondition.DataSource = mainConditionList;
-            cmbx_Conditions.DataSource = conditionList;
+            cmbx_MainCondition.DataSource = conditionList.Keys.ToList();
+            cmbx_Conditions.DataSource = conditionList.Keys.ToList();
             actionList = getListActionsDescriptions();
             cmbx_Actions.DataSource = actionList;
             additionRulesDescriptionLsit = getListAdditionalRulesDescription();
             lsbx_AdditionalRules.DataSource = additionRulesDescriptionLsit;
         }
 
-        private List<string> getListOperationsDescriptions()
+        private Dictionary<string, Operation> getListOperationsDescriptions()
         {
             var t = typeof(Operation);
-            List<string> opDescriptionList = new List<string>();
+            Dictionary<string, Operation> opDescriptionList = new Dictionary<string, Operation>();
             var typesIEnum = AppDomain
              .CurrentDomain
              .GetAssemblies()
@@ -58,7 +58,7 @@ namespace ExcelHandler
                 try
                 {
                     string opDescription = TestType.GetField("description").GetValue(null).ToString();
-                    opDescriptionList.Add(opDescription);
+                    opDescriptionList.Add(opDescription, (Operation)Activator.CreateInstance(TestType));//(Operation)TestType);
                 }
                 catch (NullReferenceException) { }
             }
@@ -106,7 +106,8 @@ namespace ExcelHandler
             string opAlias = "";
             if (rule.MainCondition.CondOperation != null) { 
                 opAlias=rule.MainCondition.CondOperation.GetType().GetField("description").GetValue(null).ToString();
-                if (mainConditionList.Contains(opAlias))
+                //if (mainConditionList.Contains(opAlias))
+                if (conditionList.Keys.Contains(opAlias))
                 {
                     cmbx_MainCondition.SelectedItem = opAlias;
                 }
