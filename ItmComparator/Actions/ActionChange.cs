@@ -1,23 +1,16 @@
 ﻿using ExcelHandler.Common;
-using ExcelHandler.ItmComparator.Exceptions;
+
 
 namespace ExcelHandler.ItmComparator.Actions
 {
     public class ActionChange : Action
     {
         public static string description= "Изменить";
-        public void doAction(ref Item Item, Condition condition, string column)
+        public void doAction(ref Item Item, Condition condition, int column)
         {
-            int ColumnNumber = 0;
-            if (int.TryParse(column, out ColumnNumber))
-            {
+            int ColumnNumber = column;
                 Item[ColumnNumber] += condition.Suffix;
                 Item.Changed = true;
-            }
-            else
-            {
-                throw new ActionException("Неверно задан целевой столбец действия");
-            }
         }
     }
 }

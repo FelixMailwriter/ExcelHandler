@@ -9,13 +9,13 @@ namespace ExcelHandler.ItmComparator.Conditions
     public class BeginsWith : Operation
     {
         public  static  string  description = "Начинается с";
-        public bool doCompare(string param1, string param2, string parameter)
+        public bool doCompare(string param1, string param2, string testValue)
         {
-            if ((param1 == null) || (parameter == null))
+            if ((param1 == null) || (testValue == null))
             {
                 return false;
             }
-            return param1.StartsWith(parameter);
+            return param1.StartsWith(testValue);
         }
 
         public string getDescription()

@@ -9,13 +9,13 @@ namespace ExcelHandler.ItmComparator.Conditions
     public class OperationContain : Operation
     {
         public static string description = "Содержит";
-        public bool doCompare(string param1, string param2, string parameter)
+        public bool doCompare(string param1, string param2, string testValue)
         {
-            if ((param1 == null) || (parameter == null))
+            if ((param1 == null) || (testValue == null))
             {
                 return false;
             }
-            return param1.Contains(parameter);
+            return param1.Contains(testValue);
         }
 
         public string getDescription()

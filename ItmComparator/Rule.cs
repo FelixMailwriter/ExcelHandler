@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ExcelHandler.Common;
+using ExcelHandler.ItmComparator.Exceptions;
 
 namespace ExcelHandler
 
@@ -10,7 +11,7 @@ namespace ExcelHandler
         private string Description;
         public Condition MainCondition { get; private set; }
         public List<Condition> ConditionList { get; private set; }
-        public string ActionColumn { get; private set; }
+        public int ActionColumn { get; private set; }
         public Action Action { get; set; }
         //public string Suffix { get; private set; }
 
@@ -18,7 +19,7 @@ namespace ExcelHandler
         {
             MainCondition = new Condition();
             ConditionList = new List<Condition>();
-            ActionColumn = "";
+            ActionColumn = 0;
             Action = null;
             //Suffix = "";
             Description = getDescription();
@@ -29,7 +30,7 @@ namespace ExcelHandler
         { 
             MainCondition = mainCondition;
             ConditionList = conditionList;
-            ActionColumn = actionColumn;
+            ActionColumn = getActionColumn(actionColumn);
             Action = action;
             //Suffix = suffix;
             Description = getDescription();
@@ -60,7 +61,7 @@ namespace ExcelHandler
         {
             foreach(Condition condition in ConditionList)
             {
-                if (condition.makeCompare())
+                if (condition.makeCompare(Item[ActionColumn]))
                 {
                     Action.doAction(ref Item, condition, ActionColumn);
                     return Item;
@@ -69,7 +70,20 @@ namespace ExcelHandler
             return Item;
         }
 
-        public override string ToString()
+        public int  getActionColumn(string column)
+        {
+            int ActCol = 0;
+            if (int.TryParse(column, out ActCol))
+            {
+                return ActCol;
+            }
+            else
+            {
+                throw new ActionException("Неверно задан целевой столбец");
+            }
+        }
+
+         public override string ToString()
         {
             return getDescription();
         }

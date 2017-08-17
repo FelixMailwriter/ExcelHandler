@@ -42,7 +42,7 @@
             this.txbx_MainParameter = new System.Windows.Forms.TextBox();
             this.cmbx_MainCondition = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txbx_Value = new System.Windows.Forms.TextBox();
+            this.txbx_Suffix = new System.Windows.Forms.TextBox();
             this.lbl_sekComdReturn = new System.Windows.Forms.Label();
             this.btn_DownCondition = new System.Windows.Forms.Button();
             this.btn_UpCondition = new System.Windows.Forms.Button();
@@ -180,12 +180,12 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Действие";
             // 
-            // txbx_Value
+            // txbx_Suffix
             // 
-            this.txbx_Value.Location = new System.Drawing.Point(278, 49);
-            this.txbx_Value.Name = "txbx_Value";
-            this.txbx_Value.Size = new System.Drawing.Size(138, 20);
-            this.txbx_Value.TabIndex = 20;
+            this.txbx_Suffix.Location = new System.Drawing.Point(278, 49);
+            this.txbx_Suffix.Name = "txbx_Suffix";
+            this.txbx_Suffix.Size = new System.Drawing.Size(138, 20);
+            this.txbx_Suffix.TabIndex = 20;
             // 
             // lbl_sekComdReturn
             // 
@@ -222,7 +222,7 @@
             this.gb_additionCondition.Controls.Add(this.btn_addCondition);
             this.gb_additionCondition.Controls.Add(this.btn_UpCondition);
             this.gb_additionCondition.Controls.Add(this.btn_RemoveCondition);
-            this.gb_additionCondition.Controls.Add(this.txbx_Value);
+            this.gb_additionCondition.Controls.Add(this.txbx_Suffix);
             this.gb_additionCondition.Controls.Add(this.lsbx_AdditionalRules);
             this.gb_additionCondition.Controls.Add(this.txbx_Column);
             this.gb_additionCondition.Controls.Add(this.lbl_sekComdReturn);
@@ -308,7 +308,7 @@
         private System.Windows.Forms.ComboBox cmbx_MainCondition;
         private System.Windows.Forms.ComboBox cmbx_Actions;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txbx_Value;
+        private System.Windows.Forms.TextBox txbx_Suffix;
         private System.Windows.Forms.Label lbl_sekComdReturn;
         private System.Windows.Forms.Button btn_DownCondition;
         private System.Windows.Forms.Button btn_UpCondition;

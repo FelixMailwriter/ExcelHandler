@@ -10,9 +10,9 @@ namespace ExcelHandler.ItmComparator.Conditions
     {
         public static string description = "<";
 
-        public bool doCompare(string param1, string param2, string parameter)
+        public bool doCompare(string param1, string param2, string testValue)
         {
-            if ((param1 == null) || (parameter == null))
+            if ((param1 == null) || (testValue == null))
             {
                 return false;
             }
@@ -21,7 +21,7 @@ namespace ExcelHandler.ItmComparator.Conditions
             try
             {
                 p1 = Double.Parse(param1);
-                param = Double.Parse(parameter);
+                param = Double.Parse(testValue);
             }
             catch (ArgumentException) { }
 

@@ -9,9 +9,9 @@ namespace ExcelHandler.ItmComparator.Conditions
     public class OperationBetween : Operation
     {
         public static string description = "Между";
-        public bool doCompare(string param1, string param2, string parameter)
+        public bool doCompare(string param1, string param2, string testValue)
         { 
-             if ((param1 == null) || (param2==null)||(parameter == null))
+             if ((param1 == null) || (param2==null)||(testValue == null))
             {
                 return false;
             }
@@ -23,7 +23,7 @@ namespace ExcelHandler.ItmComparator.Conditions
             {
                 p1 = Double.Parse(param1);
                 p2 = Double.Parse(param2);
-                param= Double.Parse(parameter);
+                param= Double.Parse(testValue);
             }
             catch (ArgumentException )  {  }
 

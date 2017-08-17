@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace ExcelHandler
@@ -55,12 +56,10 @@ namespace ExcelHandler
             foreach (var types in typesIEnum)
             {
                 Type TestType = Type.GetType(types.FullName);
-                try
-                {
-                    string opDescription = TestType.GetField("description").GetValue(null).ToString();
-                    opDescriptionList.Add(opDescription, (Operation)Activator.CreateInstance(TestType));//(Operation)TestType);
-                }
-                catch (NullReferenceException) { }
+                FieldInfo fi = TestType.GetField("description");
+                if (fi == null) { continue; }
+                string opDescription = fi.GetValue(null).ToString();
+                opDescriptionList.Add(opDescription, (Operation)Activator.CreateInstance(TestType));//(Operation)TestType);
             }
             return opDescriptionList;
         }
@@ -78,12 +77,10 @@ namespace ExcelHandler
             foreach (var types in typesIEnum)
             {
                 Type TestType = Type.GetType(types.FullName);
-                try
-                {
-                    string opDescription = TestType.GetField("description").GetValue(null).ToString();
-                    actDescriptionList.Add(opDescription);
-                }
-                catch (NullReferenceException) { }
+                FieldInfo fi = TestType.GetField("description");
+                if (fi == null) { continue; }
+                string opDescription = fi.GetValue(null).ToString();
+                actDescriptionList.Add(opDescription);
             }
             return actDescriptionList;
         }
@@ -101,8 +98,8 @@ namespace ExcelHandler
         private void fillForm()
         {
             if(rule==null) { return; }
-            txbx_TargetColumn.Text = rule.ActionColumn;
-            txbx_MainParameter.Text = rule.MainCondition.Parameter;
+            txbx_TargetColumn.Text = rule.ActionColumn.ToString();
+            txbx_MainParameter.Text = rule.MainCondition.Param1;
             string opAlias = "";
             if (rule.MainCondition.CondOperation != null) { 
                 opAlias=rule.MainCondition.CondOperation.GetType().GetField("description").GetValue(null).ToString();
@@ -116,6 +113,12 @@ namespace ExcelHandler
 
         private void btn_Ok_Click(object sender, EventArgs e)
         {
+            string TargetColumn = txbx_Column.Text;
+            Operation op = null;
+            string ConditionName = cmbx_MainCondition.Text;
+            conditionList.TryGetValue(ConditionName, out op);
+            string MainParameter = txbx_MainParameter.Text;
+
             this.DialogResult = DialogResult.OK;
             Close();
         }
@@ -151,17 +154,22 @@ namespace ExcelHandler
 
         private void btn_addCondition_Click(object sender, EventArgs e)
         {
-
+            string ConditionName = cmbx_Conditions.Text;
+            string Param1 = txbx_Param1.Text;
+            string Param2 = txbx_Param2.Text;
+            string Suffix = txbx_Suffix.Text;
+            Operation op = null;
+            conditionList.TryGetValue(ConditionName, out op);
+            Condition cond = new Condition(Param1, Param2, op, Suffix);
+            rule.ConditionList.Add(cond);
+            lsbx_AdditionalRules.DataSource = null;
+            additionRulesDescriptionLsit = getListAdditionalRulesDescription();
+            lsbx_AdditionalRules.DataSource = additionRulesDescriptionLsit;
         }
 
         private void btn_RemoveCondition_Click(object sender, EventArgs e)
         {
-            string TargetColumn = txbx_Column.Text;
-            string ConditionName = cmbx_Conditions.Text;
-            string Param1 = txbx_Param1.Text;
-            string Param2 = txbx_Param2.Text;
-            string Parameter = txbx_Value.Text;
-            
+
         }
     }
 }
