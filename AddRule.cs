@@ -10,10 +10,9 @@ namespace ExcelHandler
     public partial class AddRule : Form
     {
         private Rule rule;
-        //private List<string> mainConditionList;
         private Dictionary<string, Operation> conditionList;
-        private List<string> actionList;
-        private List<string> additionRulesDescriptionLsit;
+        private Dictionary<string, Action> actionList;
+        private List<string> additionRulesDescriptionList;
 
         public AddRule()
         {
@@ -33,14 +32,13 @@ namespace ExcelHandler
 
         private void prepareForm()
         {
-            //mainConditionList = getListOperationsDescriptions();
             conditionList = getListOperationsDescriptions();
             cmbx_MainCondition.DataSource = conditionList.Keys.ToList();
             cmbx_Conditions.DataSource = conditionList.Keys.ToList();
             actionList = getListActionsDescriptions();
-            cmbx_Actions.DataSource = actionList;
-            additionRulesDescriptionLsit = getListAdditionalRulesDescription();
-            lsbx_AdditionalRules.DataSource = additionRulesDescriptionLsit;
+            cmbx_Actions.DataSource = actionList.Keys.ToList();
+            additionRulesDescriptionList = getListAdditionalRulesDescription();
+            lsbx_AdditionalRules.DataSource = additionRulesDescriptionList;
         }
 
         private Dictionary<string, Operation> getListOperationsDescriptions()
@@ -64,10 +62,10 @@ namespace ExcelHandler
             return opDescriptionList;
         }
 
-        private List<string> getListActionsDescriptions()
+        private Dictionary<string, Action> getListActionsDescriptions()
         {
             var t = typeof(Action);
-            List<string> actDescriptionList = new List<string>();
+            Dictionary<string, Action> actDescriptionList = new Dictionary<string, Action>();
             var typesIEnum = AppDomain
              .CurrentDomain
              .GetAssemblies()
@@ -80,7 +78,7 @@ namespace ExcelHandler
                 FieldInfo fi = TestType.GetField("description");
                 if (fi == null) { continue; }
                 string opDescription = fi.GetValue(null).ToString();
-                actDescriptionList.Add(opDescription);
+                actDescriptionList.Add(opDescription, (Action)Activator.CreateInstance(TestType));
             }
             return actDescriptionList;
         }
@@ -163,8 +161,8 @@ namespace ExcelHandler
             Condition cond = new Condition(Param1, Param2, op, Suffix);
             rule.ConditionList.Add(cond);
             lsbx_AdditionalRules.DataSource = null;
-            additionRulesDescriptionLsit = getListAdditionalRulesDescription();
-            lsbx_AdditionalRules.DataSource = additionRulesDescriptionLsit;
+            additionRulesDescriptionList = getListAdditionalRulesDescription();
+            lsbx_AdditionalRules.DataSource = additionRulesDescriptionList;
         }
 
         private void btn_RemoveCondition_Click(object sender, EventArgs e)
