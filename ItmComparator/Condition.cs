@@ -7,7 +7,6 @@ namespace ExcelHandler
     {
         public string Param1 { get; private set; }
         public string Param2 { get; private set; }
-        //public string Parameter { get; private set; }
         public Operation CondOperation { get; private set; }
         public string Suffix { get; private set; }
 
@@ -15,7 +14,6 @@ namespace ExcelHandler
         {
             Param1 = "";
             Param2 = "";
-            //Parameter = "";
             CondOperation = null;
             Suffix = "";
         }
@@ -24,7 +22,6 @@ namespace ExcelHandler
         {
             Param1 = param1;
             Param2 = param2;
-            //Parameter = parameter;
             CondOperation = condOperation;
             Suffix = suffix;
         }
@@ -45,7 +42,14 @@ namespace ExcelHandler
         public override string ToString()
         {
             string opDescription = CondOperation.getDescription();
-            return "Если "+ Param1+" "+" "+ Param2+" "+ opDescription+ " "+ Suffix;
+            string result = "";
+            result += opDescription + " " + Param1 + " ";
+            if (!String.IsNullOrEmpty(Param2))
+            {
+                result += " И " + Param2;
+            }
+            result += " вернуть " + Suffix;
+            return result;
         }
     }
 

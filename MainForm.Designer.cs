@@ -46,8 +46,6 @@
             this.btn_removeRule = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.txbx_save = new System.Windows.Forms.TextBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txbx_NewRuleType = new System.Windows.Forms.TextBox();
             this.txbx_Alias = new System.Windows.Forms.TextBox();
             this.btn_exec = new System.Windows.Forms.Button();
@@ -152,7 +150,7 @@
             this.lsbx_Rule.FormattingEnabled = true;
             this.lsbx_Rule.Location = new System.Drawing.Point(460, 135);
             this.lsbx_Rule.Name = "lsbx_Rule";
-            this.lsbx_Rule.Size = new System.Drawing.Size(120, 95);
+            this.lsbx_Rule.Size = new System.Drawing.Size(263, 95);
             this.lsbx_Rule.TabIndex = 5;
             // 
             // label2
@@ -200,23 +198,6 @@
             this.txbx_save.Size = new System.Drawing.Size(334, 20);
             this.txbx_save.TabIndex = 6;
             // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(25, 374);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(397, 95);
-            this.listBox4.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(177, 349);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Содержание правила";
-            // 
             // txbx_NewRuleType
             // 
             this.txbx_NewRuleType.Location = new System.Drawing.Point(28, 236);
@@ -248,6 +229,7 @@
             this.btn_EditRule.TabIndex = 12;
             this.btn_EditRule.Text = "Edit";
             this.btn_EditRule.UseVisualStyleBackColor = true;
+            this.btn_EditRule.Click += new System.EventHandler(this.btn_EditRule_Click);
             // 
             // MainForm
             // 
@@ -258,8 +240,6 @@
             this.Controls.Add(this.btn_exec);
             this.Controls.Add(this.txbx_Alias);
             this.Controls.Add(this.txbx_NewRuleType);
-            this.Controls.Add(this.listBox4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.txbx_save);
             this.Controls.Add(this.lsbx_Rule);
@@ -301,8 +281,6 @@
         private System.Windows.Forms.Button btn_removeRule;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.TextBox txbx_save;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txbx_NewRuleType;
         private System.Windows.Forms.TextBox txbx_Alias;
         private System.Windows.Forms.Button btn_exec;

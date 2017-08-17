@@ -13,7 +13,6 @@ namespace ExcelHandler
         public delegate void FileSelectedHandler(String filename);
         public event FileSelectedHandler FileSelected;
         private RulesManager rm;
-        
 
         public MainForm()
         {
@@ -21,7 +20,6 @@ namespace ExcelHandler
             btn_open.Click += Btn_open_Click;
             main eh = new main(this);
             rm = eh.rm;
-            //fillRulesFields();
         }
 
         private void Btn_open_Click(object sender, EventArgs e)
@@ -34,7 +32,7 @@ namespace ExcelHandler
             }
         }
 
-         private void btn_save_Click(object sender, EventArgs e)
+        private void btn_save_Click(object sender, EventArgs e)
         {
             SaveFileDialog sd = new SaveFileDialog();
             sd.Filter = "Microsoft Excel (*.xlsx)|*.xlsx";
@@ -48,7 +46,8 @@ namespace ExcelHandler
         {
             string NewRuleTypeName = txbx_NewRuleType.Text.Trim();
             if (NewRuleTypeName.Equals("")) { return; }
-            try { 
+            try
+            {
                 rm.addRuleType(NewRuleTypeName);
             }
             catch (ArgumentException ex)
@@ -76,9 +75,25 @@ namespace ExcelHandler
         {
             lsbx_Alias.DataSource = null;
             if (lsbx_Type.SelectedItem == null) { return; }
-            List<string> Aliases = rm.getAliasesList(CurrentType);
+            ProductTypeRuleList pt = rm.getType(CurrentType);
+            List<string> Aliases = pt.Aliases;// rm.getAliasesList(CurrentType);
             if (Aliases.Count <= 0) { return; }
             lsbx_Alias.DataSource = Aliases;
+        }
+
+        private void updateRulesList(ProductTypeRuleList pt)
+        {
+            List<string> rulesDescriptionList = pt.getRulesDescriptionList();
+            lsbx_Rule.DataSource = null;
+            lsbx_Rule.DataSource = rulesDescriptionList;
+        }
+
+        private void updateDescriptionList(string CurrentType)
+        {
+            ProductTypeRuleList pt = rm.getType(CurrentType);
+            List<string> rulesDescriptionList = pt.getRulesDescriptionList();
+            lsbx_Rule.DataSource = null;
+            lsbx_Rule.DataSource = rulesDescriptionList;
         }
 
         private void btn_removeRuleType_Click(object sender, EventArgs e)
@@ -101,7 +116,7 @@ namespace ExcelHandler
 
         private void btn_removeAlias_Click(object sender, EventArgs e)
         {
-            if ((lsbx_Type.SelectedIndex < 0) || (lsbx_Alias.SelectedIndex<0)) { return; }
+            if ((lsbx_Type.SelectedIndex < 0) || (lsbx_Alias.SelectedIndex < 0)) { return; }
             string TypeName = lsbx_Type.SelectedItem.ToString();
             string AliasName = lsbx_Alias.SelectedItem.ToString();
             rm.removeAlias(TypeName, AliasName);
@@ -112,6 +127,7 @@ namespace ExcelHandler
         {
             if (lsbx_Type.SelectedIndex < 0) { return; }
             updateAliasesList(lsbx_Type.SelectedItem.ToString());
+            updateDescriptionList(lsbx_Type.SelectedItem.ToString());
         }
 
         private void btn_addRule_Click(object sender, EventArgs e)
@@ -122,20 +138,35 @@ namespace ExcelHandler
                 return;
             }
             string TypeName = lsbx_Type.SelectedItem.ToString();
+            ProductTypeRuleList pt = rm.getType(TypeName);
             string RuleDescription = "";
-            if (lsbx_Rule.SelectedIndex >= 0)
-            {
-                RuleDescription = lsbx_Rule.SelectedItem.ToString();
-            }
             Rule rule = new Rule();
             AddRule ARForm = new AddRule(rule);
-            
-             if (ARForm.ShowDialog() == DialogResult.OK)
+            if (ARForm.ShowDialog() == DialogResult.OK)
             {
-                Console.WriteLine("Closed");
+                rule = ARForm.rule;
+                pt.addRule(rule);
             }
-            //ARForm.Show();
-            //typeof(Operation).
+            updateRulesList(pt);
+        }
+
+        private void btn_EditRule_Click(object sender, EventArgs e)
+        {
+            if (lsbx_Rule.SelectedIndex < 0) { return; }
+            string TypeName = lsbx_Type.SelectedItem.ToString();
+            ProductTypeRuleList pt = rm.getType(TypeName);
+            string RuleDescription = "";
+            RuleDescription = lsbx_Rule.SelectedItem.ToString();
+            Rule rule = pt.getRuleByDescription(RuleDescription);
+            if (rule == null) { return; }
+            AddRule ARForm = new AddRule(rule);
+            if (ARForm.ShowDialog() == DialogResult.OK)
+            {
+                rule = ARForm.rule;
+                //pt.addRule(rule);
+            }
+            updateRulesList(pt);
         }
     }
+
 }

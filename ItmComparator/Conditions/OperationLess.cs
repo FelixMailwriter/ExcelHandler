@@ -33,5 +33,10 @@ namespace ExcelHandler.ItmComparator.Conditions
             return GetType().GetField("description").GetValue(null).ToString();
 
         }
+
+        public override string ToString()
+        {
+            return getDescription();
+        }
     }
 }

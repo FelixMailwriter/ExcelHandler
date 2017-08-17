@@ -33,9 +33,9 @@ namespace ExcelHandler
             Aliases.Sort();
         }
 
-        internal static Rule getRuleByDescription(string ruleDescription)
+        public Rule getRuleByDescription(string ruleDescription)
         {
-            throw new NotImplementedException();
+            return Rules.Find(p => p.Description.Equals(ruleDescription));
         }
 
         public void addRule(Rule rule)
@@ -54,9 +54,20 @@ namespace ExcelHandler
                 Rules.Remove(rule);
             }
         }
+
         public Item checkRules(Item item)
         {
             throw new NotImplementedException();
+        }
+
+        public  List<string> getRulesDescriptionList()
+        {
+            List<string> RulesDescriptions = new List<string>();
+            foreach(Rule rule in Rules)
+            {
+                RulesDescriptions.Add(rule.Description);
+            }
+            return RulesDescriptions;
         }
     }
 }

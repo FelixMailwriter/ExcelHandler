@@ -8,12 +8,11 @@ namespace ExcelHandler
 {
     public class Rule
     {
-        private string Description;
-        public Condition MainCondition { get; private set; }
+        public string Description;
+        public Condition MainCondition { get; set; }
         public List<Condition> ConditionList { get; private set; }
         public int ActionColumn { get; private set; }
         public Action Action { get; set; }
-        //public string Suffix { get; private set; }
 
         public Rule()
         {
@@ -26,7 +25,7 @@ namespace ExcelHandler
         }
 
         public Rule(Condition mainCondition, List<Condition> conditionList, 
-                    string actionColumn, Action action)//, string suffix)
+                    string actionColumn, Action action)
         { 
             MainCondition = mainCondition;
             ConditionList = conditionList;
@@ -38,8 +37,7 @@ namespace ExcelHandler
 
         private string getDescription()
         {
-            string description = "";
-            description += MainCondition.Param1 + " " + MainCondition.CondOperation + " " + MainCondition.Param2;
+            string description = ActionColumn.ToString() +" "+MainCondition.CondOperation + " " + MainCondition.Param1;
             return description;
         }
 
@@ -51,6 +49,15 @@ namespace ExcelHandler
         public void removeCondition(Condition condition)
         {
             Condition RemovedCondition = ConditionList.Find(p => p == condition);
+            if (RemovedCondition != null)
+            {
+                ConditionList.Remove(RemovedCondition);
+            }
+        }
+
+        public void removeCondition(string ConditionDescription)
+        {
+            Condition RemovedCondition = ConditionList.Find(p => p.ToString().Equals(ConditionDescription));
             if (RemovedCondition != null)
             {
                 ConditionList.Remove(RemovedCondition);
@@ -81,6 +88,11 @@ namespace ExcelHandler
             {
                 throw new ActionException("Неверно задан целевой столбец");
             }
+        }
+
+        public void setActionColumn(string column)
+        {
+            ActionColumn = getActionColumn(column);
         }
 
          public override string ToString()
