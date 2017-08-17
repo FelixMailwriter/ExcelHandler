@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
 namespace ExcelHandler
 {
     public class RulesManager
@@ -8,9 +11,10 @@ namespace ExcelHandler
         public List<ProductTypeRuleList> ptrl { get; private set; }
         public string Filename { get; set; }
 
-        public RulesManager(string filename, List<ProductTypeRuleList> productTypeRulesList)
+        public RulesManager(string filename)
         {
-            this.ptrl = productTypeRulesList;
+            Filename = filename;
+            ptrl = loadRules();
             Filename = filename;
         }
 
@@ -66,5 +70,30 @@ namespace ExcelHandler
             Item.Aliases.Remove(RemovedAlias);
         }
 
+        public void saveRules()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream(Filename, FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, ptrl);
+            }
+        }
+
+        public List<ProductTypeRuleList> loadRules()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream(Filename, FileMode.OpenOrCreate))
+            {
+                try
+                {
+                    List<ProductTypeRuleList> loadedRules = (List<ProductTypeRuleList>)formatter.Deserialize(fs);
+                    return loadedRules;
+                }
+                catch (SerializationException)
+                {
+                    return new List<ProductTypeRuleList>();
+                }
+            }
+        }
     }
 }

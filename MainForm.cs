@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ExcelHandler
@@ -38,7 +37,7 @@ namespace ExcelHandler
             sd.Filter = "Microsoft Excel (*.xlsx)|*.xlsx";
             if (sd.ShowDialog() == DialogResult.OK)
             {
-                txbx_save.Text = sd.FileName;
+                //txbx_save.Text = sd.FileName;
             }
         }
 
@@ -145,7 +144,7 @@ namespace ExcelHandler
             {
                 rule = ARForm.rule;
                 pt.addRule(rule);
-                eh.ptrl.Add(pt);
+                eh.rm.ptrl.Add(pt);
             }
             updateRulesList(pt);
         }
@@ -170,7 +169,7 @@ namespace ExcelHandler
 
         private void btn_saveRules_Click(object sender, EventArgs e)
         {
-            eh.saveRules();
+            eh.rm.saveRules();
         }
     }
 

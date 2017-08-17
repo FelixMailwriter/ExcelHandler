@@ -44,32 +44,36 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btn_addRule = new System.Windows.Forms.Button();
             this.btn_removeRule = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.txbx_save = new System.Windows.Forms.TextBox();
             this.txbx_NewRuleType = new System.Windows.Forms.TextBox();
             this.txbx_Alias = new System.Windows.Forms.TextBox();
-            this.btn_exec = new System.Windows.Forms.Button();
             this.btn_EditRule = new System.Windows.Forms.Button();
             this.tab_main = new System.Windows.Forms.TabControl();
             this.SourceData = new System.Windows.Forms.TabPage();
             this.RulesSettings = new System.Windows.Forms.TabPage();
             this.ParsedData = new System.Windows.Forms.TabPage();
             this.btn_saveRules = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btn_exec = new System.Windows.Forms.Button();
             this.tab_main.SuspendLayout();
             this.SourceData.SuspendLayout();
             this.RulesSettings.SuspendLayout();
+            this.ParsedData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // txbx_path
             // 
             this.txbx_path.Location = new System.Drawing.Point(18, 24);
             this.txbx_path.Name = "txbx_path";
-            this.txbx_path.Size = new System.Drawing.Size(334, 20);
+            this.txbx_path.Size = new System.Drawing.Size(683, 20);
             this.txbx_path.TabIndex = 0;
             // 
             // btn_open
             // 
-            this.btn_open.Location = new System.Drawing.Point(358, 21);
+            this.btn_open.Location = new System.Drawing.Point(707, 24);
             this.btn_open.Name = "btn_open";
             this.btn_open.Size = new System.Drawing.Size(75, 23);
             this.btn_open.TabIndex = 1;
@@ -189,23 +193,6 @@
             this.btn_removeRule.Text = "-";
             this.btn_removeRule.UseVisualStyleBackColor = true;
             // 
-            // btn_save
-            // 
-            this.btn_save.Location = new System.Drawing.Point(358, 58);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(75, 23);
-            this.btn_save.TabIndex = 7;
-            this.btn_save.Text = "Save";
-            this.btn_save.UseVisualStyleBackColor = true;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
-            // 
-            // txbx_save
-            // 
-            this.txbx_save.Location = new System.Drawing.Point(18, 61);
-            this.txbx_save.Name = "txbx_save";
-            this.txbx_save.Size = new System.Drawing.Size(334, 20);
-            this.txbx_save.TabIndex = 6;
-            // 
             // txbx_NewRuleType
             // 
             this.txbx_NewRuleType.Location = new System.Drawing.Point(39, 130);
@@ -219,15 +206,6 @@
             this.txbx_Alias.Name = "txbx_Alias";
             this.txbx_Alias.Size = new System.Drawing.Size(145, 20);
             this.txbx_Alias.TabIndex = 10;
-            // 
-            // btn_exec
-            // 
-            this.btn_exec.Location = new System.Drawing.Point(516, 24);
-            this.btn_exec.Name = "btn_exec";
-            this.btn_exec.Size = new System.Drawing.Size(108, 39);
-            this.btn_exec.TabIndex = 11;
-            this.btn_exec.Text = "Выполнить";
-            this.btn_exec.UseVisualStyleBackColor = true;
             // 
             // btn_EditRule
             // 
@@ -252,11 +230,9 @@
             // 
             // SourceData
             // 
+            this.SourceData.Controls.Add(this.dataGridView1);
             this.SourceData.Controls.Add(this.txbx_path);
-            this.SourceData.Controls.Add(this.btn_exec);
             this.SourceData.Controls.Add(this.btn_open);
-            this.SourceData.Controls.Add(this.txbx_save);
-            this.SourceData.Controls.Add(this.btn_save);
             this.SourceData.Location = new System.Drawing.Point(4, 22);
             this.SourceData.Name = "SourceData";
             this.SourceData.Padding = new System.Windows.Forms.Padding(3);
@@ -293,6 +269,9 @@
             // 
             // ParsedData
             // 
+            this.ParsedData.Controls.Add(this.btn_exec);
+            this.ParsedData.Controls.Add(this.dataGridView2);
+            this.ParsedData.Controls.Add(this.btn_save);
             this.ParsedData.Location = new System.Drawing.Point(4, 22);
             this.ParsedData.Name = "ParsedData";
             this.ParsedData.Padding = new System.Windows.Forms.Padding(3);
@@ -311,6 +290,40 @@
             this.btn_saveRules.UseVisualStyleBackColor = true;
             this.btn_saveRules.Click += new System.EventHandler(this.btn_saveRules_Click);
             // 
+            // btn_save
+            // 
+            this.btn_save.Location = new System.Drawing.Point(709, 21);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(75, 23);
+            this.btn_save.TabIndex = 9;
+            this.btn_save.Text = "Save";
+            this.btn_save.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 67);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(764, 411);
+            this.dataGridView1.TabIndex = 12;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(19, 59);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(765, 430);
+            this.dataGridView2.TabIndex = 10;
+            // 
+            // btn_exec
+            // 
+            this.btn_exec.Location = new System.Drawing.Point(19, 24);
+            this.btn_exec.Name = "btn_exec";
+            this.btn_exec.Size = new System.Drawing.Size(108, 20);
+            this.btn_exec.TabIndex = 12;
+            this.btn_exec.Text = "Выполнить";
+            this.btn_exec.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,6 +337,9 @@
             this.SourceData.PerformLayout();
             this.RulesSettings.ResumeLayout(false);
             this.RulesSettings.PerformLayout();
+            this.ParsedData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -344,17 +360,18 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_addRule;
         private System.Windows.Forms.Button btn_removeRule;
-        private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.TextBox txbx_save;
         private System.Windows.Forms.TextBox txbx_NewRuleType;
         private System.Windows.Forms.TextBox txbx_Alias;
-        private System.Windows.Forms.Button btn_exec;
         private System.Windows.Forms.Button btn_EditRule;
         private System.Windows.Forms.TabControl tab_main;
         private System.Windows.Forms.TabPage SourceData;
         private System.Windows.Forms.TabPage RulesSettings;
         private System.Windows.Forms.TabPage ParsedData;
         private System.Windows.Forms.Button btn_saveRules;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btn_exec;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btn_save;
     }
 }
 

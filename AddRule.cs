@@ -100,7 +100,6 @@ namespace ExcelHandler
             List<string> rd = new List<string>();
             foreach (Condition cond in rule.ConditionList)
             {
-                //rd.Add("Если "+rule.ActionColumn.ToString() +" "+ cond.ToString() );
                 rd.Add(cond.ToString());
             }
             return rd;
@@ -112,6 +111,12 @@ namespace ExcelHandler
             Rule NewRule = getNewRule(tempConditionList);
             rule = (NewRule == null) ? rule : NewRule;
             DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 
@@ -211,5 +216,6 @@ namespace ExcelHandler
             txbx_Param2.Clear();
             txbx_Suffix.Clear();
         }
+
     }
 }
