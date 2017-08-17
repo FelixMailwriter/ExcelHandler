@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExcelHandler.ItmComparator.Exceptions
 {
+    [Serializable]
     public class ActionException : ApplicationException
     {
         public ActionException(string message) : base(message)

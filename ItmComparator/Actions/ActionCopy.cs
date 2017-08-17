@@ -7,6 +7,7 @@ using ExcelHandler.Common;
 
 namespace ExcelHandler.ItmComparator.Actions
 {
+    [Serializable]
     public class ActionCopy : Action
     {
         public static string description = "Копировать";

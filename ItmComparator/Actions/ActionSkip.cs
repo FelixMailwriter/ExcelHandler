@@ -7,6 +7,7 @@ using ExcelHandler.Common;
 
 namespace ExcelHandler.ItmComparator.Actions
 {
+    [Serializable]
     public class ActionSkip : Action
     {
         public static string description = "Пропустить";

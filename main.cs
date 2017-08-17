@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using ExcelHandler.Common;
 using ExcelHandler.FParser;
-using ExcelHandler.ItmComparator;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Runtime.Serialization;
 
 namespace ExcelHandler
 {
+    [Serializable]
     public class main
     {
+        [NonSerialized]
         private FileParser fp;
         public RulesManager rm { get; set; }
         public List<Item> SourceItemsList { get; private set; }
         public List<Item> ProductItemsList { get; private set; }
-        public List<ProductTypeRuleList> PrTypeRules { get; private set; }
-        public ItemComparator ic { get; set; }
-        private MainForm form;
-
         public List<ProductTypeRuleList> ptrl { get; set; }
+        public ItemComparator ic { get; set; }
+        [NonSerialized]
+        private MainForm form;
 
         public main(MainForm form)
     {
@@ -30,13 +31,40 @@ namespace ExcelHandler
             rm = new RulesManager("");
             form.FileSelected += parseFile;
 
-            ptrl = ic.ProductTypeRules;
+            ptrl = loadRules();// ic.ProductTypeRules;
+            //ptrl = (ptrl == null) ? new List<ProductTypeRuleList>() : ptrl;
         }
 
         private void parseFile(string filename)
         {
             fp = new FileParser();
             SourceItemsList = fp.parseFile(filename);
+        }
+
+        public void saveRules()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream("rules.dat", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, ptrl);
+            }
+        }
+
+        public List<ProductTypeRuleList> loadRules()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream("rules.dat", FileMode.OpenOrCreate))
+            {
+                try
+                {
+                    List<ProductTypeRuleList> loadedRules = (List<ProductTypeRuleList>)formatter.Deserialize(fs);
+                    return loadedRules;
+                }
+                catch (SerializationException)
+                {
+                    return new List<ProductTypeRuleList>();
+                }
+            }
         }
     }
 

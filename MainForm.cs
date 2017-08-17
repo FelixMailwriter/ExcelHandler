@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using ExcelHandler.ItmComparator;
-
-using ExcelHandler.ItmComparator.Conditions;
 
 namespace ExcelHandler
 {
@@ -13,13 +10,16 @@ namespace ExcelHandler
         public delegate void FileSelectedHandler(String filename);
         public event FileSelectedHandler FileSelected;
         private RulesManager rm;
+        private main eh;
 
         public MainForm()
         {
             InitializeComponent();
             btn_open.Click += Btn_open_Click;
-            main eh = new main(this);
+            eh = new main(this);
             rm = eh.rm;
+            updateTypeRulesList();
+
         }
 
         private void Btn_open_Click(object sender, EventArgs e)
@@ -139,13 +139,13 @@ namespace ExcelHandler
             }
             string TypeName = lsbx_Type.SelectedItem.ToString();
             ProductTypeRuleList pt = rm.getType(TypeName);
-            string RuleDescription = "";
             Rule rule = new Rule();
             AddRule ARForm = new AddRule(rule);
             if (ARForm.ShowDialog() == DialogResult.OK)
             {
                 rule = ARForm.rule;
                 pt.addRule(rule);
+                eh.ptrl.Add(pt);
             }
             updateRulesList(pt);
         }
@@ -166,6 +166,11 @@ namespace ExcelHandler
                 //pt.addRule(rule);
             }
             updateRulesList(pt);
+        }
+
+        private void btn_saveRules_Click(object sender, EventArgs e)
+        {
+            eh.saveRules();
         }
     }
 

@@ -6,6 +6,7 @@ using ExcelHandler.ItmComparator.Exceptions;
 namespace ExcelHandler
 
 {
+    [Serializable]
     public class Rule
     {
         public string Description;

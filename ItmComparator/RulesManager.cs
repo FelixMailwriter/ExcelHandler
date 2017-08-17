@@ -8,9 +8,9 @@ namespace ExcelHandler
         public List<ProductTypeRuleList> ptrl { get; private set; }
         public string Filename { get; set; }
 
-        public RulesManager(string filename)
+        public RulesManager(string filename, List<ProductTypeRuleList> productTypeRulesList)
         {
-            this.ptrl = new List<ProductTypeRuleList>();
+            this.ptrl = productTypeRulesList;
             Filename = filename;
         }
 

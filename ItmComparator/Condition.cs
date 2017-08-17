@@ -3,8 +3,10 @@ using ExcelHandler.ItmComparator.Exceptions;
 
 namespace ExcelHandler
 {
+    [Serializable]
     public class Condition
     {
+        
         public string Param1 { get; private set; }
         public string Param2 { get; private set; }
         public Operation CondOperation { get; private set; }

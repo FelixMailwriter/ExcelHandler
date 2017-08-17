@@ -1,8 +1,10 @@
-﻿using ExcelHandler.Common;
+﻿using System;
+using ExcelHandler.Common;
 
 
 namespace ExcelHandler.ItmComparator.Actions
 {
+    [Serializable]
     public class ActionChange : Action
     {
         public static string description= "Изменить";

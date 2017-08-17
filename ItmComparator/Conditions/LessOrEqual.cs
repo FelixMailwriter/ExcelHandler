@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExcelHandler.ItmComparator.Conditions
 {
+    [Serializable]
     public class LessOrEqual : Operation
     {
         public static string description = "<=";
