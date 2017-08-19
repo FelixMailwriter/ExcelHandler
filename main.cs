@@ -17,7 +17,7 @@ namespace ExcelHandler
     {
             this.form =  form;
             this.form.Visible = true;
-            SourceItemsList = new List<Item>();
+            //SourceItemsList = new List<Item>();
             ProductItemsList = new List<Item>();
             ic = new ItemComparator();
             rm = new RulesManager("rules.dat");
@@ -29,6 +29,7 @@ namespace ExcelHandler
         {
             fp = new FileParser();
             SourceItemsList = fp.parseFile(filename);
+
         }
     }
 }

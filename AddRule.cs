@@ -110,6 +110,7 @@ namespace ExcelHandler
             List<Condition> tempConditionList = rule.ConditionList;
             Rule NewRule = getNewRule(tempConditionList);
             rule = (NewRule == null) ? rule : NewRule;
+            NewRule = null;
             DialogResult = DialogResult.OK;
             Close();
         }

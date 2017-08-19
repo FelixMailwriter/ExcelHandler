@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
+using ExcelHandler.Common;
 
 namespace ExcelHandler
 {
@@ -10,35 +12,15 @@ namespace ExcelHandler
         public event FileSelectedHandler FileSelected;
         private RulesManager rm;
         private main eh;
+        List<Item> SourceItems;
 
         public MainForm()
         {
             InitializeComponent();
-            btn_open.Click += Btn_open_Click;
             eh = new main(this);
             rm = eh.rm;
             updateTypeRulesList();
 
-        }
-
-        private void Btn_open_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog fd = new OpenFileDialog();
-            if (fd.ShowDialog() == DialogResult.OK)
-            {
-                txbx_path.Text = fd.FileName;
-                FileSelected(fd.FileName);
-            }
-        }
-
-        private void btn_save_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sd = new SaveFileDialog();
-            sd.Filter = "Microsoft Excel (*.xlsx)|*.xlsx";
-            if (sd.ShowDialog() == DialogResult.OK)
-            {
-                //txbx_save.Text = sd.FileName;
-            }
         }
 
         private void btn_addRuleType_Click(object sender, EventArgs e)
@@ -75,7 +57,7 @@ namespace ExcelHandler
             lsbx_Alias.DataSource = null;
             if (lsbx_Type.SelectedItem == null) { return; }
             ProductTypeRuleList pt = rm.getType(CurrentType);
-            List<string> Aliases = pt.Aliases;// rm.getAliasesList(CurrentType);
+            List<string> Aliases = pt.Aliases;
             if (Aliases.Count <= 0) { return; }
             lsbx_Alias.DataSource = Aliases;
         }
@@ -144,7 +126,6 @@ namespace ExcelHandler
             {
                 rule = ARForm.rule;
                 pt.addRule(rule);
-                eh.rm.ptrl.Add(pt);
             }
             updateRulesList(pt);
         }
@@ -171,6 +152,38 @@ namespace ExcelHandler
         {
             eh.rm.saveRules();
         }
+
+        private void lsbx_Rule_DoubleClick(object sender, EventArgs e)
+        {
+            btn_EditRule_Click(sender, e);
+        }
+
+        private void btn_open_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+            fd.Filter = "Microsoft Excel (*.xls)|*.xls";
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                txbx_path.Text = fd.FileName;
+                FileSelected(fd.FileName);
+            }
+            fillSourceItemTable();
+        }
+
+        private void fillSourceItemTable()
+        {
+            //SourceItems= eh.SourceItemsList;
+            //DataSet ds = new DataSet("SourceItemsDataSet");
+            //ds.
+            BindingSource bsItemsSource = new BindingSource();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
     }
 
 }
