@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace ExcelHandler.Common
 {
     public class Item
     {
-        //public Dictionary<int, string> ItemProperties { get; private set; }
+         //public Dictionary<int, string> ItemProperties { get; private set; }
         //public bool Changed { get; set; }
 
         // public Item(List<string> properties)
@@ -33,6 +34,17 @@ namespace ExcelHandler.Common
         {
             Changed = false;
             ItemProperties = properties;
+        }
+
+        public Item(DataRow dr)
+        {
+            ItemProperties = new List<string>();
+            object [] values = dr.ItemArray;
+            foreach (object value in values)
+            {
+                ItemProperties.Add(value.ToString());
+            }
+            Changed = false;
         }
 
         public string this [int pos]

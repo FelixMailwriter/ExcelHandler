@@ -142,8 +142,8 @@ namespace ExcelHandler
             AddRule ARForm = new AddRule(rule);
             if (ARForm.ShowDialog() == DialogResult.OK)
             {
-                rule = ARForm.rule;
-                //pt.addRule(rule);
+                Rule NewRule = ARForm.rule;
+                pt.changeRule(rule, NewRule);
             }
             updateRulesList(pt);
         }
@@ -182,7 +182,34 @@ namespace ExcelHandler
 
         private void btn_exec_Click(object sender, EventArgs e)
         {
+            DataTable ResultTable = eh.ic.compareItems(eh.SourceItemsTable);
+            dgv_Result.DataSource = ResultTable;
+        }
 
+        private void btn_CopyRule_Click(object sender, EventArgs e)
+        {
+            if (lsbx_Rule.SelectedIndex < 0) { return; }
+            string TypeName = lsbx_Type.SelectedItem.ToString();
+            ProductTypeRuleList pt = rm.getType(TypeName);
+            string RuleDescription = "";
+            RuleDescription = lsbx_Rule.SelectedItem.ToString();
+            Rule rule = pt.getRuleByDescription(RuleDescription);
+            Rule NewRule = new Rule(rule);
+            NewRule.Description = "NewRule";
+            pt.addRule(NewRule);
+            updateRulesList(pt);
+        }
+
+        private void btn_removeRule_Click(object sender, EventArgs e)
+        {
+            if (lsbx_Rule.SelectedIndex < 0) { return; }
+            string TypeName = lsbx_Type.SelectedItem.ToString();
+            ProductTypeRuleList pt = rm.getType(TypeName);
+            string RuleDescription = "";
+            RuleDescription = lsbx_Rule.SelectedItem.ToString();
+            Rule rule = pt.getRuleByDescription(RuleDescription);
+            pt.Rules.Remove(rule);
+            updateRulesList(pt);
         }
     }
 

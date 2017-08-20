@@ -36,7 +36,6 @@ namespace ExcelHandler.FParser
                             dr[column.ToString()] = cellValue;
                         }
                     }
-                    //Console.WriteLine();
                     ++row;
                     if (!dr["1"].ToString().Equals(""))
                     {

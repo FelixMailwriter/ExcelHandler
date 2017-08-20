@@ -6,7 +6,6 @@ namespace ExcelHandler
     [Serializable]
     public class Condition
     {
-        
         public string Param1 { get; private set; }
         public string Param2 { get; private set; }
         public Operation CondOperation { get; private set; }
@@ -26,6 +25,14 @@ namespace ExcelHandler
             Param2 = param2;
             CondOperation = condOperation;
             Suffix = suffix;
+        }
+
+        public Condition (Condition oldCondition)
+        {
+            Param1 = oldCondition.Param1;
+            Param2 = oldCondition.Param2;
+            CondOperation = oldCondition.CondOperation;
+            Suffix = oldCondition.Suffix;
         }
 
         public bool makeCompare(string testValue)

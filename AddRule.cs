@@ -33,7 +33,7 @@ namespace ExcelHandler
             additionRulesDescriptionList = getListAdditionalRulesDescription();
             lsbx_AdditionalRules.DataSource = additionRulesDescriptionList;
 
-            gb_mainCondition.Enabled = (additionRulesDescriptionList.Count == 0) ? true : false;
+            //gb_mainCondition.Enabled = (additionRulesDescriptionList.Count == 0) ? true : false;
 
         }
 
@@ -174,7 +174,6 @@ namespace ExcelHandler
             Operation op = null;
             commonConditionList.TryGetValue(ConditionName, out op);
             Condition cond = new Condition(Param1, Param2, op, Suffix);
-            Console.WriteLine(cond);
             return cond;
         }
 

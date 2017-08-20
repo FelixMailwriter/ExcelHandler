@@ -52,15 +52,16 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ParsedData = new System.Windows.Forms.TabPage();
             this.btn_exec = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgv_Result = new System.Windows.Forms.DataGridView();
             this.btn_save = new System.Windows.Forms.Button();
             this.RulesSettings = new System.Windows.Forms.TabPage();
             this.btn_saveRules = new System.Windows.Forms.Button();
+            this.btn_CopyRule = new System.Windows.Forms.Button();
             this.tab_main.SuspendLayout();
             this.SourceData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ParsedData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Result)).BeginInit();
             this.RulesSettings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,12 +189,13 @@
             // 
             // btn_removeRule
             // 
-            this.btn_removeRule.Location = new System.Drawing.Point(570, 156);
+            this.btn_removeRule.Location = new System.Drawing.Point(537, 156);
             this.btn_removeRule.Name = "btn_removeRule";
             this.btn_removeRule.Size = new System.Drawing.Size(60, 23);
             this.btn_removeRule.TabIndex = 4;
             this.btn_removeRule.Text = "-";
             this.btn_removeRule.UseVisualStyleBackColor = true;
+            this.btn_removeRule.Click += new System.EventHandler(this.btn_removeRule_Click);
             // 
             // txbx_NewRuleType
             // 
@@ -211,7 +213,7 @@
             // 
             // btn_EditRule
             // 
-            this.btn_EditRule.Location = new System.Drawing.Point(674, 156);
+            this.btn_EditRule.Location = new System.Drawing.Point(603, 156);
             this.btn_EditRule.Name = "btn_EditRule";
             this.btn_EditRule.Size = new System.Drawing.Size(60, 23);
             this.btn_EditRule.TabIndex = 12;
@@ -255,7 +257,7 @@
             // ParsedData
             // 
             this.ParsedData.Controls.Add(this.btn_exec);
-            this.ParsedData.Controls.Add(this.dataGridView2);
+            this.ParsedData.Controls.Add(this.dgv_Result);
             this.ParsedData.Controls.Add(this.btn_save);
             this.ParsedData.Location = new System.Drawing.Point(4, 22);
             this.ParsedData.Name = "ParsedData";
@@ -275,13 +277,13 @@
             this.btn_exec.UseVisualStyleBackColor = true;
             this.btn_exec.Click += new System.EventHandler(this.btn_exec_Click);
             // 
-            // dataGridView2
+            // dgv_Result
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(19, 59);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(765, 430);
-            this.dataGridView2.TabIndex = 10;
+            this.dgv_Result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Result.Location = new System.Drawing.Point(19, 59);
+            this.dgv_Result.Name = "dgv_Result";
+            this.dgv_Result.Size = new System.Drawing.Size(1096, 430);
+            this.dgv_Result.TabIndex = 10;
             // 
             // btn_save
             // 
@@ -294,6 +296,7 @@
             // 
             // RulesSettings
             // 
+            this.RulesSettings.Controls.Add(this.btn_CopyRule);
             this.RulesSettings.Controls.Add(this.btn_saveRules);
             this.RulesSettings.Controls.Add(this.lsbx_Type);
             this.RulesSettings.Controls.Add(this.btn_EditRule);
@@ -313,7 +316,7 @@
             this.RulesSettings.Location = new System.Drawing.Point(4, 22);
             this.RulesSettings.Name = "RulesSettings";
             this.RulesSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.RulesSettings.Size = new System.Drawing.Size(801, 508);
+            this.RulesSettings.Size = new System.Drawing.Size(1137, 508);
             this.RulesSettings.TabIndex = 1;
             this.RulesSettings.Text = "Настройка правил";
             this.RulesSettings.UseVisualStyleBackColor = true;
@@ -328,6 +331,16 @@
             this.btn_saveRules.UseVisualStyleBackColor = true;
             this.btn_saveRules.Click += new System.EventHandler(this.btn_saveRules_Click);
             // 
+            // btn_CopyRule
+            // 
+            this.btn_CopyRule.Location = new System.Drawing.Point(669, 156);
+            this.btn_CopyRule.Name = "btn_CopyRule";
+            this.btn_CopyRule.Size = new System.Drawing.Size(65, 23);
+            this.btn_CopyRule.TabIndex = 14;
+            this.btn_CopyRule.Text = "Copy";
+            this.btn_CopyRule.UseVisualStyleBackColor = true;
+            this.btn_CopyRule.Click += new System.EventHandler(this.btn_CopyRule_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,7 +354,7 @@
             this.SourceData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ParsedData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Result)).EndInit();
             this.RulesSettings.ResumeLayout(false);
             this.RulesSettings.PerformLayout();
             this.ResumeLayout(false);
@@ -374,9 +387,10 @@
         private System.Windows.Forms.Button btn_saveRules;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_exec;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgv_Result;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btn_CopyRule;
     }
 }
 

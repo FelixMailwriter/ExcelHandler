@@ -36,6 +36,19 @@ namespace ExcelHandler
             Description = getDescription();
         }
 
+        public Rule(Rule oldRule)
+        {
+            MainCondition = new Condition(oldRule.MainCondition);
+            ConditionList = new List<Condition>();
+            foreach(Condition cond in oldRule.ConditionList)
+            {
+                ConditionList.Add(new Condition(cond));
+            }
+            this.ActionColumn = oldRule.ActionColumn;
+            this.Action = oldRule.Action;
+            this.Description = oldRule.Description;
+        }
+
         private string getDescription()
         {
             string description = ActionColumn.ToString() +" "+MainCondition.CondOperation + " " + MainCondition.Param1;

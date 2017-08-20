@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using ExcelHandler.Common;
 
 namespace ExcelHandler
@@ -34,7 +35,8 @@ namespace ExcelHandler
 
         public Rule getRuleByDescription(string ruleDescription)
         {
-            return Rules.Find(p => p.Description.Equals(ruleDescription));
+            Rule rule=Rules.Find(p => p.Description.Equals(ruleDescription));
+            return rule;
         }
 
         public void addRule(Rule rule)
@@ -54,11 +56,6 @@ namespace ExcelHandler
             }
         }
 
-        public Item checkRules(Item item)
-        {
-            throw new NotImplementedException();
-        }
-
         public  List<string> getRulesDescriptionList()
         {
             List<string> RulesDescriptions = new List<string>();
@@ -68,5 +65,17 @@ namespace ExcelHandler
             }
             return RulesDescriptions;
         }
+
+        public Item checkRules(Item item)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void changeRule(Rule rule, Rule newRule)
+        {
+            Rules.Remove(rule);
+            Rules.Add(newRule);
+        }
     }
+
 }

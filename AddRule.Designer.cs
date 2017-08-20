@@ -50,6 +50,7 @@
             this.txbx_Param2 = new System.Windows.Forms.TextBox();
             this.btn_Ok = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.txbx_column = new System.Windows.Forms.TextBox();
             this.gb_mainCondition.SuspendLayout();
             this.gb_additionCondition.SuspendLayout();
             this.SuspendLayout();
@@ -199,6 +200,7 @@
             // 
             // gb_additionCondition
             // 
+            this.gb_additionCondition.Controls.Add(this.txbx_column);
             this.gb_additionCondition.Controls.Add(this.label2);
             this.gb_additionCondition.Controls.Add(this.btn_DownCondition);
             this.gb_additionCondition.Controls.Add(this.btn_addCondition);
@@ -233,9 +235,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(10, 26);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 13);
+            this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Если целевой столбец";
+            this.label4.Text = "Если столбец";
             // 
             // txbx_Param2
             // 
@@ -264,6 +266,13 @@
             this.btn_Cancel.Text = "Отмена";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
+            // txbx_column
+            // 
+            this.txbx_column.Location = new System.Drawing.Point(92, 22);
+            this.txbx_column.Name = "txbx_column";
+            this.txbx_column.Size = new System.Drawing.Size(39, 20);
+            this.txbx_column.TabIndex = 101;
             // 
             // AddRule
             // 
@@ -308,5 +317,6 @@
         private System.Windows.Forms.TextBox txbx_Param2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txbx_column;
     }
 }
