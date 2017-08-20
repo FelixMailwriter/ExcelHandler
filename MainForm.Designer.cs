@@ -30,7 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.txbx_path = new System.Windows.Forms.TextBox();
             this.btn_open = new System.Windows.Forms.Button();
             this.lsbx_Type = new System.Windows.Forms.ListBox();
@@ -57,19 +56,12 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.RulesSettings = new System.Windows.Forms.TabPage();
             this.btn_saveRules = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.itemPropertiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lengthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_main.SuspendLayout();
             this.SourceData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ParsedData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.RulesSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemPropertiesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txbx_path
@@ -235,7 +227,7 @@
             this.tab_main.Location = new System.Drawing.Point(12, 12);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
-            this.tab_main.Size = new System.Drawing.Size(809, 534);
+            this.tab_main.Size = new System.Drawing.Size(1145, 534);
             this.tab_main.TabIndex = 13;
             // 
             // SourceData
@@ -246,21 +238,17 @@
             this.SourceData.Location = new System.Drawing.Point(4, 22);
             this.SourceData.Name = "SourceData";
             this.SourceData.Padding = new System.Windows.Forms.Padding(3);
-            this.SourceData.Size = new System.Drawing.Size(801, 508);
+            this.SourceData.Size = new System.Drawing.Size(1137, 508);
             this.SourceData.TabIndex = 0;
             this.SourceData.Text = "Исходные данные";
             this.SourceData.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.lengthDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(18, 67);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(764, 411);
+            this.dataGridView1.Size = new System.Drawing.Size(1102, 411);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -272,7 +260,7 @@
             this.ParsedData.Location = new System.Drawing.Point(4, 22);
             this.ParsedData.Name = "ParsedData";
             this.ParsedData.Padding = new System.Windows.Forms.Padding(3);
-            this.ParsedData.Size = new System.Drawing.Size(801, 508);
+            this.ParsedData.Size = new System.Drawing.Size(1137, 508);
             this.ParsedData.TabIndex = 2;
             this.ParsedData.Text = "Выходные данные";
             this.ParsedData.UseVisualStyleBackColor = true;
@@ -285,6 +273,7 @@
             this.btn_exec.TabIndex = 12;
             this.btn_exec.Text = "Выполнить";
             this.btn_exec.UseVisualStyleBackColor = true;
+            this.btn_exec.Click += new System.EventHandler(this.btn_exec_Click);
             // 
             // dataGridView2
             // 
@@ -339,32 +328,11 @@
             this.btn_saveRules.UseVisualStyleBackColor = true;
             this.btn_saveRules.Click += new System.EventHandler(this.btn_saveRules_Click);
             // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataMember = "SourceItemsList";
-            this.bindingSource1.DataSource = typeof(ExcelHandler.main);
-            // 
-            // bindingSource2
-            // 
-            this.bindingSource2.DataSource = this.itemPropertiesBindingSource;
-            // 
-            // itemPropertiesBindingSource
-            // 
-            this.itemPropertiesBindingSource.DataMember = "ItemProperties";
-            this.itemPropertiesBindingSource.DataSource = this.bindingSource1;
-            // 
-            // lengthDataGridViewTextBoxColumn
-            // 
-            this.lengthDataGridViewTextBoxColumn.DataPropertyName = "Length";
-            this.lengthDataGridViewTextBoxColumn.HeaderText = "Length";
-            this.lengthDataGridViewTextBoxColumn.Name = "lengthDataGridViewTextBoxColumn";
-            this.lengthDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 558);
+            this.ClientSize = new System.Drawing.Size(1193, 558);
             this.Controls.Add(this.tab_main);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -376,9 +344,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.RulesSettings.ResumeLayout(false);
             this.RulesSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemPropertiesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -412,9 +377,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource bindingSource2;
-        private System.Windows.Forms.BindingSource itemPropertiesBindingSource;
-        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 

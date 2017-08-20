@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using ExcelHandler.Common;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -7,22 +8,22 @@ namespace ExcelHandler.FParser
 {
     public class FileParser
     {
+        //DataTable ItemTable { get; set; }
+
         Excel.Application excellApp = new Excel.Application();
 
-        internal List<Item> parseFile(string filename)
+        internal DataTable parseFile(string filename)
         {
-            List <Item> ItemsList= new List<Item>();
+            DataTable ItemTable = createTable();
             try
             {   
                 excellApp.Workbooks.Open(filename);
                 int row = 12;
-                //for (int row = 12; row < 10; row++)
-                while (true)
+                bool isRows = true;
+                while (isRows)
                 {
-                    List<List<string>> maping = new List<List<string>>();
                     Excel.Worksheet currentSheet = (Excel.Worksheet)excellApp.Workbooks[1].Worksheets[1];
-                    //List<string> tempList = new List<string>();
-                    List<string> tempList = new List<string>();
+                    DataRow dr = ItemTable.NewRow();
                     for (int column = 1; column < 14; column++)
                     {
                         string cellValue = "";
@@ -30,16 +31,16 @@ namespace ExcelHandler.FParser
                         if (cellRange != null)
                         {
                             cellValue = cellRange.Text;
-                            if (cellValue.Equals("") && (column == 1)) { excellApp.Quit(); break;  }
-                            Console.Write("[{0},{1}]={2}; ", row, column, cellValue);
-                            tempList.Add(cellValue);
+                            if (cellValue.Equals("") && (column == 1)) { isRows = false; break;  }
+                            //Console.Write("[{0},{1}]={2}; ", row, column, cellValue);
+                            dr[column.ToString()] = cellValue;
                         }
                     }
+                    //Console.WriteLine();
                     ++row;
-                    if (tempList.Count > 0)
+                    if (!dr["1"].ToString().Equals(""))
                     {
-                        Item item = new Item(tempList);
-                        ItemsList.Add(item);
+                        ItemTable.Rows.Add(dr);
                     }
                 }
             excellApp.Quit();
@@ -49,7 +50,17 @@ namespace ExcelHandler.FParser
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(eee.Message);
             }
-            return ItemsList;
+            return ItemTable;
+        }
+
+        private DataTable createTable()
+        {
+            DataTable table = new DataTable();
+            for (int a=1; a<=13; a++)
+            {
+                table.Columns.Add(new DataColumn(a.ToString(), typeof(string)));
+            }
+            return table;
         }
     }
 }

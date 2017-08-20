@@ -12,9 +12,9 @@ namespace ExcelHandler
         public List<ProductTypeRuleList> ProductTypeRules { get; private set; }
         public List<Item> NotHandledItem { get; private set; }
 
-        public ItemComparator()
+        public ItemComparator(List<ProductTypeRuleList> prodTypeRulesList)
         {
-            //ProductTypeRules=loadRulesList();
+            ProductTypeRules = prodTypeRulesList;
         }
 
         //private List<ProductTypeRuleList> loadRulesList()

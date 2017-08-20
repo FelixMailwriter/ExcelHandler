@@ -172,10 +172,7 @@ namespace ExcelHandler
 
         private void fillSourceItemTable()
         {
-            //SourceItems= eh.SourceItemsList;
-            //DataSet ds = new DataSet("SourceItemsDataSet");
-            //ds.
-            BindingSource bsItemsSource = new BindingSource();
+            dataGridView1.DataSource = eh.SourceItemsTable;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -183,7 +180,10 @@ namespace ExcelHandler
 
         }
 
+        private void btn_exec_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 
 }
