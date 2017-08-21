@@ -210,6 +210,11 @@ namespace ExcelHandler
             pt.Rules.Remove(rule);
             updateRulesList(pt);
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }
