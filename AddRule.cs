@@ -42,8 +42,14 @@ namespace ExcelHandler
         private void fillForm()
         {
             if (rule == null) { return; }
+            txbx_RuleName.Text = rule.Name;
             txbx_TargetColumn.Text = rule.TargetColumn.ToString();
             txbx_MainParameter.Text = rule.MainCondition.Param1;
+            if (rule.Action != null)
+            {
+                string ActionName = rule.Action.GetType().GetField("description").GetValue(null).ToString();
+                cmbx_Actions.SelectedItem = ActionName;
+            }
             string opAlias = "";
             if (rule.MainCondition.CondOperation != null)
             {
@@ -105,6 +111,7 @@ namespace ExcelHandler
         private void btn_Ok_Click(object sender, EventArgs e)
         {
             //List<Criteria> tempCriteriaList = rule.CriteriaList;
+            string Name = txbx_RuleName.Text;
             string param1 = txbx_MainParameter.Text;
             string ConditionName = cmbx_MainCondition.Text;
             Operation op = null;
@@ -115,7 +122,7 @@ namespace ExcelHandler
             Action act = null;
             commonActionsList.TryGetValue(ActionName, out act);
             int TargetColumn = getValueColumn(txbx_TargetColumn.Text);
-            Rule NewRule = new Rule(MainCondition, TargetColumn, act);
+            Rule NewRule = new Rule(Name, MainCondition, TargetColumn, act);
             NewRule.CriteriaList = rule.CriteriaList;
             rule = (NewRule == null) ? rule : NewRule;
             NewRule = null;

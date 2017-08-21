@@ -10,7 +10,7 @@ namespace ExcelHandler
     [Serializable]
     public class Rule
     {
-
+        public string Name { get; set; }
         public string Description;
         public Condition MainCondition { get; set; }
         public List<Criteria> CriteriaList { get; set; }
@@ -19,24 +19,26 @@ namespace ExcelHandler
 
         public Rule()
         {
+            Name = "NewRule";
             MainCondition = new Condition();
             CriteriaList = new List<Criteria>();
             TargetColumn = 0;
             Action = null;
-            Description = getDescription();
+            //Description = getDescription();
         }
 
-        public Rule(Condition mainCondition, int targetColumn, Action action)
+        public Rule(string name, Condition mainCondition, int targetColumn, Action action)
         {
+            Name = name;
             TargetColumn = targetColumn;
             MainCondition = mainCondition;
             CriteriaList = new List<Criteria>();
             Action = action;
-            Description = getDescription();
         }
 
         public Rule(Rule oldRule)
         {
+            Name = oldRule.Name;
             MainCondition = new Condition(oldRule.MainCondition);
             CriteriaList = new List<Criteria>();
             foreach (Criteria crit in oldRule.CriteriaList)
@@ -46,11 +48,6 @@ namespace ExcelHandler
             TargetColumn = oldRule.TargetColumn;
             Action = oldRule.Action;
             Description = oldRule.Description;
-        }
-
-        private string getDescription()
-        {
-            return ToString();
         }
 
         public List<string> getCriteriaDescriptionsList()
@@ -101,7 +98,8 @@ namespace ExcelHandler
 
         public override string ToString()
         {
-            string description = TargetColumn.ToString() + " " + MainCondition.CondOperation + " " + MainCondition.Param1;
+            string description = Name + ": " + TargetColumn.ToString() + " " + MainCondition.CondOperation + " "
+                + MainCondition.Param1;
             return description;
         }
 

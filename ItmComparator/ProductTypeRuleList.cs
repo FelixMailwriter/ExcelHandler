@@ -35,8 +35,7 @@ namespace ExcelHandler
 
         public Rule getRuleByDescription(string ruleDescription)
         {
-            Rule rule=Rules.Find(p => p.Description.Equals(ruleDescription));
-            Rule rule = Rules.Find(p => p.Description.Equals(ruleDescription));
+            Rule rule=Rules.Find(p => p.ToString().Equals(ruleDescription));
             return rule;
         }
 
@@ -62,7 +61,7 @@ namespace ExcelHandler
             List<string> RulesDescriptions = new List<string>();
             foreach(Rule rule in Rules)
             {
-                RulesDescriptions.Add(rule.Description);
+                RulesDescriptions.Add(rule.ToString());
             }
             return RulesDescriptions;
         }

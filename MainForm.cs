@@ -12,8 +12,7 @@ namespace ExcelHandler
         public event FileSelectedHandler FileSelected;
         private RulesManager rm;
         private main eh;
-        List<Item> SourceItems;
-
+ 
         public MainForm()
         {
             InitializeComponent();
@@ -195,7 +194,7 @@ namespace ExcelHandler
             RuleDescription = lsbx_Rule.SelectedItem.ToString();
             Rule rule = pt.getRuleByDescription(RuleDescription);
             Rule NewRule = new Rule(rule);
-            NewRule.Description = "NewRule";
+            NewRule.Name = "NewRule";
             pt.addRule(NewRule);
             updateRulesList(pt);
         }

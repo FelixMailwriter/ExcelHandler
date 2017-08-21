@@ -55,8 +55,8 @@
             this.dgv_Result = new System.Windows.Forms.DataGridView();
             this.btn_save = new System.Windows.Forms.Button();
             this.RulesSettings = new System.Windows.Forms.TabPage();
-            this.btn_saveRules = new System.Windows.Forms.Button();
             this.btn_CopyRule = new System.Windows.Forms.Button();
+            this.btn_saveRules = new System.Windows.Forms.Button();
             this.tab_main.SuspendLayout();
             this.SourceData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -88,7 +88,7 @@
             this.lsbx_Type.FormattingEnabled = true;
             this.lsbx_Type.Location = new System.Drawing.Point(36, 29);
             this.lsbx_Type.Name = "lsbx_Type";
-            this.lsbx_Type.Size = new System.Drawing.Size(146, 95);
+            this.lsbx_Type.Size = new System.Drawing.Size(146, 329);
             this.lsbx_Type.TabIndex = 2;
             this.lsbx_Type.ValueMember = "Name";
             this.lsbx_Type.SelectedIndexChanged += new System.EventHandler(this.lsbx_Type_SelectedIndexChanged);
@@ -104,7 +104,7 @@
             // 
             // btn_addRuleType
             // 
-            this.btn_addRuleType.Location = new System.Drawing.Point(39, 156);
+            this.btn_addRuleType.Location = new System.Drawing.Point(39, 405);
             this.btn_addRuleType.Name = "btn_addRuleType";
             this.btn_addRuleType.Size = new System.Drawing.Size(60, 23);
             this.btn_addRuleType.TabIndex = 4;
@@ -117,12 +117,12 @@
             this.lsbx_Alias.FormattingEnabled = true;
             this.lsbx_Alias.Location = new System.Drawing.Point(233, 29);
             this.lsbx_Alias.Name = "lsbx_Alias";
-            this.lsbx_Alias.Size = new System.Drawing.Size(145, 95);
+            this.lsbx_Alias.Size = new System.Drawing.Size(145, 329);
             this.lsbx_Alias.TabIndex = 2;
             // 
             // btn_removeRuleType
             // 
-            this.btn_removeRuleType.Location = new System.Drawing.Point(122, 156);
+            this.btn_removeRuleType.Location = new System.Drawing.Point(122, 405);
             this.btn_removeRuleType.Name = "btn_removeRuleType";
             this.btn_removeRuleType.Size = new System.Drawing.Size(60, 23);
             this.btn_removeRuleType.TabIndex = 4;
@@ -132,7 +132,7 @@
             // 
             // btn_addAlias
             // 
-            this.btn_addAlias.Location = new System.Drawing.Point(233, 156);
+            this.btn_addAlias.Location = new System.Drawing.Point(233, 405);
             this.btn_addAlias.Name = "btn_addAlias";
             this.btn_addAlias.Size = new System.Drawing.Size(60, 23);
             this.btn_addAlias.TabIndex = 4;
@@ -142,7 +142,7 @@
             // 
             // btn_removeAlias
             // 
-            this.btn_removeAlias.Location = new System.Drawing.Point(318, 156);
+            this.btn_removeAlias.Location = new System.Drawing.Point(318, 405);
             this.btn_removeAlias.Name = "btn_removeAlias";
             this.btn_removeAlias.Size = new System.Drawing.Size(60, 23);
             this.btn_removeAlias.TabIndex = 4;
@@ -162,16 +162,16 @@
             // lsbx_Rule
             // 
             this.lsbx_Rule.FormattingEnabled = true;
-            this.lsbx_Rule.Location = new System.Drawing.Point(471, 29);
+            this.lsbx_Rule.Location = new System.Drawing.Point(430, 29);
             this.lsbx_Rule.Name = "lsbx_Rule";
-            this.lsbx_Rule.Size = new System.Drawing.Size(263, 95);
+            this.lsbx_Rule.Size = new System.Drawing.Size(263, 329);
             this.lsbx_Rule.TabIndex = 5;
             this.lsbx_Rule.DoubleClick += new System.EventHandler(this.lsbx_Rule_DoubleClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(567, 13);
+            this.label2.Location = new System.Drawing.Point(526, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 3;
@@ -179,7 +179,7 @@
             // 
             // btn_addRule
             // 
-            this.btn_addRule.Location = new System.Drawing.Point(471, 156);
+            this.btn_addRule.Location = new System.Drawing.Point(430, 405);
             this.btn_addRule.Name = "btn_addRule";
             this.btn_addRule.Size = new System.Drawing.Size(60, 23);
             this.btn_addRule.TabIndex = 4;
@@ -189,7 +189,7 @@
             // 
             // btn_removeRule
             // 
-            this.btn_removeRule.Location = new System.Drawing.Point(537, 156);
+            this.btn_removeRule.Location = new System.Drawing.Point(496, 405);
             this.btn_removeRule.Name = "btn_removeRule";
             this.btn_removeRule.Size = new System.Drawing.Size(60, 23);
             this.btn_removeRule.TabIndex = 4;
@@ -199,21 +199,21 @@
             // 
             // txbx_NewRuleType
             // 
-            this.txbx_NewRuleType.Location = new System.Drawing.Point(39, 130);
+            this.txbx_NewRuleType.Location = new System.Drawing.Point(39, 379);
             this.txbx_NewRuleType.Name = "txbx_NewRuleType";
             this.txbx_NewRuleType.Size = new System.Drawing.Size(143, 20);
             this.txbx_NewRuleType.TabIndex = 10;
             // 
             // txbx_Alias
             // 
-            this.txbx_Alias.Location = new System.Drawing.Point(233, 130);
+            this.txbx_Alias.Location = new System.Drawing.Point(233, 379);
             this.txbx_Alias.Name = "txbx_Alias";
             this.txbx_Alias.Size = new System.Drawing.Size(145, 20);
             this.txbx_Alias.TabIndex = 10;
             // 
             // btn_EditRule
             // 
-            this.btn_EditRule.Location = new System.Drawing.Point(603, 156);
+            this.btn_EditRule.Location = new System.Drawing.Point(562, 405);
             this.btn_EditRule.Name = "btn_EditRule";
             this.btn_EditRule.Size = new System.Drawing.Size(60, 23);
             this.btn_EditRule.TabIndex = 12;
@@ -321,25 +321,25 @@
             this.RulesSettings.Text = "Настройка правил";
             this.RulesSettings.UseVisualStyleBackColor = true;
             // 
-            // btn_saveRules
-            // 
-            this.btn_saveRules.Location = new System.Drawing.Point(659, 206);
-            this.btn_saveRules.Name = "btn_saveRules";
-            this.btn_saveRules.Size = new System.Drawing.Size(75, 23);
-            this.btn_saveRules.TabIndex = 13;
-            this.btn_saveRules.Text = "Сохранить";
-            this.btn_saveRules.UseVisualStyleBackColor = true;
-            this.btn_saveRules.Click += new System.EventHandler(this.btn_saveRules_Click);
-            // 
             // btn_CopyRule
             // 
-            this.btn_CopyRule.Location = new System.Drawing.Point(669, 156);
+            this.btn_CopyRule.Location = new System.Drawing.Point(628, 405);
             this.btn_CopyRule.Name = "btn_CopyRule";
             this.btn_CopyRule.Size = new System.Drawing.Size(65, 23);
             this.btn_CopyRule.TabIndex = 14;
             this.btn_CopyRule.Text = "Copy";
             this.btn_CopyRule.UseVisualStyleBackColor = true;
             this.btn_CopyRule.Click += new System.EventHandler(this.btn_CopyRule_Click);
+            // 
+            // btn_saveRules
+            // 
+            this.btn_saveRules.Location = new System.Drawing.Point(618, 455);
+            this.btn_saveRules.Name = "btn_saveRules";
+            this.btn_saveRules.Size = new System.Drawing.Size(75, 23);
+            this.btn_saveRules.TabIndex = 13;
+            this.btn_saveRules.Text = "Сохранить";
+            this.btn_saveRules.UseVisualStyleBackColor = true;
+            this.btn_saveRules.Click += new System.EventHandler(this.btn_saveRules_Click);
             // 
             // MainForm
             // 
@@ -389,7 +389,6 @@
         private System.Windows.Forms.Button btn_exec;
         private System.Windows.Forms.DataGridView dgv_Result;
         private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lengthDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btn_CopyRule;
     }
 }
