@@ -1,4 +1,5 @@
 ﻿using System;
+using ExcelHandler.Common;
 using ExcelHandler.ItmComparator.Exceptions;
 
 namespace ExcelHandler
@@ -9,22 +10,25 @@ namespace ExcelHandler
         public string Param1 { get; private set; }
         public string Param2 { get; private set; }
         public Operation CondOperation { get; private set; }
-        public string Suffix { get; private set; }
+        public int TestValueColumn { get; private set; }
+        public string Description { get; set; }
 
         public Condition()
         {
             Param1 = "";
             Param2 = "";
             CondOperation = null;
-            Suffix = "";
+            TestValueColumn = 0;
+            Description = this.ToString();
         }
 
-        public Condition(string param1, string param2, Operation condOperation, string suffix)
+        public Condition(string param1, string param2, Operation condOperation, int testValueColumn)
         {
             Param1 = param1;
             Param2 = param2;
             CondOperation = condOperation;
-            Suffix = suffix;
+            TestValueColumn = testValueColumn;
+            Description = this.ToString();
         }
 
         public Condition (Condition oldCondition)
@@ -32,15 +36,17 @@ namespace ExcelHandler
             Param1 = oldCondition.Param1;
             Param2 = oldCondition.Param2;
             CondOperation = oldCondition.CondOperation;
-            Suffix = oldCondition.Suffix;
+            TestValueColumn = oldCondition.TestValueColumn;
+            Description = this.ToString();
         }
 
-        public bool makeCompare(string testValue)
+        public bool checkCondition(Item item)
         {
+            string TestValue = item[TestValueColumn];
             bool result = false;
             try
             {
-                result=CondOperation.doCompare(Param1, Param2, testValue);
+                result=CondOperation.doCompare(Param1, Param2, TestValue);
             }catch (ArgumentException )
             {
                 throw new ConditionException("Неверный аргумент в условии");
@@ -50,14 +56,12 @@ namespace ExcelHandler
 
         public override string ToString()
         {
-            string opDescription = CondOperation.getDescription();
-            string result = "";
-            result += opDescription + " " + Param1 + " ";
+            string opDescription = (CondOperation==null)?" не задано": CondOperation.getDescription();
+            string result = TestValueColumn.ToString() +" "+ opDescription + " " + Param1 + " ";
             if (!String.IsNullOrEmpty(Param2))
             {
                 result += " И " + Param2;
             }
-            result += " вернуть " + Suffix;
             return result;
         }
     }

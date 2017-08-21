@@ -8,10 +8,10 @@ namespace ExcelHandler.ItmComparator.Actions
     public class ActionChange : Action
     {
         public static string description= "Изменить";
-        public void doAction(ref Item Item, Condition condition, int column)
+        public void doAction(ref Item Item, int column, string suffix)
         {
             int ColumnNumber = column;
-                Item[ColumnNumber] += condition.Suffix;
+                Item[ColumnNumber] += suffix;
                 Item.Changed = true;
         }
     }

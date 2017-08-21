@@ -4,6 +4,6 @@ namespace ExcelHandler
 {
     public interface Action
     {
-        void doAction(ref Item Item, Condition condition, int column);
+        void doAction(ref Item Item, int column, string suffix);
     }
 }

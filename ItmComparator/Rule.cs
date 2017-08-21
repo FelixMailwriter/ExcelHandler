@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ExcelHandler.Common;
+using ExcelHandler.ItmComparator;
 using ExcelHandler.ItmComparator.Exceptions;
 
 namespace ExcelHandler
@@ -11,107 +12,96 @@ namespace ExcelHandler
     {
         public string Description;
         public Condition MainCondition { get; set; }
-        public List<Condition> ConditionList { get; private set; }
-        public int ActionColumn { get; private set; }
+        public List<Criteria> CriteriaList { get; set; }
+        public int TargetColumn { get; private set; }
         public Action Action { get; set; }
 
         public Rule()
         {
             MainCondition = new Condition();
-            ConditionList = new List<Condition>();
-            ActionColumn = 0;
+            CriteriaList = new List<Criteria>();
+            TargetColumn = 0;
             Action = null;
-            //Suffix = "";
             Description = getDescription();
         }
 
-        public Rule(Condition mainCondition, List<Condition> conditionList, 
-                    string actionColumn, Action action)
-        { 
+        public Rule(Condition mainCondition, int targetColumn, Action action)
+        {
+            TargetColumn = targetColumn;
             MainCondition = mainCondition;
-            ConditionList = conditionList;
-            ActionColumn = getActionColumn(actionColumn);
+            CriteriaList = new List<Criteria>();
             Action = action;
-            //Suffix = suffix;
             Description = getDescription();
         }
 
         public Rule(Rule oldRule)
         {
             MainCondition = new Condition(oldRule.MainCondition);
-            ConditionList = new List<Condition>();
-            foreach(Condition cond in oldRule.ConditionList)
+            CriteriaList = new List<Criteria>();
+            foreach (Criteria crit in oldRule.CriteriaList)
             {
-                ConditionList.Add(new Condition(cond));
+                CriteriaList.Add(new Criteria(crit));
             }
-            this.ActionColumn = oldRule.ActionColumn;
-            this.Action = oldRule.Action;
-            this.Description = oldRule.Description;
+            TargetColumn = oldRule.TargetColumn;
+            Action = oldRule.Action;
+            Description = oldRule.Description;
         }
 
         private string getDescription()
         {
-            string description = ActionColumn.ToString() +" "+MainCondition.CondOperation + " " + MainCondition.Param1;
-            return description;
+            return ToString();
         }
 
-        public void addCondition(Condition condition)
+        public List<string> getCriteriaDescriptionsList()
         {
-            ConditionList.Add(condition);
-        }
-
-        public void removeCondition(Condition condition)
-        {
-            Condition RemovedCondition = ConditionList.Find(p => p == condition);
-            if (RemovedCondition != null)
+            List<string> descrList = new List<string>();
+            foreach (Criteria crit in CriteriaList)
             {
-                ConditionList.Remove(RemovedCondition);
+                descrList.Add(crit.ToString());
+            }
+            return descrList;
+        }
+
+        public void addCriteria(Criteria crit)
+        {
+            CriteriaList.Add(crit);
+        }
+
+        public void removeCriteria(Criteria crit)
+        {
+            Criteria RemovedCriteria = CriteriaList.Find(p => p == crit);
+            if (RemovedCriteria != null)
+            {
+                CriteriaList.Remove(RemovedCriteria);
             }
         }
 
-        public void removeCondition(string ConditionDescription)
+        public void removeCriteria(string CriteriaDescription)
         {
-            Condition RemovedCondition = ConditionList.Find(p => p.ToString().Equals(ConditionDescription));
-            if (RemovedCondition != null)
+            Criteria RemovedCriteria = CriteriaList.Find(p => p.ToString().Equals(CriteriaDescription));
+            if (RemovedCriteria != null)
             {
-                ConditionList.Remove(RemovedCondition);
+                CriteriaList.Remove(RemovedCriteria);
             }
         }
 
-        private Item checkCondition (Item Item)
+        private Item checkRule(Item item)
         {
-            foreach(Condition condition in ConditionList)
+            if (!MainCondition.checkCondition(item)) { return item; }
+            foreach (Criteria crit in CriteriaList)
             {
-                if (condition.makeCompare(Item[ActionColumn]))
+                if (crit.checkCriteria(item))
                 {
-                    Action.doAction(ref Item, condition, ActionColumn);
-                    return Item;
+                    Action.doAction(ref item, TargetColumn, crit.Suffix);
                 }
             }
-            return Item;
+            return item;
         }
 
-        public int  getActionColumn(string column)
+        public override string ToString()
         {
-            int ActCol = 0;
-            if (int.TryParse(column, out ActCol))
-            {
-                return ActCol;
-            }
-            else
-            {
-                throw new ActionException("Неверно задан целевой столбец");
-            }
-        }
-
-        public void setActionColumn(string column)
-        {
-            ActionColumn = getActionColumn(column);
-        }
-
-         public override string ToString()
-        {
-            return getDescription();
+            string description = TargetColumn.ToString() + " " + MainCondition.CondOperation + " " + MainCondition.Param1;
+            return description;
         }
 
     }
