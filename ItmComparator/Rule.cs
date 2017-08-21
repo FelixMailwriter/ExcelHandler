@@ -10,6 +10,7 @@ namespace ExcelHandler
     [Serializable]
     public class Rule
     {
+
         public string Description;
         public Condition MainCondition { get; set; }
         public List<Criteria> CriteriaList { get; set; }

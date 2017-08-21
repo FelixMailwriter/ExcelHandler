@@ -101,7 +101,7 @@ namespace ExcelHandler.ItmComparator
                     result += " И " + Conditions[1].ToString();
                 }
             }
-            catch (IndexOutOfRangeException) { }
+            catch (ArgumentOutOfRangeException) { }
 
             result += " вернуть " + Suffix;
             return result;

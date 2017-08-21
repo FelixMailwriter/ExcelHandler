@@ -36,6 +36,7 @@ namespace ExcelHandler
         public Rule getRuleByDescription(string ruleDescription)
         {
             Rule rule=Rules.Find(p => p.Description.Equals(ruleDescription));
+            Rule rule = Rules.Find(p => p.Description.Equals(ruleDescription));
             return rule;
         }
 
