@@ -45,10 +45,12 @@ namespace ExcelHandler
             txbx_RuleName.Text = rule.Name;
             txbx_CheckedColumn.Text = rule.CheckedColumn.ToString();
             txbx_TargetColumn.Text = rule.TargetColumn.ToString();
+            txbx_SourceValueColumn.Text = rule.SourceValueColumn.ToString();
+            txbx_SourceValueColumn.Text = rule.SourceValueColumn.ToString();
             txbx_MainParameter.Text = rule.MainCondition.Param1;
-            if (rule.Action != null)
+            if (rule.ActionInstance != null)
             {
-                string ActionName = rule.Action.GetType().GetField("description").GetValue(null).ToString();
+                string ActionName = rule.ActionInstance.GetType().GetField("description").GetValue(null).ToString();
                 cmbx_Actions.SelectedItem = ActionName;
             }
             string opAlias = "";
@@ -78,7 +80,7 @@ namespace ExcelHandler
                 FieldInfo fi = TestType.GetField("description");
                 if (fi == null) { continue; }
                 string opDescription = fi.GetValue(null).ToString();
-                opDescriptionList.Add(opDescription, (Operation)Activator.CreateInstance(TestType));//(Operation)TestType);
+                opDescriptionList.Add(opDescription, (Operation)Activator.CreateInstance(TestType));
             }
             return opDescriptionList;
         }
@@ -112,24 +114,33 @@ namespace ExcelHandler
         private void btn_Ok_Click(object sender, EventArgs e)
         {
             string Name = txbx_RuleName.Text;
-            string param1 = txbx_MainParameter.Text;
             string ConditionName = cmbx_MainCondition.Text;
             Operation op = null;
             commonOperationList.TryGetValue(ConditionName, out op);
-            int checkedColumn = getValueColumn(txbx_CheckedColumn.Text);
-            Condition MainCondition = new Condition(param1, null, op, checkedColumn);
-            string ActionName = cmbx_Actions.Text;
+            Condition MainCondition = new Condition(txbx_MainParameter.Text, null, 
+                                                                                op, getValueColumn(txbx_CheckedColumn.Text));
             Action act = null;
-            commonActionsList.TryGetValue(ActionName, out act);
-            int CheckedColumn = getValueColumn(txbx_CheckedColumn.Text);
-            int TargetColumn = getValueColumn(txbx_TargetColumn.Text);
+            commonActionsList.TryGetValue(cmbx_Actions.Text, out act);
+            try
+            {
+                int CheckedColumn = getValueColumn(txbx_CheckedColumn.Text);
+                int TargetColumn = getValueColumn(txbx_TargetColumn.Text);
 
-            Rule NewRule = new Rule(Name, MainCondition, CheckedColumn, TargetColumn, act);
+                int SourceValueColumn= (txbx_SourceValueColumn.Text.Equals(""))?
+                                                        0: getValueColumn(txbx_SourceValueColumn.Text);
+            Rule NewRule = new Rule(Name, MainCondition, CheckedColumn, TargetColumn, 
+                                                    SourceValueColumn, act);
             NewRule.CriteriaList = rule.CriteriaList;
             rule = (NewRule == null) ? rule : NewRule;
             NewRule = null;
             DialogResult = DialogResult.OK;
             Close();
+            }
+            catch (ActionException ee)
+            {
+                MessageBox.Show(ee.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -140,13 +151,24 @@ namespace ExcelHandler
 
         private void cmbx_Actions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbx_Actions.SelectedItem.Equals("Изменить"))
+            if (cmbx_Actions.SelectedItem.Equals("Заменить по условию"))
             {
                 gb_additionCondition.Enabled = true;
             }
             else
             {
                 gb_additionCondition.Enabled = false;
+            }
+
+            if (cmbx_Actions.SelectedItem.Equals("Заменить значением столбца"))
+            {
+                txbx_SourceValueColumn.Enabled = true;
+                txbx_SourceValueColumn.Text = "0";
+            }
+            else
+            {
+                txbx_SourceValueColumn.Enabled = false;
+                txbx_SourceValueColumn.Clear();
             }
         }
 
@@ -244,7 +266,7 @@ namespace ExcelHandler
             }
             else
             {
-                throw new ActionException("Неверно задан целевой столбец");
+                throw new ActionException("Неверно задан столбец");
             }
         }
 

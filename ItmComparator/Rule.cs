@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using ExcelHandler.Common;
 using ExcelHandler.ItmComparator;
 using ExcelHandler.ItmComparator.Exceptions;
@@ -16,7 +17,8 @@ namespace ExcelHandler
         public List<Criteria> CriteriaList { get; set; }
         public int CheckedColumn { get; set; }
         public int TargetColumn { get; private set; }
-        public Action Action { get; set; }
+        public int SourceValueColumn { get; set; }
+        public Action ActionInstance { get; set; }
 
         public Rule()
         {
@@ -25,18 +27,21 @@ namespace ExcelHandler
             CriteriaList = new List<Criteria>();
             CheckedColumn = 0;
             TargetColumn = 0;
-            Action = null;
+            SourceValueColumn = 0;
+            ActionInstance = null;
             //Description = getDescription();
         }
 
-        public Rule(string name, Condition mainCondition, int checkedColumn, int targetColumn, Action action)
+        public Rule(string name, Condition mainCondition, int checkedColumn, 
+                            int targetColumn, int sourceValueColumn, Action action)
         {
             Name = name;
             CheckedColumn = checkedColumn;
             TargetColumn = targetColumn;
             MainCondition = mainCondition;
+            SourceValueColumn = sourceValueColumn;
             CriteriaList = new List<Criteria>();
-            Action = action;
+            ActionInstance = action;
         }
 
         public Rule(Rule oldRule)
@@ -50,7 +55,8 @@ namespace ExcelHandler
             }
             CheckedColumn = oldRule.CheckedColumn;
             TargetColumn = oldRule.TargetColumn;
-            Action = oldRule.Action;
+            SourceValueColumn = oldRule.SourceValueColumn;
+            ActionInstance = oldRule.ActionInstance;
             Description = oldRule.Description;
         }
 
@@ -94,7 +100,7 @@ namespace ExcelHandler
             {
                 if (crit.checkCriteria(item))
                 {
-                    Action.doAction(ref item, TargetColumn, crit.Suffix);
+                    ActionInstance.doAction(ref item, TargetColumn, crit.Suffix, SourceValueColumn);
                 }
             }
             return item;
@@ -102,8 +108,16 @@ namespace ExcelHandler
 
         public override string ToString()
         {
+            Type TestType = ActionInstance.GetType();
+            FieldInfo fi = TestType.GetField("description");
+            string opDescription = fi.GetValue(null).ToString();
+
             string description = Name + ") " + CheckedColumn.ToString() + " " + MainCondition.CondOperation + " "
-                + MainCondition.Param1 + " => "+ TargetColumn.ToString();
+                + MainCondition.Param1 + " => Столбец " + TargetColumn.ToString() + " "+ opDescription;
+            if (SourceValueColumn != 0)
+            {
+                description +="+"+ SourceValueColumn;
+            }
             return description;
         }
 

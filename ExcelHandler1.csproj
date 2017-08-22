@@ -67,6 +67,7 @@
       <DependentUpon>AddRule.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Item.cs" />
+    <Compile Include="ItmComparator\Actions\ChangeByColumncs.cs" />
     <Compile Include="ItmComparator\Conditions\BeginsWith.cs" />
     <Compile Include="ItmComparator\Conditions\LessOrEqual.cs" />
     <Compile Include="ItmComparator\Conditions\MoreOrEqual.cs" />
@@ -75,7 +76,7 @@
     <Compile Include="ItmComparator\Exceptions\ConditionException.cs" />
     <Compile Include="main.cs" />
     <Compile Include="ItmComparator\Action.cs" />
-    <Compile Include="ItmComparator\Actions\ActionChange.cs" />
+    <Compile Include="ItmComparator\Actions\ActionChangeByCondition.cs" />
     <Compile Include="ItmComparator\Actions\ActionCopy.cs" />
     <Compile Include="ItmComparator\Actions\ActionSkip.cs" />
     <Compile Include="ItmComparator\Condition.cs" />

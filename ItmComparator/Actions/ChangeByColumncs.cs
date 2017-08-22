@@ -8,12 +8,12 @@ using ExcelHandler.Common;
 namespace ExcelHandler.ItmComparator.Actions
 {
     [Serializable]
-    public class ActionSkip : Action
+    class ChangeByColumncs : Action
     {
-        public static string description = "Пропустить";
+        public static string description = "Заменить значением столбца";
         public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
         {
-            Item = null;
+            throw new NotImplementedException();
         }
     }
 }

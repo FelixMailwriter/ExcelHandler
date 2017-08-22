@@ -40,7 +40,6 @@
             this.cmbx_Actions = new System.Windows.Forms.ComboBox();
             this.txbx_MainParameter = new System.Windows.Forms.TextBox();
             this.cmbx_MainCondition = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txbx_Suffix = new System.Windows.Forms.TextBox();
             this.lbl_sekComdReturn = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txbx_CheckedColumn = new System.Windows.Forms.TextBox();
+            this.txbx_SourceValueColumn = new System.Windows.Forms.TextBox();
             this.gb_mainCondition.SuspendLayout();
             this.gb_additionCondition.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,7 @@
             // 
             // txbx_TargetColumn
             // 
-            this.txbx_TargetColumn.Location = new System.Drawing.Point(496, 26);
+            this.txbx_TargetColumn.Location = new System.Drawing.Point(315, 71);
             this.txbx_TargetColumn.Name = "txbx_TargetColumn";
             this.txbx_TargetColumn.Size = new System.Drawing.Size(39, 20);
             this.txbx_TargetColumn.TabIndex = 2;
@@ -95,7 +95,7 @@
             this.lsbx_Criterias.FormattingEnabled = true;
             this.lsbx_Criterias.Location = new System.Drawing.Point(419, 19);
             this.lsbx_Criterias.Name = "lsbx_Criterias";
-            this.lsbx_Criterias.Size = new System.Drawing.Size(408, 134);
+            this.lsbx_Criterias.Size = new System.Drawing.Size(275, 134);
             this.lsbx_Criterias.TabIndex = 100;
             this.lsbx_Criterias.TabStop = false;
             this.lsbx_Criterias.SelectedIndexChanged += new System.EventHandler(this.lsbx_AdditionalRules_SelectedIndexChanged);
@@ -123,30 +123,30 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(395, 29);
+            this.label3.Location = new System.Drawing.Point(175, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Целевой столбец";
+            this.label3.Text = "Значение столбца";
             // 
             // gb_mainCondition
             // 
+            this.gb_mainCondition.Controls.Add(this.txbx_SourceValueColumn);
             this.gb_mainCondition.Controls.Add(this.txbx_CheckedColumn);
             this.gb_mainCondition.Controls.Add(this.txbx_RuleName);
             this.gb_mainCondition.Controls.Add(this.cmbx_Actions);
             this.gb_mainCondition.Controls.Add(this.txbx_MainParameter);
             this.gb_mainCondition.Controls.Add(this.cmbx_MainCondition);
-            this.gb_mainCondition.Controls.Add(this.label1);
             this.gb_mainCondition.Controls.Add(this.label8);
             this.gb_mainCondition.Controls.Add(this.label9);
             this.gb_mainCondition.Controls.Add(this.label3);
             this.gb_mainCondition.Controls.Add(this.txbx_TargetColumn);
             this.gb_mainCondition.Location = new System.Drawing.Point(21, 21);
             this.gb_mainCondition.Name = "gb_mainCondition";
-            this.gb_mainCondition.Size = new System.Drawing.Size(923, 73);
+            this.gb_mainCondition.Size = new System.Drawing.Size(768, 112);
             this.gb_mainCondition.TabIndex = 0;
             this.gb_mainCondition.TabStop = false;
-            this.gb_mainCondition.Text = "Главное условие";
+            this.gb_mainCondition.Text = "Правило";
             // 
             // txbx_RuleName
             // 
@@ -158,15 +158,15 @@
             // cmbx_Actions
             // 
             this.cmbx_Actions.FormattingEnabled = true;
-            this.cmbx_Actions.Location = new System.Drawing.Point(816, 26);
+            this.cmbx_Actions.Location = new System.Drawing.Point(362, 71);
             this.cmbx_Actions.Name = "cmbx_Actions";
-            this.cmbx_Actions.Size = new System.Drawing.Size(92, 21);
+            this.cmbx_Actions.Size = new System.Drawing.Size(178, 21);
             this.cmbx_Actions.TabIndex = 5;
             this.cmbx_Actions.SelectedIndexChanged += new System.EventHandler(this.cmbx_Actions_SelectedIndexChanged);
             // 
             // txbx_MainParameter
             // 
-            this.txbx_MainParameter.Location = new System.Drawing.Point(649, 26);
+            this.txbx_MainParameter.Location = new System.Drawing.Point(546, 26);
             this.txbx_MainParameter.Name = "txbx_MainParameter";
             this.txbx_MainParameter.Size = new System.Drawing.Size(89, 20);
             this.txbx_MainParameter.TabIndex = 4;
@@ -174,19 +174,10 @@
             // cmbx_MainCondition
             // 
             this.cmbx_MainCondition.FormattingEnabled = true;
-            this.cmbx_MainCondition.Location = new System.Drawing.Point(541, 26);
+            this.cmbx_MainCondition.Location = new System.Drawing.Point(362, 26);
             this.cmbx_MainCondition.Name = "cmbx_MainCondition";
-            this.cmbx_MainCondition.Size = new System.Drawing.Size(102, 21);
+            this.cmbx_MainCondition.Size = new System.Drawing.Size(178, 21);
             this.cmbx_MainCondition.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(753, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Действие";
             // 
             // label8
             // 
@@ -215,7 +206,7 @@
             // 
             // btn_DownCondition
             // 
-            this.btn_DownCondition.Location = new System.Drawing.Point(846, 95);
+            this.btn_DownCondition.Location = new System.Drawing.Point(700, 95);
             this.btn_DownCondition.Name = "btn_DownCondition";
             this.btn_DownCondition.Size = new System.Drawing.Size(54, 23);
             this.btn_DownCondition.TabIndex = 19;
@@ -224,7 +215,7 @@
             // 
             // btn_UpCondition
             // 
-            this.btn_UpCondition.Location = new System.Drawing.Point(846, 53);
+            this.btn_UpCondition.Location = new System.Drawing.Point(700, 53);
             this.btn_UpCondition.Name = "btn_UpCondition";
             this.btn_UpCondition.Size = new System.Drawing.Size(54, 23);
             this.btn_UpCondition.TabIndex = 18;
@@ -255,12 +246,12 @@
             this.gb_additionCondition.Controls.Add(this.txbx_Param1_1);
             this.gb_additionCondition.Controls.Add(this.cmbx_Conditions1);
             this.gb_additionCondition.Enabled = false;
-            this.gb_additionCondition.Location = new System.Drawing.Point(21, 100);
+            this.gb_additionCondition.Location = new System.Drawing.Point(21, 141);
             this.gb_additionCondition.Name = "gb_additionCondition";
-            this.gb_additionCondition.Size = new System.Drawing.Size(923, 183);
+            this.gb_additionCondition.Size = new System.Drawing.Size(768, 183);
             this.gb_additionCondition.TabIndex = 6;
             this.gb_additionCondition.TabStop = false;
-            this.gb_additionCondition.Text = "Дополнительные условия";
+            this.gb_additionCondition.Text = "Условия";
             // 
             // cbx_swap
             // 
@@ -367,7 +358,7 @@
             // 
             // btn_Ok
             // 
-            this.btn_Ok.Location = new System.Drawing.Point(788, 301);
+            this.btn_Ok.Location = new System.Drawing.Point(621, 330);
             this.btn_Ok.Name = "btn_Ok";
             this.btn_Ok.Size = new System.Drawing.Size(75, 23);
             this.btn_Ok.TabIndex = 20;
@@ -377,7 +368,7 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(869, 301);
+            this.btn_Cancel.Location = new System.Drawing.Point(700, 330);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 21;
@@ -388,7 +379,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(219, 29);
+            this.label9.Location = new System.Drawing.Point(175, 26);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(123, 13);
             this.label9.TabIndex = 0;
@@ -396,16 +387,23 @@
             // 
             // txbx_CheckedColumn
             // 
-            this.txbx_CheckedColumn.Location = new System.Drawing.Point(348, 26);
+            this.txbx_CheckedColumn.Location = new System.Drawing.Point(315, 26);
             this.txbx_CheckedColumn.Name = "txbx_CheckedColumn";
             this.txbx_CheckedColumn.Size = new System.Drawing.Size(41, 20);
             this.txbx_CheckedColumn.TabIndex = 6;
+            // 
+            // txbx_SourceValueColumn
+            // 
+            this.txbx_SourceValueColumn.Location = new System.Drawing.Point(546, 72);
+            this.txbx_SourceValueColumn.Name = "txbx_SourceValueColumn";
+            this.txbx_SourceValueColumn.Size = new System.Drawing.Size(89, 20);
+            this.txbx_SourceValueColumn.TabIndex = 7;
             // 
             // AddRule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 341);
+            this.ClientSize = new System.Drawing.Size(808, 377);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Ok);
             this.Controls.Add(this.gb_additionCondition);
@@ -433,7 +431,6 @@
         private System.Windows.Forms.TextBox txbx_MainParameter;
         private System.Windows.Forms.ComboBox cmbx_MainCondition;
         private System.Windows.Forms.ComboBox cmbx_Actions;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbx_Suffix;
         private System.Windows.Forms.Label lbl_sekComdReturn;
         private System.Windows.Forms.Button btn_DownCondition;
@@ -457,5 +454,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txbx_CheckedColumn;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txbx_SourceValueColumn;
     }
 }
