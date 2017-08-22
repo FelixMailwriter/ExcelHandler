@@ -170,6 +170,16 @@ namespace ExcelHandler
                 txbx_SourceValueColumn.Enabled = false;
                 txbx_SourceValueColumn.Clear();
             }
+            if ((cmbx_Actions.SelectedItem.Equals("Копировать строку"))||
+                    (cmbx_Actions.SelectedItem.Equals("Пропустить строку")))
+            {
+                txbx_TargetColumn.Enabled = false;
+            }
+            else
+            {
+                txbx_TargetColumn.Enabled = true;
+                txbx_TargetColumn.Text = "0";
+            }
         }
 
         private void cmbx_Conditions_SelectedIndexChanged(object sender, EventArgs e)

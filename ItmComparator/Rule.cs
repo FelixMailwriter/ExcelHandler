@@ -113,7 +113,12 @@ namespace ExcelHandler
             string opDescription = fi.GetValue(null).ToString();
 
             string description = Name + ") " + CheckedColumn.ToString() + " " + MainCondition.CondOperation + " "
-                + MainCondition.Param1 + " => Столбец " + TargetColumn.ToString() + " "+ opDescription;
+                + MainCondition.Param1 + " => ";
+            if (TargetColumn != 0)
+            {
+                description += "Столбец " + TargetColumn.ToString() + " ";
+            }
+            description +=opDescription;
             if (SourceValueColumn != 0)
             {
                 description +="+"+ SourceValueColumn;

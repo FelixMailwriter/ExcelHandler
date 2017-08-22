@@ -10,7 +10,7 @@ namespace ExcelHandler.ItmComparator.Actions
     [Serializable]
     public class ActionCopy : Action
     {
-        public static string description = "Копировать";
+        public static string description = "Копировать строку";
         public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
         {
             Item.Changed = true;

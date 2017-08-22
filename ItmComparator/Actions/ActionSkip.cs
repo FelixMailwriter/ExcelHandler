@@ -10,7 +10,7 @@ namespace ExcelHandler.ItmComparator.Actions
     [Serializable]
     public class ActionSkip : Action
     {
-        public static string description = "Пропустить";
+        public static string description = "Пропустить строку";
         public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
         {
             Item = null;
