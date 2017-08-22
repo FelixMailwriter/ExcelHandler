@@ -43,6 +43,7 @@ namespace ExcelHandler
         {
             if (rule == null) { return; }
             txbx_RuleName.Text = rule.Name;
+            txbx_CheckedColumn.Text = rule.CheckedColumn.ToString();
             txbx_TargetColumn.Text = rule.TargetColumn.ToString();
             txbx_MainParameter.Text = rule.MainCondition.Param1;
             if (rule.Action != null)
@@ -110,19 +111,20 @@ namespace ExcelHandler
 
         private void btn_Ok_Click(object sender, EventArgs e)
         {
-            //List<Criteria> tempCriteriaList = rule.CriteriaList;
             string Name = txbx_RuleName.Text;
             string param1 = txbx_MainParameter.Text;
             string ConditionName = cmbx_MainCondition.Text;
             Operation op = null;
             commonOperationList.TryGetValue(ConditionName, out op);
-            int valueColumn = getValueColumn(txbx_TargetColumn.Text);
-            Condition MainCondition = new Condition(param1, null, op, valueColumn);
+            int checkedColumn = getValueColumn(txbx_CheckedColumn.Text);
+            Condition MainCondition = new Condition(param1, null, op, checkedColumn);
             string ActionName = cmbx_Actions.Text;
             Action act = null;
             commonActionsList.TryGetValue(ActionName, out act);
+            int CheckedColumn = getValueColumn(txbx_CheckedColumn.Text);
             int TargetColumn = getValueColumn(txbx_TargetColumn.Text);
-            Rule NewRule = new Rule(Name, MainCondition, TargetColumn, act);
+
+            Rule NewRule = new Rule(Name, MainCondition, CheckedColumn, TargetColumn, act);
             NewRule.CriteriaList = rule.CriteriaList;
             rule = (NewRule == null) ? rule : NewRule;
             NewRule = null;

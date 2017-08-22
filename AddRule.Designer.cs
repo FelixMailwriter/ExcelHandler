@@ -36,10 +36,12 @@
             this.btn_addCondition = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.gb_mainCondition = new System.Windows.Forms.GroupBox();
+            this.txbx_RuleName = new System.Windows.Forms.TextBox();
             this.cmbx_Actions = new System.Windows.Forms.ComboBox();
             this.txbx_MainParameter = new System.Windows.Forms.TextBox();
             this.cmbx_MainCondition = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.txbx_Suffix = new System.Windows.Forms.TextBox();
             this.lbl_sekComdReturn = new System.Windows.Forms.Label();
             this.btn_DownCondition = new System.Windows.Forms.Button();
@@ -59,8 +61,8 @@
             this.txbx_Param1_2 = new System.Windows.Forms.TextBox();
             this.btn_Ok = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.txbx_RuleName = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txbx_CheckedColumn = new System.Windows.Forms.TextBox();
             this.gb_mainCondition.SuspendLayout();
             this.gb_additionCondition.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +85,7 @@
             // 
             // txbx_TargetColumn
             // 
-            this.txbx_TargetColumn.Location = new System.Drawing.Point(311, 26);
+            this.txbx_TargetColumn.Location = new System.Drawing.Point(496, 26);
             this.txbx_TargetColumn.Name = "txbx_TargetColumn";
             this.txbx_TargetColumn.Size = new System.Drawing.Size(39, 20);
             this.txbx_TargetColumn.TabIndex = 2;
@@ -121,7 +123,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(210, 29);
+            this.label3.Location = new System.Drawing.Point(395, 29);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 0;
@@ -129,12 +131,14 @@
             // 
             // gb_mainCondition
             // 
+            this.gb_mainCondition.Controls.Add(this.txbx_CheckedColumn);
             this.gb_mainCondition.Controls.Add(this.txbx_RuleName);
             this.gb_mainCondition.Controls.Add(this.cmbx_Actions);
             this.gb_mainCondition.Controls.Add(this.txbx_MainParameter);
             this.gb_mainCondition.Controls.Add(this.cmbx_MainCondition);
             this.gb_mainCondition.Controls.Add(this.label1);
             this.gb_mainCondition.Controls.Add(this.label8);
+            this.gb_mainCondition.Controls.Add(this.label9);
             this.gb_mainCondition.Controls.Add(this.label3);
             this.gb_mainCondition.Controls.Add(this.txbx_TargetColumn);
             this.gb_mainCondition.Location = new System.Drawing.Point(21, 21);
@@ -144,10 +148,17 @@
             this.gb_mainCondition.TabStop = false;
             this.gb_mainCondition.Text = "Главное условие";
             // 
+            // txbx_RuleName
+            // 
+            this.txbx_RuleName.Location = new System.Drawing.Point(45, 26);
+            this.txbx_RuleName.Name = "txbx_RuleName";
+            this.txbx_RuleName.Size = new System.Drawing.Size(103, 20);
+            this.txbx_RuleName.TabIndex = 1;
+            // 
             // cmbx_Actions
             // 
             this.cmbx_Actions.FormattingEnabled = true;
-            this.cmbx_Actions.Location = new System.Drawing.Point(631, 26);
+            this.cmbx_Actions.Location = new System.Drawing.Point(816, 26);
             this.cmbx_Actions.Name = "cmbx_Actions";
             this.cmbx_Actions.Size = new System.Drawing.Size(92, 21);
             this.cmbx_Actions.TabIndex = 5;
@@ -155,7 +166,7 @@
             // 
             // txbx_MainParameter
             // 
-            this.txbx_MainParameter.Location = new System.Drawing.Point(464, 26);
+            this.txbx_MainParameter.Location = new System.Drawing.Point(649, 26);
             this.txbx_MainParameter.Name = "txbx_MainParameter";
             this.txbx_MainParameter.Size = new System.Drawing.Size(89, 20);
             this.txbx_MainParameter.TabIndex = 4;
@@ -163,7 +174,7 @@
             // cmbx_MainCondition
             // 
             this.cmbx_MainCondition.FormattingEnabled = true;
-            this.cmbx_MainCondition.Location = new System.Drawing.Point(356, 26);
+            this.cmbx_MainCondition.Location = new System.Drawing.Point(541, 26);
             this.cmbx_MainCondition.Name = "cmbx_MainCondition";
             this.cmbx_MainCondition.Size = new System.Drawing.Size(102, 21);
             this.cmbx_MainCondition.TabIndex = 3;
@@ -171,11 +182,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(568, 29);
+            this.label1.Location = new System.Drawing.Point(753, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Действие";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Имя";
             // 
             // txbx_Suffix
             // 
@@ -365,21 +385,21 @@
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
-            // txbx_RuleName
+            // label9
             // 
-            this.txbx_RuleName.Location = new System.Drawing.Point(45, 26);
-            this.txbx_RuleName.Name = "txbx_RuleName";
-            this.txbx_RuleName.Size = new System.Drawing.Size(134, 20);
-            this.txbx_RuleName.TabIndex = 1;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(219, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(123, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Проверяемый столбец";
             // 
-            // label8
+            // txbx_CheckedColumn
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 29);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Имя";
+            this.txbx_CheckedColumn.Location = new System.Drawing.Point(348, 26);
+            this.txbx_CheckedColumn.Name = "txbx_CheckedColumn";
+            this.txbx_CheckedColumn.Size = new System.Drawing.Size(41, 20);
+            this.txbx_CheckedColumn.TabIndex = 6;
             // 
             // AddRule
             // 
@@ -435,5 +455,7 @@
         private System.Windows.Forms.CheckBox cbx_swap;
         private System.Windows.Forms.TextBox txbx_RuleName;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txbx_CheckedColumn;
+        private System.Windows.Forms.Label label9;
     }
 }

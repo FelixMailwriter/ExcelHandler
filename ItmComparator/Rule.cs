@@ -14,6 +14,7 @@ namespace ExcelHandler
         public string Description;
         public Condition MainCondition { get; set; }
         public List<Criteria> CriteriaList { get; set; }
+        public int CheckedColumn { get; set; }
         public int TargetColumn { get; private set; }
         public Action Action { get; set; }
 
@@ -22,14 +23,16 @@ namespace ExcelHandler
             Name = "NewRule";
             MainCondition = new Condition();
             CriteriaList = new List<Criteria>();
+            CheckedColumn = 0;
             TargetColumn = 0;
             Action = null;
             //Description = getDescription();
         }
 
-        public Rule(string name, Condition mainCondition, int targetColumn, Action action)
+        public Rule(string name, Condition mainCondition, int checkedColumn, int targetColumn, Action action)
         {
             Name = name;
+            CheckedColumn = checkedColumn;
             TargetColumn = targetColumn;
             MainCondition = mainCondition;
             CriteriaList = new List<Criteria>();
@@ -45,6 +48,7 @@ namespace ExcelHandler
             {
                 CriteriaList.Add(new Criteria(crit));
             }
+            CheckedColumn = oldRule.CheckedColumn;
             TargetColumn = oldRule.TargetColumn;
             Action = oldRule.Action;
             Description = oldRule.Description;
@@ -98,8 +102,8 @@ namespace ExcelHandler
 
         public override string ToString()
         {
-            string description = Name + ": " + TargetColumn.ToString() + " " + MainCondition.CondOperation + " "
-                + MainCondition.Param1;
+            string description = Name + ") " + CheckedColumn.ToString() + " " + MainCondition.CondOperation + " "
+                + MainCondition.Param1 + " => "+ TargetColumn.ToString();
             return description;
         }
 
