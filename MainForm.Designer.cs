@@ -58,13 +58,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_saveRules = new System.Windows.Forms.Button();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_CopyRule = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.btn_CopyType = new System.Windows.Forms.Button();
             this.tab_main.SuspendLayout();
             this.SourceData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,8 +74,8 @@
             this.RulesSettings.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
@@ -103,9 +104,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsbx_Type.DisplayMember = "Name";
             this.lsbx_Type.FormattingEnabled = true;
-            this.lsbx_Type.Location = new System.Drawing.Point(3, 16);
+            this.lsbx_Type.Location = new System.Drawing.Point(3, 15);
             this.lsbx_Type.Name = "lsbx_Type";
-            this.lsbx_Type.Size = new System.Drawing.Size(209, 342);
+            this.lsbx_Type.Size = new System.Drawing.Size(212, 329);
             this.lsbx_Type.TabIndex = 2;
             this.lsbx_Type.ValueMember = "Name";
             this.lsbx_Type.SelectedIndexChanged += new System.EventHandler(this.lsbx_Type_SelectedIndexChanged);
@@ -118,7 +119,7 @@
             this.label.AutoSize = true;
             this.label.Location = new System.Drawing.Point(3, 0);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(209, 13);
+            this.label.Size = new System.Drawing.Size(212, 12);
             this.label.TabIndex = 3;
             this.label.Text = "Тип";
             this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -130,7 +131,7 @@
             this.btn_addRuleType.AutoSize = true;
             this.btn_addRuleType.Location = new System.Drawing.Point(3, 3);
             this.btn_addRuleType.Name = "btn_addRuleType";
-            this.btn_addRuleType.Size = new System.Drawing.Size(98, 23);
+            this.btn_addRuleType.Size = new System.Drawing.Size(64, 23);
             this.btn_addRuleType.TabIndex = 4;
             this.btn_addRuleType.Text = "+";
             this.btn_addRuleType.UseVisualStyleBackColor = true;
@@ -142,18 +143,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsbx_Alias.FormattingEnabled = true;
-            this.lsbx_Alias.Location = new System.Drawing.Point(218, 16);
+            this.lsbx_Alias.Location = new System.Drawing.Point(221, 15);
             this.lsbx_Alias.Name = "lsbx_Alias";
-            this.lsbx_Alias.Size = new System.Drawing.Size(209, 342);
+            this.lsbx_Alias.Size = new System.Drawing.Size(212, 329);
             this.lsbx_Alias.TabIndex = 2;
             // 
             // btn_removeRuleType
             // 
             this.btn_removeRuleType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_removeRuleType.Location = new System.Drawing.Point(107, 3);
+            this.btn_removeRuleType.Location = new System.Drawing.Point(73, 3);
             this.btn_removeRuleType.Name = "btn_removeRuleType";
-            this.btn_removeRuleType.Size = new System.Drawing.Size(99, 23);
+            this.btn_removeRuleType.Size = new System.Drawing.Size(64, 23);
             this.btn_removeRuleType.TabIndex = 4;
             this.btn_removeRuleType.Text = "-";
             this.btn_removeRuleType.UseVisualStyleBackColor = true;
@@ -165,7 +166,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_addAlias.Location = new System.Drawing.Point(3, 3);
             this.btn_addAlias.Name = "btn_addAlias";
-            this.btn_addAlias.Size = new System.Drawing.Size(98, 23);
+            this.btn_addAlias.Size = new System.Drawing.Size(100, 23);
             this.btn_addAlias.TabIndex = 4;
             this.btn_addAlias.Text = "+";
             this.btn_addAlias.UseVisualStyleBackColor = true;
@@ -175,9 +176,9 @@
             // 
             this.btn_removeAlias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_removeAlias.Location = new System.Drawing.Point(107, 3);
+            this.btn_removeAlias.Location = new System.Drawing.Point(109, 3);
             this.btn_removeAlias.Name = "btn_removeAlias";
-            this.btn_removeAlias.Size = new System.Drawing.Size(99, 23);
+            this.btn_removeAlias.Size = new System.Drawing.Size(100, 23);
             this.btn_removeAlias.TabIndex = 4;
             this.btn_removeAlias.Text = "-";
             this.btn_removeAlias.UseVisualStyleBackColor = true;
@@ -189,9 +190,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(218, 0);
+            this.label1.Location = new System.Drawing.Point(221, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 13);
+            this.label1.Size = new System.Drawing.Size(212, 12);
             this.label1.TabIndex = 3;
             this.label1.Text = "Псевдонимы";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -202,9 +203,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsbx_Rule.FormattingEnabled = true;
-            this.lsbx_Rule.Location = new System.Drawing.Point(433, 16);
+            this.lsbx_Rule.Location = new System.Drawing.Point(439, 15);
             this.lsbx_Rule.Name = "lsbx_Rule";
-            this.lsbx_Rule.Size = new System.Drawing.Size(424, 342);
+            this.lsbx_Rule.Size = new System.Drawing.Size(431, 329);
             this.lsbx_Rule.TabIndex = 5;
             this.lsbx_Rule.DoubleClick += new System.EventHandler(this.lsbx_Rule_DoubleClick);
             // 
@@ -214,9 +215,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(433, 0);
+            this.label2.Location = new System.Drawing.Point(439, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(424, 13);
+            this.label2.Size = new System.Drawing.Size(431, 12);
             this.label2.TabIndex = 3;
             this.label2.Text = "Правила";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -227,7 +228,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_addRule.Location = new System.Drawing.Point(3, 3);
             this.btn_addRule.Name = "btn_addRule";
-            this.btn_addRule.Size = new System.Drawing.Size(141, 23);
+            this.btn_addRule.Size = new System.Drawing.Size(144, 23);
             this.btn_addRule.TabIndex = 4;
             this.btn_addRule.Text = "+";
             this.btn_addRule.UseVisualStyleBackColor = true;
@@ -237,9 +238,9 @@
             // 
             this.btn_removeRule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_removeRule.Location = new System.Drawing.Point(150, 3);
+            this.btn_removeRule.Location = new System.Drawing.Point(153, 3);
             this.btn_removeRule.Name = "btn_removeRule";
-            this.btn_removeRule.Size = new System.Drawing.Size(141, 23);
+            this.btn_removeRule.Size = new System.Drawing.Size(144, 23);
             this.btn_removeRule.TabIndex = 4;
             this.btn_removeRule.Text = "-";
             this.btn_removeRule.UseVisualStyleBackColor = true;
@@ -251,23 +252,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbx_NewRuleType.Location = new System.Drawing.Point(57, 3);
             this.txbx_NewRuleType.Name = "txbx_NewRuleType";
-            this.txbx_NewRuleType.Size = new System.Drawing.Size(149, 20);
+            this.txbx_NewRuleType.Size = new System.Drawing.Size(152, 20);
             this.txbx_NewRuleType.TabIndex = 10;
             // 
             // txbx_Alias
             // 
             this.txbx_Alias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbx_Alias.Location = new System.Drawing.Point(80, 3);
+            this.txbx_Alias.Location = new System.Drawing.Point(81, 3);
             this.txbx_Alias.Name = "txbx_Alias";
-            this.txbx_Alias.Size = new System.Drawing.Size(126, 20);
+            this.txbx_Alias.Size = new System.Drawing.Size(128, 20);
             this.txbx_Alias.TabIndex = 10;
             // 
             // btn_EditRule
             // 
             this.btn_EditRule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_EditRule.Location = new System.Drawing.Point(297, 3);
+            this.btn_EditRule.Location = new System.Drawing.Point(303, 3);
             this.btn_EditRule.Name = "btn_EditRule";
             this.btn_EditRule.Size = new System.Drawing.Size(64, 23);
             this.btn_EditRule.TabIndex = 12;
@@ -286,7 +287,7 @@
             this.tab_main.Location = new System.Drawing.Point(12, 12);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
-            this.tab_main.Size = new System.Drawing.Size(904, 527);
+            this.tab_main.Size = new System.Drawing.Size(917, 504);
             this.tab_main.TabIndex = 13;
             // 
             // SourceData
@@ -297,7 +298,7 @@
             this.SourceData.Location = new System.Drawing.Point(4, 22);
             this.SourceData.Name = "SourceData";
             this.SourceData.Padding = new System.Windows.Forms.Padding(3);
-            this.SourceData.Size = new System.Drawing.Size(955, 488);
+            this.SourceData.Size = new System.Drawing.Size(896, 501);
             this.SourceData.TabIndex = 0;
             this.SourceData.Text = "Исходные данные";
             this.SourceData.UseVisualStyleBackColor = true;
@@ -322,7 +323,7 @@
             this.ParsedData.Location = new System.Drawing.Point(4, 22);
             this.ParsedData.Name = "ParsedData";
             this.ParsedData.Padding = new System.Windows.Forms.Padding(3);
-            this.ParsedData.Size = new System.Drawing.Size(955, 488);
+            this.ParsedData.Size = new System.Drawing.Size(896, 501);
             this.ParsedData.TabIndex = 2;
             this.ParsedData.Text = "Выходные данные";
             this.ParsedData.UseVisualStyleBackColor = true;
@@ -360,7 +361,7 @@
             this.RulesSettings.Location = new System.Drawing.Point(4, 22);
             this.RulesSettings.Name = "RulesSettings";
             this.RulesSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.RulesSettings.Size = new System.Drawing.Size(896, 501);
+            this.RulesSettings.Size = new System.Drawing.Size(909, 478);
             this.RulesSettings.TabIndex = 1;
             this.RulesSettings.Text = "Настройка правил";
             this.RulesSettings.UseVisualStyleBackColor = true;
@@ -394,7 +395,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(860, 476);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(873, 453);
             this.tableLayoutPanel1.TabIndex = 15;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -403,47 +404,30 @@
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.Controls.Add(this.btn_removeRuleType, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btn_addRuleType, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 407);
+            this.tableLayoutPanel2.Controls.Add(this.btn_CopyType, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 384);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(209, 31);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(212, 31);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // btn_saveRules
             // 
             this.btn_saveRules.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_saveRules.Location = new System.Drawing.Point(782, 450);
+            this.btn_saveRules.Location = new System.Drawing.Point(795, 427);
             this.btn_saveRules.Name = "btn_saveRules";
             this.btn_saveRules.Size = new System.Drawing.Size(75, 23);
             this.btn_saveRules.TabIndex = 13;
             this.btn_saveRules.Text = "Сохранить";
             this.btn_saveRules.UseVisualStyleBackColor = true;
             this.btn_saveRules.Click += new System.EventHandler(this.btn_saveRules_Click);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.btn_addAlias, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btn_removeAlias, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(218, 407);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(209, 31);
-            this.tableLayoutPanel3.TabIndex = 16;
             // 
             // tableLayoutPanel4
             // 
@@ -459,25 +443,43 @@
             this.tableLayoutPanel4.Controls.Add(this.btn_CopyRule, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.btn_EditRule, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.btn_addRule, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(433, 407);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(439, 384);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(424, 31);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(431, 31);
             this.tableLayoutPanel4.TabIndex = 16;
             // 
             // btn_CopyRule
             // 
             this.btn_CopyRule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_CopyRule.Location = new System.Drawing.Point(367, 3);
+            this.btn_CopyRule.Location = new System.Drawing.Point(373, 3);
             this.btn_CopyRule.Name = "btn_CopyRule";
-            this.btn_CopyRule.Size = new System.Drawing.Size(54, 23);
+            this.btn_CopyRule.Size = new System.Drawing.Size(55, 23);
             this.btn_CopyRule.TabIndex = 14;
             this.btn_CopyRule.Text = "Copy";
             this.btn_CopyRule.UseVisualStyleBackColor = true;
             this.btn_CopyRule.Click += new System.EventHandler(this.btn_CopyRule_Click);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.btn_addAlias, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_removeAlias, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(221, 384);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(212, 31);
+            this.tableLayoutPanel3.TabIndex = 16;
             // 
             // tableLayoutPanel5
             // 
@@ -489,12 +491,12 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.08759F));
             this.tableLayoutPanel5.Controls.Add(this.txbx_NewRuleType, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 374);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 351);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(209, 27);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(212, 27);
             this.tableLayoutPanel5.TabIndex = 17;
             // 
             // label3
@@ -519,12 +521,12 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.83784F));
             this.tableLayoutPanel6.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.txbx_Alias, 1, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(218, 374);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(221, 351);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(209, 27);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(212, 27);
             this.tableLayoutPanel6.TabIndex = 18;
             // 
             // label4
@@ -535,16 +537,26 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 27);
+            this.label4.Size = new System.Drawing.Size(72, 27);
             this.label4.TabIndex = 11;
             this.label4.Text = "Новый псевдоним";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btn_CopyType
+            // 
+            this.btn_CopyType.Location = new System.Drawing.Point(143, 3);
+            this.btn_CopyType.Name = "btn_CopyType";
+            this.btn_CopyType.Size = new System.Drawing.Size(66, 23);
+            this.btn_CopyType.TabIndex = 19;
+            this.btn_CopyType.Text = "Copy";
+            this.btn_CopyType.UseVisualStyleBackColor = true;
+            this.btn_CopyType.Click += new System.EventHandler(this.btn_CopyType_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 551);
+            this.ClientSize = new System.Drawing.Size(941, 528);
             this.Controls.Add(this.tab_main);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -560,8 +572,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
@@ -607,6 +619,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_CopyType;
     }
 }
 

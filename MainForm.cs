@@ -12,7 +12,7 @@ namespace ExcelHandler
         public event FileSelectedHandler FileSelected;
         private RulesManager rm;
         private main eh;
- 
+
         public MainForm()
         {
             InitializeComponent();
@@ -215,6 +215,29 @@ namespace ExcelHandler
         {
 
         }
+
+        private void btn_CopyType_Click(object sender, EventArgs e)
+        {
+            string NewRuleTypeName = txbx_NewRuleType.Text.Trim();
+            if (NewRuleTypeName.Equals(""))
+            {
+                showMessage("Не указано имя нового типа");
+                return;
+            }
+            string SourceRuleTypeName = lsbx_Type.SelectedItem.ToString();
+            try
+            {
+                rm.addRuleType(NewRuleTypeName);
+            }
+            catch (ArgumentException ex)
+            {
+                showMessage(ex.Message);
+            }
+            txbx_NewRuleType.Clear();
+            rm.copyType(SourceRuleTypeName, NewRuleTypeName);
+            updateTypeRulesList();
+        }
+
     }
 
 }

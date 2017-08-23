@@ -95,5 +95,16 @@ namespace ExcelHandler
                 }
             }
         }
+
+        internal void copyType(string sourceRuleTypeName, string newRuleTypeName)
+        {
+            ProductTypeRuleList SourcePTRL = getType(sourceRuleTypeName);
+            ProductTypeRuleList NewPTRL = getType(newRuleTypeName);
+            foreach(Rule SourceRule in SourcePTRL.Rules)
+            {
+                Rule NewRule =new Rule(SourceRule);
+                NewPTRL.Rules.Add(NewRule);
+            }
+        }
     }
 }
