@@ -32,7 +32,7 @@ namespace ExcelHandler
             //Description = getDescription();
         }
 
-        public Rule(string name, Condition mainCondition, int checkedColumn, 
+        public Rule(string name, Condition mainCondition, int checkedColumn,
                             int targetColumn, int sourceValueColumn, Action action)
         {
             Name = name;
@@ -93,9 +93,12 @@ namespace ExcelHandler
             }
         }
 
-        private Item checkRule(Item item)
+        public Item checkRule(Item item)
         {
-            if (!MainCondition.checkCondition(item)) { return item; }
+            if (!MainCondition.checkCondition(item))
+            {
+                return item;
+            }
             foreach (Criteria crit in CriteriaList)
             {
                 if (crit.checkCriteria(item))
@@ -118,10 +121,10 @@ namespace ExcelHandler
             {
                 description += "Столбец " + TargetColumn.ToString() + " ";
             }
-            description +=opDescription;
+            description += opDescription;
             if (SourceValueColumn != 0)
             {
-                description +="+"+ SourceValueColumn;
+                description += "+" + SourceValueColumn;
             }
             return description;
         }

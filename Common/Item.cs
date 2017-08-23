@@ -57,7 +57,7 @@ namespace ExcelHandler.Common
                 }
                 else
                 {
-                    return ItemProperties.ElementAt(pos);
+                    return ItemProperties.ElementAt(pos-1);
                 }
             }
             set{
@@ -65,7 +65,7 @@ namespace ExcelHandler.Common
                 {
                     return;
                 }
-                ItemProperties.Insert(pos, value);
+                ItemProperties.Insert(pos-1, value);
                 }
         }
     }

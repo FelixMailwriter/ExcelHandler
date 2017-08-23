@@ -79,10 +79,7 @@ namespace ExcelHandler.ItmComparator
         {
             foreach(Condition cond in Conditions)
             {
-                if (cond.checkCondition(item))
-                {
-                    return true;
-                }
+                    return cond.checkCondition(item);
             }
             return false;
         }

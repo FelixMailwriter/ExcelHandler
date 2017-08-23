@@ -19,16 +19,16 @@ namespace ExcelHandler.ItmComparator.Conditions
 
             double p1 = Double.MaxValue;
             double p2 = Double.MinValue;
-            double param=0;
+            double value=0;
             try
             {
                 p1 = Double.Parse(param1);
                 p2 = Double.Parse(param2);
-                param= Double.Parse(testValue);
+                value = Double.Parse(testValue);
             }
             catch (ArgumentException )  {  }
 
-            return ((p1 <= param) && (p2 >= param));
+            return ((p1 <= value) && (value<=p2));
         }
 
         public string getDescription()

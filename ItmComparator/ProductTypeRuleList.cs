@@ -68,7 +68,15 @@ namespace ExcelHandler
 
         public Item checkRules(Item item)
         {
-            throw new NotImplementedException();
+            foreach(Rule rule in Rules)
+            {
+                Item NewItem = rule.checkRule(item);
+                if (NewItem.Changed)
+                {
+                    return NewItem;
+                }
+            }
+            return item;
         }
 
         internal void changeRule(Rule rule, Rule newRule)

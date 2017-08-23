@@ -19,30 +19,43 @@ namespace ExcelHandler
             NotHandledItem = new DataTable("NotHandledItems");
         }
 
-        public DataTable compareItems (DataTable SourceTable)
+        public DataTable [] compareItems (DataTable SourceTable)
         {
+            DataTable[] HandledItems = new DataTable[2];
             List<Item> SourceItems = ToItems(SourceTable);
-            List<Item> HandledItems = new List<Item>();
-            foreach(Item item in SourceItems)
+            List<Item> RecognazedItems = new List<Item>();
+            List<Item> NotRecognazedItems = new List<Item>();
+            foreach (Item item in SourceItems)
             {
                 foreach(ProductTypeRuleList ptrl in ProductTypeRules)
                 {
                     if (ptrl.Aliases.Contains(item.ItemProperties.ElementAt(10)))
                     {
                         Item NewItem=ptrl.checkRules(item);
-                        HandledItems.Add(NewItem);
+                        if (item.Changed)
+                        {
+                            RecognazedItems.Add(NewItem);
+                        }
                         break;
                     }
                 }
+                NotRecognazedItems.Add(item);
             }
-            DataTable ResultTable = ToDataTable(HandledItems);
-            return ResultTable;
+            DataTable RecognaizedTable = ToDataTable(RecognazedItems);
+            DataTable NotRecognaizedTable = ToDataTable(NotRecognazedItems);
+            return HandledItems;
          }
 
         private DataTable ToDataTable(List<Item> handledItems)
         {
             
             DataTable ResultTable = new DataTable("ResultTable");
+            for (int i=0; i<handledItems.Count; i++)
+            {
+                DataColumn dc = new DataColumn((i + 1).ToString());
+                ResultTable.Columns.Add(dc);
+            }
+
             if (handledItems.Count == 0)
             {
                 return ResultTable;

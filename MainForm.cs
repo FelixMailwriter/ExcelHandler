@@ -181,8 +181,10 @@ namespace ExcelHandler
 
         private void btn_exec_Click(object sender, EventArgs e)
         {
-            DataTable ResultTable = eh.ic.compareItems(eh.SourceItemsTable);
-            dgv_Result.DataSource = ResultTable;
+            DataTable [] HandledItems = new DataTable[2];
+            HandledItems = eh.ic.compareItems(eh.SourceItemsTable);
+            dgv_Result.DataSource = HandledItems[0];
+            //dgv_Result.DataSource = HandledItems[0];
         }
 
         private void btn_CopyRule_Click(object sender, EventArgs e)
