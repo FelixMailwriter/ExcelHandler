@@ -17,7 +17,9 @@ namespace ExcelHandler.ItmComparator.Conditions
             {
                 return false;
             }
-            return param1.StartsWith(testValue);
+            String Param1 = param1.ToUpper();
+            String TestValue = testValue.ToUpper();
+            return Param1.StartsWith(TestValue);
         }
 
         public string getDescription()
