@@ -104,6 +104,7 @@ namespace ExcelHandler
                 if (crit.checkCriteria(item))
                 {
                     ActionInstance.doAction(ref item, TargetColumn, crit.Suffix, SourceValueColumn);
+                    break;
                 }
             }
             return item;
@@ -124,7 +125,7 @@ namespace ExcelHandler
             description += opDescription;
             if (SourceValueColumn != 0)
             {
-                description += "+" + SourceValueColumn;
+                description += " " + SourceValueColumn;
             }
             return description;
         }

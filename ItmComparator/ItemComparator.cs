@@ -43,6 +43,8 @@ namespace ExcelHandler
             }
             DataTable RecognaizedTable = ToDataTable(RecognazedItems);
             DataTable NotRecognaizedTable = ToDataTable(NotRecognazedItems);
+            HandledItems[0] = RecognaizedTable;
+            HandledItems[1] = NotRecognaizedTable;
             return HandledItems;
          }
 
@@ -50,20 +52,14 @@ namespace ExcelHandler
         {
             
             DataTable ResultTable = new DataTable("ResultTable");
-            for (int i=0; i<handledItems.Count; i++)
-            {
-                DataColumn dc = new DataColumn((i + 1).ToString());
-                ResultTable.Columns.Add(dc);
-            }
-
             if (handledItems.Count == 0)
             {
                 return ResultTable;
             }
-            int columnCount = handledItems.ElementAt(0).ItemProperties.Count;
-            for (int i=1; i==columnCount; i++)
+            for (int i=0; i<handledItems[0].ItemProperties.Count; i++)
             {
-                ResultTable.Columns.Add(new DataColumn(i.ToString()));
+                DataColumn dc = new DataColumn((i + 1).ToString());
+                ResultTable.Columns.Add(dc);
             }
 
             foreach(Item item in handledItems)
@@ -71,7 +67,7 @@ namespace ExcelHandler
                 DataRow dr = ResultTable.NewRow();
                 for (int i =0; i<item.ItemProperties.Count; i++)
                 {
-                    dr[i + 1] = item.ItemProperties.ElementAt(i).ToString();
+                    dr[i] = item.ItemProperties.ElementAt(i).ToString();
                 }
                 ResultTable.Rows.Add(dr);
             }

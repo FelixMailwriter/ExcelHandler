@@ -77,11 +77,12 @@ namespace ExcelHandler.ItmComparator
 
         public bool checkCriteria(Item item)
         {
-            foreach(Condition cond in Conditions)
+            bool result = true;
+            foreach (Condition cond in Conditions)
             {
-                    return cond.checkCondition(item);
+                result = result && cond.checkCondition(item);
             }
-            return false;
+            return result;
         }
 
         public override string ToString()

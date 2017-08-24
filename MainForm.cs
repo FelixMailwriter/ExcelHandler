@@ -184,6 +184,7 @@ namespace ExcelHandler
             DataTable [] HandledItems = new DataTable[2];
             HandledItems = eh.ic.compareItems(eh.SourceItemsTable);
             dgv_Result.DataSource = HandledItems[0];
+            dgv_Result.Refresh();
             //dgv_Result.DataSource = HandledItems[0];
         }
 

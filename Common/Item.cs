@@ -65,6 +65,11 @@ namespace ExcelHandler.Common
                 {
                     return;
                 }
+                try
+                {
+                    ItemProperties.RemoveAt(pos - 1);
+                }
+                catch (ArgumentOutOfRangeException) { }
                 ItemProperties.Insert(pos-1, value);
                 }
         }

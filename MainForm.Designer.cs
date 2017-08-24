@@ -57,6 +57,7 @@
             this.RulesSettings = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_CopyType = new System.Windows.Forms.Button();
             this.btn_saveRules = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_CopyRule = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
-            this.btn_CopyType = new System.Windows.Forms.Button();
             this.tab_main.SuspendLayout();
             this.SourceData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -206,6 +206,7 @@
             this.lsbx_Rule.Location = new System.Drawing.Point(439, 15);
             this.lsbx_Rule.Name = "lsbx_Rule";
             this.lsbx_Rule.Size = new System.Drawing.Size(431, 329);
+            this.lsbx_Rule.Sorted = true;
             this.lsbx_Rule.TabIndex = 5;
             this.lsbx_Rule.DoubleClick += new System.EventHandler(this.lsbx_Rule_DoubleClick);
             // 
@@ -298,7 +299,7 @@
             this.SourceData.Location = new System.Drawing.Point(4, 22);
             this.SourceData.Name = "SourceData";
             this.SourceData.Padding = new System.Windows.Forms.Padding(3);
-            this.SourceData.Size = new System.Drawing.Size(896, 501);
+            this.SourceData.Size = new System.Drawing.Size(909, 478);
             this.SourceData.TabIndex = 0;
             this.SourceData.Text = "Исходные данные";
             this.SourceData.UseVisualStyleBackColor = true;
@@ -323,7 +324,7 @@
             this.ParsedData.Location = new System.Drawing.Point(4, 22);
             this.ParsedData.Name = "ParsedData";
             this.ParsedData.Padding = new System.Windows.Forms.Padding(3);
-            this.ParsedData.Size = new System.Drawing.Size(896, 501);
+            this.ParsedData.Size = new System.Drawing.Size(909, 478);
             this.ParsedData.TabIndex = 2;
             this.ParsedData.Text = "Выходные данные";
             this.ParsedData.UseVisualStyleBackColor = true;
@@ -343,7 +344,7 @@
             this.dgv_Result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Result.Location = new System.Drawing.Point(19, 59);
             this.dgv_Result.Name = "dgv_Result";
-            this.dgv_Result.Size = new System.Drawing.Size(1096, 430);
+            this.dgv_Result.Size = new System.Drawing.Size(894, 430);
             this.dgv_Result.TabIndex = 10;
             // 
             // btn_save
@@ -418,6 +419,16 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(212, 31);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
+            // btn_CopyType
+            // 
+            this.btn_CopyType.Location = new System.Drawing.Point(143, 3);
+            this.btn_CopyType.Name = "btn_CopyType";
+            this.btn_CopyType.Size = new System.Drawing.Size(66, 23);
+            this.btn_CopyType.TabIndex = 19;
+            this.btn_CopyType.Text = "Copy";
+            this.btn_CopyType.UseVisualStyleBackColor = true;
+            this.btn_CopyType.Click += new System.EventHandler(this.btn_CopyType_Click);
+            // 
             // btn_saveRules
             // 
             this.btn_saveRules.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -438,7 +449,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.tableLayoutPanel4.Controls.Add(this.btn_removeRule, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.btn_CopyRule, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.btn_EditRule, 2, 0);
@@ -541,16 +552,6 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Новый псевдоним";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btn_CopyType
-            // 
-            this.btn_CopyType.Location = new System.Drawing.Point(143, 3);
-            this.btn_CopyType.Name = "btn_CopyType";
-            this.btn_CopyType.Size = new System.Drawing.Size(66, 23);
-            this.btn_CopyType.TabIndex = 19;
-            this.btn_CopyType.Text = "Copy";
-            this.btn_CopyType.UseVisualStyleBackColor = true;
-            this.btn_CopyType.Click += new System.EventHandler(this.btn_CopyType_Click);
             // 
             // MainForm
             // 

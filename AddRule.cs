@@ -46,7 +46,6 @@ namespace ExcelHandler
             txbx_CheckedColumn.Text = rule.CheckedColumn.ToString();
             txbx_TargetColumn.Text = rule.TargetColumn.ToString();
             txbx_SourceValueColumn.Text = rule.SourceValueColumn.ToString();
-            txbx_SourceValueColumn.Text = rule.SourceValueColumn.ToString();
             txbx_MainParameter.Text = rule.MainCondition.Param1;
             if (rule.ActionInstance != null)
             {
@@ -178,7 +177,7 @@ namespace ExcelHandler
             else
             {
                 txbx_TargetColumn.Enabled = true;
-                txbx_TargetColumn.Text = "0";
+                txbx_TargetColumn.Text = (rule.TargetColumn == 0) ? txbx_TargetColumn.Text = "0" : rule.TargetColumn.ToString();
             }
         }
 
