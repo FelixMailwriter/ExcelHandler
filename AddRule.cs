@@ -47,6 +47,7 @@ namespace ExcelHandler
             txbx_TargetColumn.Text = rule.TargetColumn.ToString();
             txbx_SourceValueColumn.Text = rule.SourceValueColumn.ToString();
             txbx_MainParameter.Text = rule.MainCondition.Param1;
+            txbx_DefaultValue.Text = rule.DefaultValue;
             if (rule.ActionInstance != null)
             {
                 string ActionName = rule.ActionInstance.GetType().GetField("description").GetValue(null).ToString();
@@ -128,7 +129,7 @@ namespace ExcelHandler
                 int SourceValueColumn= (txbx_SourceValueColumn.Text.Equals(""))?
                                                         0: getValueColumn(txbx_SourceValueColumn.Text);
             Rule NewRule = new Rule(Name, MainCondition, CheckedColumn, TargetColumn, 
-                                                    SourceValueColumn, act);
+                                                    SourceValueColumn, act, txbx_DefaultValue.Text);
             NewRule.CriteriaList = rule.CriteriaList;
             rule = (NewRule == null) ? rule : NewRule;
             NewRule = null;
@@ -153,10 +154,12 @@ namespace ExcelHandler
             if (cmbx_Actions.SelectedItem.Equals("Заменить по условию"))
             {
                 gb_additionCondition.Enabled = true;
+                txbx_DefaultValue.Enabled = true;
             }
             else
             {
                 gb_additionCondition.Enabled = false;
+                txbx_DefaultValue.Enabled = false;
             }
 
             if (cmbx_Actions.SelectedItem.Equals("Заменить значением столбца"))

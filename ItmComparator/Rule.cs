@@ -18,6 +18,7 @@ namespace ExcelHandler
         public int CheckedColumn { get; set; }
         public int TargetColumn { get; private set; }
         public int SourceValueColumn { get; set; }
+        public string DefaultValue { get; set; }
         public Action ActionInstance { get; set; }
 
         public Rule()
@@ -28,17 +29,19 @@ namespace ExcelHandler
             CheckedColumn = 0;
             TargetColumn = 0;
             SourceValueColumn = 0;
+            DefaultValue = "";
             ActionInstance = null;
             //Description = getDescription();
         }
 
         public Rule(string name, Condition mainCondition, int checkedColumn,
-                            int targetColumn, int sourceValueColumn, Action action)
+                            int targetColumn, int sourceValueColumn, Action action, string defaultValue)
         {
             Name = name;
             CheckedColumn = checkedColumn;
             TargetColumn = targetColumn;
             MainCondition = mainCondition;
+            DefaultValue = defaultValue;
             SourceValueColumn = sourceValueColumn;
             CriteriaList = new List<Criteria>();
             ActionInstance = action;
@@ -56,6 +59,7 @@ namespace ExcelHandler
             CheckedColumn = oldRule.CheckedColumn;
             TargetColumn = oldRule.TargetColumn;
             SourceValueColumn = oldRule.SourceValueColumn;
+            DefaultValue = oldRule.DefaultValue;
             ActionInstance = oldRule.ActionInstance;
             Description = oldRule.Description;
         }
@@ -95,19 +99,37 @@ namespace ExcelHandler
 
         public Item checkRule(Item item)
         {
-            if (!MainCondition.checkCondition(item))
+            if (MainCondition.checkCondition(item))      //Если условие правила выполняется...
             {
-                return item;
-            }
-            foreach (Criteria crit in CriteriaList)
-            {
-                if (crit.checkCriteria(item))
+                if (CriteriaList.Count == 0)                                  //Если список критериев пуст, сразу делаем действие
                 {
-                    ActionInstance.doAction(ref item, TargetColumn, crit.Suffix, SourceValueColumn);
-                    break;
+                    ActionInstance.doAction(ref item, 0, null, 0);
+                    return item;
+                }
+                else                                                                    // иначе обрабатываем список критериев
+                {                                                                         // и возвращаем обработанный новый Item
+                    return handleCriteria(item);
                 }
             }
-            return item;
+            else                                                                        //если условие правила не выполняется
+            {                                                                             // возвращаем неизмененный Item
+                return item;
+            }
+        }
+
+        private Item handleCriteria(Item item)
+        {
+            foreach (Criteria crit in CriteriaList)                         // проходим по списку критериев
+            {
+                if (crit.checkCriteria(item))                                   // если критерий выполняется
+                {
+                    ActionInstance.doAction(ref item, TargetColumn, crit.Suffix, SourceValueColumn);   // выполняем действие 
+                    return item;                                                                                                                //и возвращаем Item
+                }
+            }
+            item[TargetColumn] = DefaultValue;   //Если ни один критерий не выполнился, 
+            item.Changed = true;                                                    // записываем значение по умолчанию
+            return item;                                                                    // и возвращаем Item
         }
 
         public override string ToString()
@@ -127,6 +149,7 @@ namespace ExcelHandler
             {
                 description += " " + SourceValueColumn;
             }
+            
             return description;
         }
 

@@ -9,27 +9,15 @@ namespace ExcelHandler.Common
 {
     public class Item
     {
-         //public Dictionary<int, string> ItemProperties { get; private set; }
-        //public bool Changed { get; set; }
 
-        // public Item(List<string> properties)
-        // {
-        //     Changed = false;
-        //     ItemProperties = new Dictionary<int, string>();
-        //     for (int i=1; i< properties.Count; i++)
-        //     {
-        //         ItemProperties.Add(i, properties[i - 1]);
-        //     }
-        // }
-
-        // public Item (Dictionary<int, string> properties)
-        // {
-        //     Changed = false;
-        //     ItemProperties = properties;
-        // }
         public List<string> ItemProperties { get; private set; }
         public bool Changed { get; set; }
 
+        public Item()
+        {
+            Changed = false;
+            ItemProperties = new List<string>();
+        }
         public Item(List<string> properties)
         {
             Changed = false;
@@ -45,6 +33,12 @@ namespace ExcelHandler.Common
                 ItemProperties.Add(value.ToString());
             }
             Changed = false;
+        }
+
+        public Item(Item item)
+        {
+            Changed = item.Changed;
+            ItemProperties = item.ItemProperties;
         }
 
         public string this [int pos]

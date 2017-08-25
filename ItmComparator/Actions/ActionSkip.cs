@@ -13,7 +13,8 @@ namespace ExcelHandler.ItmComparator.Actions
         public static string description = "Пропустить строку";
         public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
         {
-            Item = null;
+            Item = new Item();
+            Item.Changed = true;
         }
     }
 }

@@ -11,9 +11,9 @@ namespace ExcelHandler.ItmComparator.Actions
     public class ActionCopy : Action
     {
         public static string description = "Копировать строку";
-        public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
+        public void doAction(ref Item item, int column, string suffix, int sourceValueColumn)
         {
-            Item.Changed = true;
+            item.Changed = true;
         }
     }
 }

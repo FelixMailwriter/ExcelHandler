@@ -25,24 +25,29 @@ namespace ExcelHandler
             List<Item> SourceItems = ToItems(SourceTable);
             List<Item> RecognazedItems = new List<Item>();
             List<Item> NotRecognazedItems = new List<Item>();
-            Item NewItem = new Item(new List<string>());
+            //Item NewItem = new Item(new List<string>());
+
             foreach (Item item in SourceItems)
             {
+                Item NewItem = new Item(item);
                 foreach(ProductTypeRuleList ptrl in ProductTypeRules)
                 {
-                    if (ptrl.Aliases.Contains(item.ItemProperties.ElementAt(10)))
+                    if (ptrl.Aliases.Contains(NewItem.ItemProperties.ElementAt(10)))
                     {
-                        NewItem=ptrl.checkRules(item);
-                        if (item.Changed)
+                        NewItem=ptrl.checkRules(NewItem);
+                        if (NewItem.Changed)
                         {
-                            RecognazedItems.Add(NewItem);
+                            if (NewItem.ItemProperties.Count > 0)
+                            {
+                                RecognazedItems.Add(NewItem);
+                            }
                         }
                         break;
                     }
                 }
                 if (!NewItem.Changed)
                 {
-                    NotRecognazedItems.Add(item);
+                    NotRecognazedItems.Add(NewItem);
                 }
             }
             DataTable RecognaizedTable = ToDataTable(RecognazedItems);

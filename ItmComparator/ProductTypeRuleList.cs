@@ -70,10 +70,10 @@ namespace ExcelHandler
         {
             foreach(Rule rule in Rules)
             {
-                Item NewItem = rule.checkRule(item);
-                if (NewItem.Changed)
+                item = rule.checkRule(item);
+                if (item.Changed)
                 {
-                    return NewItem;
+                    return item;
                 }
             }
             return item;

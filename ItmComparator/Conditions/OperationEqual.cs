@@ -21,7 +21,9 @@ namespace ExcelHandler.ItmComparator.Conditions
             if ((Double.TryParse(param1, out p1)) && (Double.TryParse(testValue, out param))){
                 return p1 == param;
             }
-            return param1.Equals(testValue);
+            String Param1 = param1.ToUpper();
+            String TestValue = testValue.ToUpper();
+            return Param1.Equals(TestValue);
         }
 
         public string getDescription()

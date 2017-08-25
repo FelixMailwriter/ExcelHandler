@@ -43,7 +43,9 @@
             this.txbx_MainParameter = new System.Windows.Forms.TextBox();
             this.cmbx_MainCondition = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.txbx_Suffix = new System.Windows.Forms.TextBox();
             this.lbl_sekComdReturn = new System.Windows.Forms.Label();
             this.btn_DownCondition = new System.Windows.Forms.Button();
@@ -63,8 +65,8 @@
             this.txbx_Param1_2 = new System.Windows.Forms.TextBox();
             this.btn_Ok = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.txbx_DefaultValue = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.gb_mainCondition.SuspendLayout();
             this.gb_additionCondition.SuspendLayout();
             this.SuspendLayout();
@@ -133,6 +135,8 @@
             // 
             // gb_mainCondition
             // 
+            this.gb_mainCondition.Controls.Add(this.label11);
+            this.gb_mainCondition.Controls.Add(this.txbx_DefaultValue);
             this.gb_mainCondition.Controls.Add(this.txbx_SourceValueColumn);
             this.gb_mainCondition.Controls.Add(this.txbx_CheckedColumn);
             this.gb_mainCondition.Controls.Add(this.txbx_RuleName);
@@ -206,6 +210,15 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Имя";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(163, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Действие";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -214,6 +227,15 @@
             this.label9.Size = new System.Drawing.Size(123, 13);
             this.label9.TabIndex = 0;
             this.label9.Text = "Проверяемый столбец";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(559, 70);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(98, 13);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Столбец-источник";
             // 
             // txbx_Suffix
             // 
@@ -227,9 +249,9 @@
             this.lbl_sekComdReturn.AutoSize = true;
             this.lbl_sekComdReturn.Location = new System.Drawing.Point(10, 134);
             this.lbl_sekComdReturn.Name = "lbl_sekComdReturn";
-            this.lbl_sekComdReturn.Size = new System.Drawing.Size(80, 13);
+            this.lbl_sekComdReturn.Size = new System.Drawing.Size(48, 13);
             this.lbl_sekComdReturn.TabIndex = 117;
-            this.lbl_sekComdReturn.Text = "Тогда вернуть";
+            this.lbl_sekComdReturn.Text = "Вернуть";
             // 
             // btn_DownCondition
             // 
@@ -385,7 +407,7 @@
             // 
             // btn_Ok
             // 
-            this.btn_Ok.Location = new System.Drawing.Point(717, 330);
+            this.btn_Ok.Location = new System.Drawing.Point(715, 388);
             this.btn_Ok.Name = "btn_Ok";
             this.btn_Ok.Size = new System.Drawing.Size(75, 23);
             this.btn_Ok.TabIndex = 20;
@@ -395,7 +417,7 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(796, 330);
+            this.btn_Cancel.Location = new System.Drawing.Point(794, 388);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 21;
@@ -403,29 +425,27 @@
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
-            // label1
+            // txbx_DefaultValue
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(163, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Действие";
+            this.txbx_DefaultValue.Location = new System.Drawing.Point(570, 26);
+            this.txbx_DefaultValue.Name = "txbx_DefaultValue";
+            this.txbx_DefaultValue.Size = new System.Drawing.Size(127, 20);
+            this.txbx_DefaultValue.TabIndex = 8;
             // 
-            // label10
+            // label11
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(559, 70);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Столбец-источник";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(435, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Значение по умолчанию";
             // 
             // AddRule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 377);
+            this.ClientSize = new System.Drawing.Size(913, 458);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Ok);
             this.Controls.Add(this.gb_additionCondition);
@@ -479,5 +499,7 @@
         private System.Windows.Forms.TextBox txbx_SourceValueColumn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txbx_DefaultValue;
     }
 }
