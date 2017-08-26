@@ -53,6 +53,8 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.dgv_NotHandledItems = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.ParsedData = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
@@ -71,9 +73,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_RuleUp = new System.Windows.Forms.Button();
+            this.btn_RuleDown = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.tab_main.SuspendLayout();
             this.SourceData.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -91,6 +94,7 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // txbx_path
@@ -229,7 +233,6 @@
             this.lsbx_Rule.Location = new System.Drawing.Point(467, 17);
             this.lsbx_Rule.Name = "lsbx_Rule";
             this.lsbx_Rule.Size = new System.Drawing.Size(459, 388);
-            this.lsbx_Rule.Sorted = true;
             this.lsbx_Rule.TabIndex = 5;
             this.lsbx_Rule.DoubleClick += new System.EventHandler(this.lsbx_Rule_DoubleClick);
             // 
@@ -391,6 +394,26 @@
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(3, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(146, 20);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Исходные данные";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(3, 349);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(297, 20);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Данные, не прошедшие по критериям";
+            // 
             // ParsedData
             // 
             this.ParsedData.Controls.Add(this.tableLayoutPanel7);
@@ -504,6 +527,7 @@
             this.tableLayoutPanel1.Controls.Add(this.lsbx_Rule, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel11, 2, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(19, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
@@ -669,6 +693,47 @@
             this.label4.Text = "Новый псевдоним";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel11.ColumnCount = 2;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Controls.Add(this.btn_RuleUp, 0, 0);
+            this.tableLayoutPanel11.Controls.Add(this.btn_RuleDown, 1, 0);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(467, 414);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(459, 27);
+            this.tableLayoutPanel11.TabIndex = 19;
+            // 
+            // btn_RuleUp
+            // 
+            this.btn_RuleUp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_RuleUp.Location = new System.Drawing.Point(3, 3);
+            this.btn_RuleUp.Name = "btn_RuleUp";
+            this.btn_RuleUp.Size = new System.Drawing.Size(223, 21);
+            this.btn_RuleUp.TabIndex = 0;
+            this.btn_RuleUp.Text = "Вверх";
+            this.btn_RuleUp.UseVisualStyleBackColor = true;
+            // 
+            // btn_RuleDown
+            // 
+            this.btn_RuleDown.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_RuleDown.Location = new System.Drawing.Point(232, 3);
+            this.btn_RuleDown.Name = "btn_RuleDown";
+            this.btn_RuleDown.Size = new System.Drawing.Size(224, 21);
+            this.btn_RuleDown.TabIndex = 0;
+            this.btn_RuleDown.Text = "Вниз";
+            this.btn_RuleDown.UseVisualStyleBackColor = true;
+            // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
@@ -676,26 +741,6 @@
             this.splitter1.Size = new System.Drawing.Size(3, 591);
             this.splitter1.TabIndex = 14;
             this.splitter1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(3, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(146, 20);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Исходные данные";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(3, 349);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(297, 20);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Данные, не прошедшие по критериям";
             // 
             // MainForm
             // 
@@ -730,6 +775,7 @@
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel11.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -780,6 +826,9 @@
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Button btn_RuleUp;
+        private System.Windows.Forms.Button btn_RuleDown;
     }
 }
 

@@ -70,6 +70,7 @@ namespace ExcelHandler
         {
             foreach(Rule rule in Rules)
             {
+                Console.WriteLine(rule);
                 item = rule.checkRule(item);
                 if (item.Changed)
                 {
