@@ -36,6 +36,7 @@ namespace ExcelHandler
             }
             txbx_NewRuleType.Clear();
             updateTypeRulesList();
+            lsbx_Type.SelectedItem = NewRuleTypeName;
         }
 
         private void showMessage(string message)
@@ -92,6 +93,7 @@ namespace ExcelHandler
             rm.addAlias(TypeName, AliasName);
             txbx_Alias.Clear();
             updateTypeRulesList();
+            lsbx_Type.SelectedItem = TypeName;
         }
 
         private void btn_removeAlias_Click(object sender, EventArgs e)
@@ -101,6 +103,7 @@ namespace ExcelHandler
             string AliasName = lsbx_Alias.SelectedItem.ToString();
             rm.removeAlias(TypeName, AliasName);
             updateTypeRulesList();
+            lsbx_Type.SelectedItem = TypeName;
         }
 
         private void lsbx_Type_SelectedIndexChanged(object sender, EventArgs e)
@@ -242,6 +245,27 @@ namespace ExcelHandler
             updateTypeRulesList();
         }
 
+        private void btn_RuleUp_Click(object sender, EventArgs e)
+        {
+            if (lsbx_Rule.SelectedIndex < 0) { return; }
+            string TypeName = lsbx_Type.SelectedItem.ToString();
+            ProductTypeRuleList pt = rm.getType(TypeName);
+            string RuleName = lsbx_Rule.SelectedItem.ToString();
+            pt.moveRuleUp(RuleName);
+            updateRulesList(pt);
+            lsbx_Rule.SelectedItem = RuleName;
+        }
+
+        private void btn_RuleDown_Click(object sender, EventArgs e)
+        {
+            if (lsbx_Rule.SelectedIndex < 0) { return; }
+            string TypeName = lsbx_Type.SelectedItem.ToString();
+            ProductTypeRuleList pt = rm.getType(TypeName);
+            string RuleName = lsbx_Rule.SelectedItem.ToString();
+            pt.moveRuleDown(RuleName);
+            updateRulesList(pt);
+            lsbx_Rule.SelectedItem = RuleName;
+        }
     }
 
 }

@@ -70,7 +70,7 @@ namespace ExcelHandler
         {
             foreach(Rule rule in Rules)
             {
-                Console.WriteLine(rule);
+                //Console.WriteLine(rule);
                 item = rule.checkRule(item);
                 if (item.Changed)
                 {
@@ -84,6 +84,30 @@ namespace ExcelHandler
         {
             Rules.Remove(rule);
             Rules.Add(newRule);
+        }
+
+        internal void moveRuleUp(string ruleName)
+        {
+            Rule MovedRule = getRuleByDescription(ruleName);
+            int index=Rules.IndexOf(MovedRule);
+            if (index == 0) { return; }
+            Rule NeighbourRule = Rules[index - 1];
+            Rules.RemoveAt(index);
+            Rules.RemoveAt(index - 1);
+            Rules.Insert(index - 1, MovedRule);
+            Rules.Insert(index, NeighbourRule);
+        }
+
+        internal void moveRuleDown(string ruleName)
+        {
+            Rule MovedRule = getRuleByDescription(ruleName);
+            int index = Rules.IndexOf(MovedRule);
+            if (index >= (Rules.Count-2)) { return; }
+            Rule NeighbourRule = Rules[index +1];
+            Rules.RemoveAt(index + 1);
+            Rules.RemoveAt(index);
+            Rules.Insert(index, NeighbourRule);
+            Rules.Insert(index + 1, MovedRule);
         }
     }
 
