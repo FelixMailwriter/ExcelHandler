@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using ExcelHandler.Common;
 
 namespace ExcelHandler
@@ -22,6 +25,7 @@ namespace ExcelHandler
             List<Item> SourceItems = ToItems(SourceTable);
             List<Item> RecognazedItems = new List<Item>();
             List<Item> NotRecognazedItems = new List<Item>();
+            //Item NewItem = new Item(new List<string>());
 
             foreach (Item item in SourceItems)
             {

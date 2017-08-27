@@ -102,7 +102,7 @@ namespace ExcelHandler
         {
             Rule MovedRule = getRuleByDescription(ruleName);
             int index = Rules.IndexOf(MovedRule);
-            if (index >= (Rules.Count-1)) { return; }
+            if (index >= (Rules.Count-2)) { return; }
             Rule NeighbourRule = Rules[index +1];
             Rules.RemoveAt(index + 1);
             Rules.RemoveAt(index);

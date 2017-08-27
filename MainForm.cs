@@ -79,6 +79,8 @@ namespace ExcelHandler
 
         private void btn_removeRuleType_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("Вы уверены?", "Подтверждение удаления", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dr != DialogResult.OK) { return; }
             if (lsbx_Type.SelectedIndex < 0) { return; }
             string RemovedName = lsbx_Type.SelectedValue.ToString();
             rm.removeType(RemovedName);
@@ -98,6 +100,8 @@ namespace ExcelHandler
 
         private void btn_removeAlias_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("Вы уверены?", "Подтверждение удаления", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dr != DialogResult.OK) { return; }
             if ((lsbx_Type.SelectedIndex < 0) || (lsbx_Alias.SelectedIndex < 0)) { return; }
             string TypeName = lsbx_Type.SelectedItem.ToString();
             string AliasName = lsbx_Alias.SelectedItem.ToString();
@@ -163,7 +167,7 @@ namespace ExcelHandler
         private void btn_open_Click(object sender, EventArgs e)
         {
             OpenFileDialog fd = new OpenFileDialog();
-            fd.Filter = "Microsoft Excel (*.xls)|*.xls| Microsoft Excel (*.xlsm)|*.xlsm;";
+            fd.Filter = "Microsoft Excel (*.xls)|*.xls";
             if (fd.ShowDialog() == DialogResult.OK)
             {
                 txbx_path.Text = fd.FileName;
@@ -208,6 +212,8 @@ namespace ExcelHandler
 
         private void btn_removeRule_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("Вы уверены?", "Подтверждение удаления", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dr!=DialogResult.OK) { return; }
             if (lsbx_Rule.SelectedIndex < 0) { return; }
             string TypeName = lsbx_Type.SelectedItem.ToString();
             ProductTypeRuleList pt = rm.getType(TypeName);

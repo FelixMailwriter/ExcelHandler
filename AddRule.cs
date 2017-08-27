@@ -252,6 +252,8 @@ namespace ExcelHandler
 
         private void btn_RemoveCondition_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("Вы уверены?", "Подтверждение удаления", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dr != DialogResult.OK) { return; }
             string CriteriaDescription = lsbx_Criterias.SelectedItem.ToString();
             rule.removeCriteria(CriteriaDescription);
             lsbx_Criterias.DataSource = getCriteriaDescriptionList();
@@ -282,20 +284,6 @@ namespace ExcelHandler
             }
         }
 
-        private void btn_UpCondition_Click(object sender, EventArgs e)
-        {
-            string CriteriaDescription = lsbx_Criterias.SelectedItem.ToString();
-            rule.UpCriteria(CriteriaDescription);
-            lsbx_Criterias.DataSource = getCriteriaDescriptionList();
-            lsbx_Criterias.SelectedItem = CriteriaDescription;
-        }
 
-        private void btn_DownCondition_Click(object sender, EventArgs e)
-        {
-            string CriteriaDescription = lsbx_Criterias.SelectedItem.ToString();
-            rule.DownCriteria(CriteriaDescription);
-            lsbx_Criterias.DataSource = getCriteriaDescriptionList();
-            lsbx_Criterias.SelectedItem = CriteriaDescription;
-        }
     }
 }
