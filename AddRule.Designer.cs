@@ -36,6 +36,8 @@
             this.btn_addCondition = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.gb_mainCondition = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txbx_DefaultValue = new System.Windows.Forms.TextBox();
             this.txbx_SourceValueColumn = new System.Windows.Forms.TextBox();
             this.txbx_CheckedColumn = new System.Windows.Forms.TextBox();
             this.txbx_RuleName = new System.Windows.Forms.TextBox();
@@ -65,8 +67,6 @@
             this.txbx_Param1_2 = new System.Windows.Forms.TextBox();
             this.btn_Ok = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.txbx_DefaultValue = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.gb_mainCondition.SuspendLayout();
             this.gb_additionCondition.SuspendLayout();
             this.SuspendLayout();
@@ -155,6 +155,22 @@
             this.gb_mainCondition.TabIndex = 0;
             this.gb_mainCondition.TabStop = false;
             this.gb_mainCondition.Text = "Правило";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(435, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 13);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Значение по умолчанию";
+            // 
+            // txbx_DefaultValue
+            // 
+            this.txbx_DefaultValue.Location = new System.Drawing.Point(570, 26);
+            this.txbx_DefaultValue.Name = "txbx_DefaultValue";
+            this.txbx_DefaultValue.Size = new System.Drawing.Size(127, 20);
+            this.txbx_DefaultValue.TabIndex = 8;
             // 
             // txbx_SourceValueColumn
             // 
@@ -261,6 +277,7 @@
             this.btn_DownCondition.TabIndex = 19;
             this.btn_DownCondition.Text = "Вниз";
             this.btn_DownCondition.UseVisualStyleBackColor = true;
+            this.btn_DownCondition.Click += new System.EventHandler(this.btn_DownCondition_Click);
             // 
             // btn_UpCondition
             // 
@@ -270,6 +287,7 @@
             this.btn_UpCondition.TabIndex = 18;
             this.btn_UpCondition.Text = "Вверх";
             this.btn_UpCondition.UseVisualStyleBackColor = true;
+            this.btn_UpCondition.Click += new System.EventHandler(this.btn_UpCondition_Click);
             // 
             // gb_additionCondition
             // 
@@ -424,22 +442,6 @@
             this.btn_Cancel.Text = "Отмена";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
-            // 
-            // txbx_DefaultValue
-            // 
-            this.txbx_DefaultValue.Location = new System.Drawing.Point(570, 26);
-            this.txbx_DefaultValue.Name = "txbx_DefaultValue";
-            this.txbx_DefaultValue.Size = new System.Drawing.Size(127, 20);
-            this.txbx_DefaultValue.TabIndex = 8;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(435, 29);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(129, 13);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Значение по умолчанию";
             // 
             // AddRule
             // 

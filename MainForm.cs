@@ -163,7 +163,7 @@ namespace ExcelHandler
         private void btn_open_Click(object sender, EventArgs e)
         {
             OpenFileDialog fd = new OpenFileDialog();
-            fd.Filter = "Microsoft Excel (*.xls)|*.xls";
+            fd.Filter = "Microsoft Excel (*.xls)|*.xls| Microsoft Excel (*.xlsm)|*.xlsm;";
             if (fd.ShowDialog() == DialogResult.OK)
             {
                 txbx_path.Text = fd.FileName;
