@@ -84,6 +84,7 @@ namespace ExcelHandler
 
         private List<Item> ToItems(DataTable SourceItems)
         {
+            if (SourceItems == null) { return new List<Item>(); }
             List<Item> result = new List<Item>();
             foreach(DataRow dr in SourceItems.Rows)
             {

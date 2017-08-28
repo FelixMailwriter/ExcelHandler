@@ -20,6 +20,7 @@ namespace ExcelHandler
         public int SourceValueColumn { get; set; }
         public string DefaultValue { get; set; }
         public Action ActionInstance { get; set; }
+        public bool SwapLengthWidth { get; set; }
 
         public Rule()
         {
@@ -101,6 +102,13 @@ namespace ExcelHandler
         {
             if (MainCondition.checkCondition(item))      //Если условие правила выполняется...
             {
+                //если флаг SwapLengthWidth установлен, меняем ширину и длину местами
+                if (SwapLengthWidth)
+                {
+                    string width = item[2];
+                    item[2] = item[3];
+                    item[3] = width;
+                }
                 if (CriteriaList.Count == 0)                                  //Если список критериев пуст, сразу делаем действие
                 {
                     ActionInstance.doAction(ref item, TargetColumn, null, SourceValueColumn);

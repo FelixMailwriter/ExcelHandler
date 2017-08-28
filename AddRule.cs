@@ -48,6 +48,7 @@ namespace ExcelHandler
             txbx_SourceValueColumn.Text = rule.SourceValueColumn.ToString();
             txbx_MainParameter.Text = rule.MainCondition.Param1;
             txbx_DefaultValue.Text = rule.DefaultValue;
+            cbx_swap.Checked = rule.SwapLengthWidth;
             if (rule.ActionInstance != null)
             {
                 string ActionName = rule.ActionInstance.GetType().GetField("description").GetValue(null).ToString();
@@ -132,6 +133,7 @@ namespace ExcelHandler
             Rule NewRule = new Rule(Name, MainCondition, CheckedColumn, TargetColumn, 
                                                     SourceValueColumn, act, txbx_DefaultValue.Text);
             NewRule.CriteriaList = rule.CriteriaList;
+            NewRule.SwapLengthWidth = cbx_swap.Checked;
             rule = (NewRule == null) ? rule : NewRule;
             NewRule = null;
             DialogResult = DialogResult.OK;
@@ -207,11 +209,6 @@ namespace ExcelHandler
             {
                 txbx_Param2_2.Enabled = false;
             }
-        }
-
-        private void lsbx_AdditionalRules_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_addCondition_Click(object sender, EventArgs e)

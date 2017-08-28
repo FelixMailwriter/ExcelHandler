@@ -224,11 +224,6 @@ namespace ExcelHandler
             updateRulesList(pt);
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btn_CopyType_Click(object sender, EventArgs e)
         {
             string NewRuleTypeName = txbx_NewRuleType.Text.Trim();
@@ -271,6 +266,16 @@ namespace ExcelHandler
             pt.moveRuleDown(RuleName);
             updateRulesList(pt);
             lsbx_Rule.SelectedItem = RuleName;
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            //DataTable SavedItems = HandledItems[0];
+            DataTable SavedItems = (DataTable)dgv_Result.DataSource;
+            foreach(DataRow dr in SavedItems.Rows)
+            {
+
+            }
         }
     }
 

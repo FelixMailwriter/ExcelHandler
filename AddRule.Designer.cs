@@ -102,7 +102,6 @@
             this.lsbx_Criterias.Size = new System.Drawing.Size(371, 134);
             this.lsbx_Criterias.TabIndex = 100;
             this.lsbx_Criterias.TabStop = false;
-            this.lsbx_Criterias.SelectedIndexChanged += new System.EventHandler(this.lsbx_AdditionalRules_SelectedIndexChanged);
             // 
             // btn_RemoveCondition
             // 
