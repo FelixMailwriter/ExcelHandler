@@ -113,6 +113,7 @@ namespace ExcelHandler
 
         private void btn_Ok_Click(object sender, EventArgs e)
         {
+            if (!txbx_column1.Text.Equals("")) { btn_addCondition_Click(null, null); }
             string Name = txbx_RuleName.Text;
             string ConditionName = cmbx_MainCondition.Text;
             Operation op = null;
