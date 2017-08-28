@@ -270,12 +270,23 @@ namespace ExcelHandler
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            //DataTable SavedItems = HandledItems[0];
             DataTable SavedItems = (DataTable)dgv_Result.DataSource;
-            foreach(DataRow dr in SavedItems.Rows)
+            if (SavedItems == null)
             {
-
+                MessageBox.Show("Таблица результатов пуста", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            SaveFileDialog sd = new SaveFileDialog();
+            DialogResult dr=sd.ShowDialog(this);
+            sd.DefaultExt = ".xls";
+            string path="";
+            if (dr == DialogResult.OK)
+            {
+                path = sd.FileName;
+                eh.saveTable(path, SavedItems);
+                MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+
         }
     }
 

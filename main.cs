@@ -17,6 +17,7 @@ namespace ExcelHandler
     {
             this.form =  form;
             this.form.Visible = true;
+            fp = new FileParser();
             rm = new RulesManager("rules.dat");
             form.FileSelected += parseFile;
             ic = new ItemComparator(rm.ptrl);
@@ -24,9 +25,12 @@ namespace ExcelHandler
 
         private void parseFile(string filename)
         {
-            fp = new FileParser();
             SourceItemsTable = fp.parseFile(filename);
-            
+        }
+
+        public void saveTable(string path, DataTable table)
+        {
+            fp.saveTable(path, table);
         }
     }
 }

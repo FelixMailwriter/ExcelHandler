@@ -60,5 +60,19 @@ namespace ExcelHandler.FParser
             }
             return table;
         }
+
+        public void saveTable(string path, DataTable table)
+        {
+            foreach (DataRow dr in table.Rows)
+            {
+                object[] RowValues = dr.ItemArray;
+                foreach (object v in RowValues)
+                {
+                    Console.Write(v.ToString() + "; ");
+                }
+                Console.WriteLine();
+            }
+        }
+
     }
 }

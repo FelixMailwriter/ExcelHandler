@@ -157,6 +157,10 @@ namespace ExcelHandler
             {
                 description += " " + SourceValueColumn;
             }
+            if (SwapLengthWidth)
+            {
+                description += "<=>";
+            }
             
             return description;
         }
