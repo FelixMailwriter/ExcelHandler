@@ -284,6 +284,20 @@ namespace ExcelHandler
             }
         }
 
+        private void btn_UpCondition_Click(object sender, EventArgs e)
+        {
+            string CriteriaDescription = lsbx_Criterias.SelectedItem.ToString();
+            rule.UpCriteria(CriteriaDescription);
+            lsbx_Criterias.DataSource = getCriteriaDescriptionList();
+            lsbx_Criterias.SelectedItem = CriteriaDescription;
+        }
 
+        private void btn_DownCondition_Click(object sender, EventArgs e)
+        {
+            string CriteriaDescription = lsbx_Criterias.SelectedItem.ToString();
+            rule.DownCriteria(CriteriaDescription);
+            lsbx_Criterias.DataSource = getCriteriaDescriptionList();
+            lsbx_Criterias.SelectedItem = CriteriaDescription;
+        }
     }
 }

@@ -13,7 +13,9 @@ namespace ExcelHandler.ItmComparator.Actions
         public static string description = "Заменить значением столбца";
         public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
         {
-            throw new NotImplementedException();
+            string SourceValue = Item[sourceValueColumn];
+            Item[column] = SourceValue;
+            Item.Changed = true;
         }
     }
 }

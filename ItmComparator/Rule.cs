@@ -103,7 +103,7 @@ namespace ExcelHandler
             {
                 if (CriteriaList.Count == 0)                                  //Если список критериев пуст, сразу делаем действие
                 {
-                    ActionInstance.doAction(ref item, 0, null, 0);
+                    ActionInstance.doAction(ref item, TargetColumn, null, SourceValueColumn);
                     return item;
                 }
                 else                                                                    // иначе обрабатываем список критериев
@@ -153,5 +153,28 @@ namespace ExcelHandler
             return description;
         }
 
+        internal void UpCriteria(string criteriaDescription)
+        {
+            Criteria MovedCriteria = CriteriaList.Find(p => p.ToString().Equals(criteriaDescription));
+            int index = CriteriaList.IndexOf(MovedCriteria);
+            if (index == 0) { return; }
+            Criteria NeibourCriteria = CriteriaList[index - 1];
+            CriteriaList.RemoveAt(index);
+            CriteriaList.RemoveAt(index - 1);
+            CriteriaList.Insert(index - 1, MovedCriteria);
+            CriteriaList.Insert(index, NeibourCriteria);
+        }
+
+        internal void DownCriteria(string criteriaDescription)
+        {
+            Criteria MovedCriteria = CriteriaList.Find(p => p.ToString().Equals(criteriaDescription));
+            int index = CriteriaList.IndexOf(MovedCriteria);
+            if (index >= CriteriaList.Count - 1) { return; }
+            Criteria NeibourCriteria = CriteriaList[index + 1];
+            CriteriaList.RemoveAt(index + 1);
+            CriteriaList.RemoveAt(index);
+            CriteriaList.Insert(index, NeibourCriteria);
+            CriteriaList.Insert(index + 1, MovedCriteria);
+        }
     }
 }

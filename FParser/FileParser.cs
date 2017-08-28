@@ -8,7 +8,6 @@ namespace ExcelHandler.FParser
 {
     public class FileParser
     {
-        //DataTable ItemTable { get; set; }
 
         Excel.Application excellApp = new Excel.Application();
 
