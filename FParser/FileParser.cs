@@ -8,11 +8,12 @@ namespace ExcelHandler.FParser
 {
     public class FileParser
     {
-
+        string FileName;
         Excel.Application excellApp = new Excel.Application();
 
         internal DataTable parseFile(string filename)
         {
+            FileName = filename;
             DataTable ItemTable = createTable();
             try
             {   
@@ -63,16 +64,75 @@ namespace ExcelHandler.FParser
 
         public void saveTable(string path, DataTable table)
         {
-            foreach (DataRow dr in table.Rows)
+            string sortColumn = "13";
+            //string selectColumn = "3";
+            List<DataTable> tables = getTables(table, sortColumn);
+            table.DefaultView.Sort = "5";
+            //foreach (DataRow dr in table.Rows)
+            //{
+            //    object[] RowValues = dr.ItemArray;
+            //    int column = 1;
+            //    foreach (object v in RowValues)
+            //    {
+            //        ExcelApp.Cells[row, column] = v.ToString();
+            //        ++column;
+            //    }
+            //    ++row;
+            //}
+            //ExcelApp.Visible = true;
+            //ExcelApp.Quit();
+        }
+
+        private List<DataTable> getTables(DataTable table, string sortColumn)
+        {
+            List<DataTable> tables = new List<DataTable>();
+            trimColumnContext(ref table, sortColumn, 5); //в сортируемой колонке отбрасываем все, кроме заданного количество знаков
+            table.DefaultView.Sort = sortColumn;            //сортируем таблицу по колонке
+            string selectCriteria = "";
+            DataTable dt = createTable();
+            foreach (DataRow row in table.Rows)
             {
-                object[] RowValues = dr.ItemArray;
-                foreach (object v in RowValues)
+                if (!row[sortColumn].Equals(selectCriteria))
                 {
-                    Console.Write(v.ToString() + "; ");
+                    tables.Add(dt);
+                    dt = createTable();
+                    DataRow dr = dt.NewRow();
+                    cloneRow(ref dr, row);
+                    dt.Rows.Add(dr);
+                    selectCriteria = row[sortColumn].ToString();
                 }
-                Console.WriteLine();
+                else
+                {
+                    DataRow dr = dt.NewRow();
+                    cloneRow(ref dr, row);
+                    dt.Rows.Add(dr);
+                }
+            }
+            if (tables.Count > 0)
+            {
+                tables.RemoveAt(0);
+            }
+            return tables;
+        }
+
+        private void cloneRow(ref DataRow dr, DataRow row)
+        {
+            object[] Cellvalues = row.ItemArray;
+            for (int i=0; i<Cellvalues.Length; i++)
+            {
+                dr[i] = Cellvalues[i].ToString();
             }
         }
 
+        private void trimColumnContext(ref DataTable table, string columnName, int symbolsCount)
+        {
+            foreach(DataRow dr in table.Rows)
+            {
+                string CellValue = dr[columnName].ToString();
+                if (CellValue.Equals("") || (CellValue == null)) { continue; }
+                string NewCellValue = CellValue.Substring(0, symbolsCount);
+                dr[columnName] = NewCellValue;
+            }
+        }
     }
 }

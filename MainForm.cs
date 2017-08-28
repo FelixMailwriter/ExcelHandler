@@ -181,11 +181,6 @@ namespace ExcelHandler
             dataGridView1.DataSource = eh.SourceItemsTable;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btn_exec_Click(object sender, EventArgs e)
         {
             DataTable [] HandledItems = new DataTable[2];
@@ -276,13 +271,15 @@ namespace ExcelHandler
                 MessageBox.Show("Таблица результатов пуста", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            SaveFileDialog sd = new SaveFileDialog();
-            DialogResult dr=sd.ShowDialog(this);
-            sd.DefaultExt = ".xls";
+            FolderBrowserDialog fd = new FolderBrowserDialog();
+            DialogResult dr = fd.ShowDialog(this);
+            //SaveFileDialog sd = new SaveFileDialog();
+            //DialogResult dr=sd.ShowDialog(this);
+
             string path="";
             if (dr == DialogResult.OK)
             {
-                path = sd.FileName;
+                path = fd.SelectedPath;//.FileName;
                 eh.saveTable(path, SavedItems);
                 MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
