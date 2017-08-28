@@ -8,6 +8,7 @@ namespace ExcelHandler
     [Serializable]
     public class ProductTypeRuleList
     {
+        public int StartCounter;
         public string Name { get; set; }
         public List<string> Aliases { get; private set; }
         public List<Rule> Rules { get; private set; }
