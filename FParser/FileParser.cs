@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using ExcelHandler.Common;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -16,7 +17,7 @@ namespace ExcelHandler.FParser
             FileName = filename;
             DataTable ItemTable = createTable();
             try
-            {   
+            {
                 excellApp.Workbooks.Open(filename);
                 int row = 12;
                 bool isRows = true;
@@ -31,7 +32,7 @@ namespace ExcelHandler.FParser
                         if (cellRange != null)
                         {
                             cellValue = cellRange.Text;
-                            if (cellValue.Equals("") && (column == 1)) { isRows = false; break;  }
+                            if (cellValue.Equals("") && (column == 1)) { isRows = false; break; }
                             //Console.Write("[{0},{1}]={2}; ", row, column, cellValue);
                             dr[column.ToString()] = cellValue;
                         }
@@ -42,7 +43,7 @@ namespace ExcelHandler.FParser
                         ItemTable.Rows.Add(dr);
                     }
                 }
-            excellApp.Quit();
+                excellApp.Quit();
             }
             catch (Exception eee)
             {
@@ -52,10 +53,10 @@ namespace ExcelHandler.FParser
             return ItemTable;
         }
 
-        private DataTable createTable()
+        private DataTable createTable(string name = "")
         {
             DataTable table = new DataTable();
-            for (int a=1; a<=13; a++)
+            for (int a = 1; a <= 13; a++)
             {
                 table.Columns.Add(new DataColumn(a.ToString(), typeof(string)));
             }
@@ -65,22 +66,19 @@ namespace ExcelHandler.FParser
         public void saveTable(string path, DataTable table)
         {
             string sortColumn = "13";
-            //string selectColumn = "3";
             List<DataTable> tables = getTables(table, sortColumn);
-            table.DefaultView.Sort = "5";
-            //foreach (DataRow dr in table.Rows)
-            //{
-            //    object[] RowValues = dr.ItemArray;
-            //    int column = 1;
-            //    foreach (object v in RowValues)
-            //    {
-            //        ExcelApp.Cells[row, column] = v.ToString();
-            //        ++column;
-            //    }
-            //    ++row;
-            //}
-            //ExcelApp.Visible = true;
-            //ExcelApp.Quit();
+            foreach (DataTable CurrentTable in tables)
+            {
+                saveTableAsCSV(path, CurrentTable);
+            }
+        }
+
+        private void saveTableAsCSV(string path, DataTable currentTable)
+        {
+            string filename = currentTable.TableName;
+            //StreamWriter sw = new StreamWriter(filename, false, Encoding.Unicode);
+
+
         }
 
         private List<DataTable> getTables(DataTable table, string sortColumn)
@@ -90,24 +88,26 @@ namespace ExcelHandler.FParser
             table.DefaultView.Sort = sortColumn;            //сортируем таблицу по колонке
             string selectCriteria = "";
             DataTable dt = createTable();
+            DataRow dr;
             foreach (DataRow row in table.Rows)
             {
                 if (!row[sortColumn].Equals(selectCriteria))
                 {
                     tables.Add(dt);
-                    dt = createTable();
-                    DataRow dr = dt.NewRow();
+                    dt = createTable(selectCriteria);
+                    dr = dt.NewRow();
                     cloneRow(ref dr, row);
                     dt.Rows.Add(dr);
                     selectCriteria = row[sortColumn].ToString();
                 }
                 else
                 {
-                    DataRow dr = dt.NewRow();
+                    dr = dt.NewRow();
                     cloneRow(ref dr, row);
                     dt.Rows.Add(dr);
                 }
             }
+            tables.Add(dt);
             if (tables.Count > 0)
             {
                 tables.RemoveAt(0);
@@ -118,7 +118,7 @@ namespace ExcelHandler.FParser
         private void cloneRow(ref DataRow dr, DataRow row)
         {
             object[] Cellvalues = row.ItemArray;
-            for (int i=0; i<Cellvalues.Length; i++)
+            for (int i = 0; i < Cellvalues.Length; i++)
             {
                 dr[i] = Cellvalues[i].ToString();
             }
@@ -126,7 +126,7 @@ namespace ExcelHandler.FParser
 
         private void trimColumnContext(ref DataTable table, string columnName, int symbolsCount)
         {
-            foreach(DataRow dr in table.Rows)
+            foreach (DataRow dr in table.Rows)
             {
                 string CellValue = dr[columnName].ToString();
                 if (CellValue.Equals("") || (CellValue == null)) { continue; }
