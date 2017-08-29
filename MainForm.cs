@@ -293,6 +293,7 @@ namespace ExcelHandler
             pElements.addSelectedColumns(lsbx_AccCol.SelectedItem.ToString());
             lsbx_SelCol.DataSource = null;
             lsbx_SelCol.DataSource = pElements.SelectedColumns;
+            pElements.saveParams();
         }
 
         private void btn_DelCol_Click(object sender, EventArgs e)
@@ -300,6 +301,7 @@ namespace ExcelHandler
             pElements.removeSelectedColumns(lsbx_SelCol.SelectedItem.ToString());
             lsbx_SelCol.DataSource = null;
             lsbx_SelCol.DataSource = pElements.SelectedColumns;
+            pElements.saveParams();
         }
     }
 

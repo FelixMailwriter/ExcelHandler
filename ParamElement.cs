@@ -80,7 +80,7 @@ namespace ExcelHandler
             }
         }
 
-        public void saveRules()
+        public void saveParams()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
