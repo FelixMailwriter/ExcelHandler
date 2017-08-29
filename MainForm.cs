@@ -19,8 +19,10 @@ namespace ExcelHandler
             eh = new main(this);
             rm = eh.rm;
             updateTypeRulesList();
-
+            fillParamElementsTab();
         }
+
+ 
 
         private void btn_addRuleType_Click(object sender, EventArgs e)
         {
@@ -284,6 +286,20 @@ namespace ExcelHandler
                 MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
 
+        }
+
+        private void btn_AddCol_Click(object sender, EventArgs e)
+        {
+            pElements.addSelectedColumns(lsbx_AccCol.SelectedItem.ToString());
+            lsbx_SelCol.DataSource = null;
+            lsbx_SelCol.DataSource = pElements.SelectedColumns;
+        }
+
+        private void btn_DelCol_Click(object sender, EventArgs e)
+        {
+            pElements.removeSelectedColumns(lsbx_SelCol.SelectedItem.ToString());
+            lsbx_SelCol.DataSource = null;
+            lsbx_SelCol.DataSource = pElements.SelectedColumns;
         }
     }
 

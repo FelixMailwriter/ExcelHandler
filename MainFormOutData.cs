@@ -9,9 +9,14 @@ namespace ExcelHandler
 {
     public partial class MainForm : Form
     {
-        public void aa()
+        private ParamElement pElements; 
+
+
+        private void fillParamElementsTab()
         {
-            
+            pElements = new ParamElement("pelements.dat");
+            lsbx_AccCol.DataSource = pElements.AccesibleColumns;
+            lsbx_SelCol.DataSource = pElements.SelectedColumns;
         }
     }
 }
