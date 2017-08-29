@@ -11,19 +11,32 @@ namespace ExcelHandler.FParser
     {
         string FileName;
         Excel.Application excellApp = new Excel.Application();
+        public string OrderNumber { get; private set; }
 
         internal DataTable parseFile(string filename)
         {
             FileName = filename;
+            
             DataTable ItemTable = createTable();
             try
             {
                 excellApp.Workbooks.Open(filename);
                 int row = 12;
                 bool isRows = true;
+                Excel.Worksheet currentSheet = (Excel.Worksheet)excellApp.Workbooks[1].Worksheets[1];
+                Excel.Range OrderNumberCellRange= (Excel.Range)currentSheet.Cells[2, 8];
+                if (OrderNumberCellRange != null)
+                {
+                    OrderNumber = OrderNumberCellRange.Text;
+                }
+                else
+                {
+                    OrderNumber = "Отсутствует";
+                }
+
                 while (isRows)
                 {
-                    Excel.Worksheet currentSheet = (Excel.Worksheet)excellApp.Workbooks[1].Worksheets[1];
+                    
                     DataRow dr = ItemTable.NewRow();
                     for (int column = 1; column < 14; column++)
                     {
@@ -33,7 +46,6 @@ namespace ExcelHandler.FParser
                         {
                             cellValue = cellRange.Text;
                             if (cellValue.Equals("") && (column == 1)) { isRows = false; break; }
-                            //Console.Write("[{0},{1}]={2}; ", row, column, cellValue);
                             dr[column.ToString()] = cellValue;
                         }
                     }
