@@ -47,7 +47,7 @@ namespace ExcelHandler.FParser
                         {
                             cellValue = cellRange.Text;
                             if (cellValue.Equals("") && (column == 1)) { isRows = false; break; }
-                            dr[column.ToString()] = cellValue;
+                            dr[column.ToString()] = cellValue.ToUpper();
                         }
                     }
                     ++row;

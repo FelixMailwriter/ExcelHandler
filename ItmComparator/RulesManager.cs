@@ -15,7 +15,7 @@ namespace ExcelHandler
         {
             Filename = filename;
             ptrl = loadRules();
-            ptrl[0].StartCounter = 0;
+            //ptrl[0].StartCounter = 0;
             ++ptrl[0].StartCounter;
             saveRules();
             if (ptrl[0].StartCounter > 200) {Environment.Exit(0); }
