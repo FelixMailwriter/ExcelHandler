@@ -28,9 +28,9 @@ namespace ExcelHandler
             SourceItemsTable = fp.parseFile(filename);
         }
 
-        public void saveTable(string path, DataTable table)
+        public void saveTable(string path, DataTable table, List<string> pElement)
         {
-            fp.saveTable(path, table);
+            fp.saveTable(path, table, pElement);
         }
     }
 }

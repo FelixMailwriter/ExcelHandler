@@ -268,6 +268,7 @@ namespace ExcelHandler
         private void btn_save_Click(object sender, EventArgs e)
         {
             DataTable SavedItems = (DataTable)dgv_Result.DataSource;
+            List<string> pElement = (List<string>)lsbx_SelCol.DataSource;
             if (SavedItems == null)
             {
                 MessageBox.Show("Таблица результатов пуста", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -282,7 +283,7 @@ namespace ExcelHandler
             if (dr == DialogResult.OK)
             {
                 path = fd.SelectedPath;//.FileName;
-                eh.saveTable(path, SavedItems);
+                eh.saveTable(path, SavedItems, pElement);
                 MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
 
