@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using ExcelHandler.Common;
+using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelHandler.FParser
@@ -12,6 +12,7 @@ namespace ExcelHandler.FParser
         string FileName;
         Excel.Application excellApp = new Excel.Application();
         public string OrderNumber { get; private set; }
+        public string FileNamr { get; set; }
 
         internal DataTable parseFile(string filename)
         {
@@ -82,11 +83,10 @@ namespace ExcelHandler.FParser
             //Подготавливаем список таблиц таблиц к выводу
             List<DataTable> PreparedTable = prepareTable(tables, pElement);
 
-
-            //foreach (DataTable CurrentTable in tables)
-            //{
-            //    saveTableAsCSV(path, CurrentTable);
-            //}
+            foreach (DataTable CurrentTable in PreparedTable)
+            {
+                saveTableAsCSV(path, CurrentTable);
+            }
         }
 
         private List<DataTable> prepareTable(List<DataTable> tables, List<string> pElement)
@@ -95,19 +95,17 @@ namespace ExcelHandler.FParser
             foreach (DataTable dt in tables)
             {
                 DataTable resultTable = new DataTable(dt.Rows[0].ItemArray[12].ToString()); // имя таблицы - код материала из 13 колонки
-                for (int i = 0; i < 15; i++)
+                for (int i = 0; i < 14; i++)
                 {
-                    resultTable.Columns.Add("i+1");
+                    resultTable.Columns.Add((i + 1).ToString());
                 }
 
                 foreach (DataRow drSource in dt.Rows)
                 {
-                    //object[] sourceRow = drSource.ItemArray;
-
                     DataRow resultRow = resultTable.NewRow();
 
                     //Записываем в первый столбез значение кол11+_+кол5
-                    resultRow[0] = drSource[10] + _ + drSource[4];
+                    resultRow[0] = drSource[10]+ "_" + drSource[4];
                     resultRow[1] = drSource[1];
                     resultRow[2] = drSource[2];
                     resultRow[3] = "1";
@@ -136,17 +134,37 @@ namespace ExcelHandler.FParser
                 int colNum = int.Parse(n);
                 res += drSource[colNum - 1].ToString() + " = ";
             }
-            res.Remove(res.Length-4);
+            res=res.Remove(res.Length-3);
             return res;
         }
 
         private void saveTableAsCSV(string path, DataTable currentTable)
+        {
+            string[] path_blocs = FileName.Split('\\');
+            string loadedFilename = path_blocs[path_blocs.Length - 1];
+            int extentionPos=loadedFilename.LastIndexOf('.');
+            loadedFilename=loadedFilename.Remove(extentionPos);
+            string filename = path+"\\"+loadedFilename + "_"+currentTable.TableName+".csv";
+            try
             {
-                string filename = currentTable.TableName;
-                //StreamWriter sw = new StreamWriter(filename, false, Encoding.Unicode);
-
-
+                StreamWriter sw = new StreamWriter(filename, false, Encoding.Unicode);
+                foreach(DataRow dr in currentTable.Rows)
+                {
+                    string row = "";
+                    object [] rowcells = dr.ItemArray;
+                    foreach(object cell in rowcells)
+                    {
+                        row += cell.ToString() + ";";
+                    }
+                    sw.Write(row);
+                    sw.Write(" \r\n");
+                }
+                sw.Close();
             }
+            catch (Exception ex)  {     }
+
+
+        }
 
             private List<DataTable> getTables(DataTable table, string sortColumn)
             {
@@ -193,7 +211,13 @@ namespace ExcelHandler.FParser
                 {
                     for (int i = 0; i < dr.ItemArray.Length; i++)
                     {
-                        if ((dr.ItemArray[i] == null) || (dr.ItemArray[i].ToString().Equals(""))) { dr.ItemArray[i] = "-"; }
+                        if ((dr.ItemArray[i] == null) || (dr.ItemArray[i].ToString().Equals(""))) {
+                        dr.ItemArray[i] = "-";
+                    }
+                    else
+                    {
+                        dr.ItemArray[i] = dr.ItemArray[i].ToString().Trim();
+                    }
                     }
                 }
             }

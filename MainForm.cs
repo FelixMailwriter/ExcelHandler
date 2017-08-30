@@ -276,13 +276,10 @@ namespace ExcelHandler
             }
             FolderBrowserDialog fd = new FolderBrowserDialog();
             DialogResult dr = fd.ShowDialog(this);
-            //SaveFileDialog sd = new SaveFileDialog();
-            //DialogResult dr=sd.ShowDialog(this);
-
             string path="";
             if (dr == DialogResult.OK)
             {
-                path = fd.SelectedPath;//.FileName;
+                path = fd.SelectedPath;
                 eh.saveTable(path, SavedItems, pElement);
                 MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
