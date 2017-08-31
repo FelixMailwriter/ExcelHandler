@@ -105,7 +105,7 @@ namespace ExcelHandler.FParser
                     DataRow resultRow = resultTable.NewRow();
 
                     //Записываем в первый столбез значение кол11+_+кол5
-                    resultRow[0] = drSource[10]+ "_" + drSource[4];
+                    resultRow[0] = drSource[10] + "_" + drSource[4];
                     resultRow[1] = drSource[1];
                     resultRow[2] = drSource[2];
                     resultRow[3] = "1";
@@ -134,7 +134,7 @@ namespace ExcelHandler.FParser
                 int colNum = int.Parse(n);
                 res += drSource[colNum - 1].ToString() + " = ";
             }
-            res=res.Remove(res.Length-3);
+            res = res.Remove(res.Length - 3);
             return res;
         }
 
@@ -142,17 +142,17 @@ namespace ExcelHandler.FParser
         {
             string[] path_blocs = FileName.Split('\\');
             string loadedFilename = path_blocs[path_blocs.Length - 1];
-            int extentionPos=loadedFilename.LastIndexOf('.');
-            loadedFilename=loadedFilename.Remove(extentionPos);
-            string filename = path+"\\"+loadedFilename + "_"+currentTable.TableName+".csv";
+            int extentionPos = loadedFilename.LastIndexOf('.');
+            loadedFilename = loadedFilename.Remove(extentionPos);
+            string filename = path + "\\" + loadedFilename + "_" + currentTable.TableName + ".csv";
             try
             {
                 StreamWriter sw = new StreamWriter(filename, false, Encoding.Unicode);
-                foreach(DataRow dr in currentTable.Rows)
+                foreach (DataRow dr in currentTable.Rows)
                 {
                     string row = "";
-                    object [] rowcells = dr.ItemArray;
-                    foreach(object cell in rowcells)
+                    object[] rowcells = dr.ItemArray;
+                    foreach (object cell in rowcells)
                     {
                         row += cell.ToString() + ";";
                     }
@@ -161,85 +161,91 @@ namespace ExcelHandler.FParser
                 }
                 sw.Close();
             }
-            catch (Exception ex)  {     }
+            catch (Exception ex) { }
 
 
         }
 
-            private List<DataTable> getTables(DataTable table, string sortColumn)
-            {
-                //Заполняем пустые ячейки знаком "-"
-                fillEmptyCells(ref table);
+        private List<DataTable> getTables(DataTable table, string sortColumn)
+        {
 
-                //Группируем таблицу по заданной колонке
-                List<DataTable> tables = new List<DataTable>();
-                trimColumnContext(ref table, sortColumn, 5); //в сортируемой колонке отбрасываем все, кроме заданного количество знаков
-                table.DefaultView.Sort = sortColumn;            //сортируем таблицу по колонке
-                                                                //Разделяем на разные таблицы, в зависимости от значений в группируемой колонке
-                string selectCriteria = "";
-                DataTable dt = createTable();
-                DataRow dr;
-                foreach (DataRow row in table.Rows)
+            DataTable TempData = table.Copy();
+            //Заполняем пустые ячейки знаком "-"
+            fillEmptyCells(ref TempData);
+
+            //Группируем таблицу по заданной колонке
+            List<DataTable> tables = new List<DataTable>();
+
+            trimColumnContext(ref TempData, sortColumn, 5); //в сортируемой колонке отбрасываем все, кроме заданного количество знаков
+            TempData.DefaultView.Sort = sortColumn+" asc";            //сортируем таблицу по колонке
+            DataTable SourceData = new DataTable();
+            SourceData =TempData.DefaultView.ToTable();     //Копируем отсортированные данные в новую таблицу
+            //Разделяем на разные таблицы, в зависимости от значений в группируемой колонке
+            string selectCriteria = "";
+            DataTable dt = createTable();
+            DataRow dr;
+            foreach (DataRow row in SourceData.Rows)
+            {
+                if (!row[sortColumn].Equals(selectCriteria))
                 {
-                    if (!row[sortColumn].Equals(selectCriteria))
-                    {
-                        tables.Add(dt);
-                        dt = createTable(selectCriteria);
-                        dr = dt.NewRow();
-                        cloneRow(ref dr, row);
-                        dt.Rows.Add(dr);
-                        selectCriteria = row[sortColumn].ToString();
-                    }
-                    else
-                    {
-                        dr = dt.NewRow();
-                        cloneRow(ref dr, row);
-                        dt.Rows.Add(dr);
-                    }
+                    tables.Add(dt);
+                    dt = createTable(selectCriteria);
+                    dr = dt.NewRow();
+                    cloneRow(ref dr, row);
+                    dt.Rows.Add(dr);
+                    selectCriteria = row[sortColumn].ToString();
                 }
-                tables.Add(dt);
-                if (tables.Count > 0)
+                else
                 {
-                    tables.RemoveAt(0);
+                    dr = dt.NewRow();
+                    cloneRow(ref dr, row);
+                    dt.Rows.Add(dr);
                 }
-                return tables;
             }
-
-            private void fillEmptyCells(ref DataTable table)
+            tables.Add(dt);
+            if (tables.Count > 0)
             {
-                foreach (DataRow dr in table.Rows)
+                tables.RemoveAt(0);
+            }
+            return tables;
+        }
+
+        private void fillEmptyCells(ref DataTable table)
+        {
+            foreach (DataRow dr in table.Rows)
+            {
+                for (int i = 0; i < dr.ItemArray.Length; i++)
                 {
-                    for (int i = 0; i < dr.ItemArray.Length; i++)
+                    if ((dr.ItemArray[i] == null) || (dr.ItemArray[i].ToString().Equals("")))
                     {
-                        if ((dr.ItemArray[i] == null) || (dr.ItemArray[i].ToString().Equals(""))) {
                         dr.ItemArray[i] = "-";
                     }
                     else
                     {
                         dr.ItemArray[i] = dr.ItemArray[i].ToString().Trim();
                     }
-                    }
-                }
-            }
-
-            private void cloneRow(ref DataRow dr, DataRow row)
-            {
-                object[] Cellvalues = row.ItemArray;
-                for (int i = 0; i < Cellvalues.Length; i++)
-                {
-                    dr[i] = Cellvalues[i].ToString();
-                }
-            }
-
-            private void trimColumnContext(ref DataTable table, string columnName, int symbolsCount)
-            {
-                foreach (DataRow dr in table.Rows)
-                {
-                    string CellValue = dr[columnName].ToString();
-                    if (CellValue.Equals("") || (CellValue == null)) { continue; }
-                    string NewCellValue = CellValue.Substring(0, symbolsCount);
-                    dr[columnName] = NewCellValue;
                 }
             }
         }
+
+        private void cloneRow(ref DataRow dr, DataRow row)
+        {
+            object[] Cellvalues = row.ItemArray;
+            for (int i = 0; i < Cellvalues.Length; i++)
+            {
+                dr[i] = Cellvalues[i].ToString();
+            }
+        }
+
+        private void trimColumnContext(ref DataTable table, string columnName, int symbolsCount)
+        {
+            foreach (DataRow dr in table.Rows)
+            {
+                string CellValue = dr[columnName].ToString();
+                if (CellValue.Equals("") || (CellValue == null)) { continue; }
+                string NewCellValue = CellValue.Substring(0, symbolsCount);
+                dr[columnName] = NewCellValue;
+            }
+        }
     }
+}

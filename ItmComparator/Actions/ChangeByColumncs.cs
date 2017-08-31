@@ -14,7 +14,7 @@ namespace ExcelHandler.ItmComparator.Actions
         public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
         {
             string SourceValue = Item[sourceValueColumn];
-            Item[column] = SourceValue.ToUpper();
+            Item[column] = SourceValue;
             Item.Changed = true;
         }
     }

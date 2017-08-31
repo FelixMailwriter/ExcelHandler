@@ -11,7 +11,7 @@ namespace ExcelHandler.ItmComparator.Actions
         public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
         {
             int ColumnNumber = column;
-                Item[ColumnNumber] = suffix.ToUpper();
+                Item[ColumnNumber] = suffix;
                 Item.Changed = true;
         }
     }

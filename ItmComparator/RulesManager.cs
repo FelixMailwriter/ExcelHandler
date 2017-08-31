@@ -95,7 +95,9 @@ namespace ExcelHandler
                 }
                 catch (SerializationException)
                 {
-                    return new List<ProductTypeRuleList>();
+                    //return new List<ProductTypeRuleList>();
+                    Environment.Exit(0);
+                    return null;
                 }
             }
         }
