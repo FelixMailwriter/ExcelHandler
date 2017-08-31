@@ -147,7 +147,7 @@ namespace ExcelHandler.FParser
             string filename = path + "\\" + loadedFilename + "_" + currentTable.TableName + ".csv";
             try
             {
-                StreamWriter sw = new StreamWriter(filename, false, Encoding.Unicode);
+                StreamWriter sw = new StreamWriter(filename, false, Encoding.UTF8);
                 foreach (DataRow dr in currentTable.Rows)
                 {
                     string row = "";
@@ -156,8 +156,9 @@ namespace ExcelHandler.FParser
                     {
                         row += cell.ToString() + ";";
                     }
+                    row=row.Remove(row.Length - 1);
                     sw.Write(row);
-                    sw.Write(" \r\n");
+                    sw.Write("\n");
                 }
                 sw.Close();
             }
