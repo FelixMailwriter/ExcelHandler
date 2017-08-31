@@ -8,3 +8,4 @@ Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Release\ExcelHandler.
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Release\ExcelHandler.csproj.GenerateResource.Cache
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Release\ExcelHandler.exe
 Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Release\ExcelHandler.pdb
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Release\ExcelHandler.csprojResolveAssemblyReference.cache

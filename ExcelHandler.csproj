@@ -45,6 +45,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\ExcelHandler.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -94,7 +95,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FParser\FileParser.cs" />
+    <Compile Include="FParser\FileHandler.cs" />
     <Compile Include="ItmComparator\ItemComparator.cs" />
     <Compile Include="MainFormOutData.cs">
       <SubType>Form</SubType>

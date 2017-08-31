@@ -7,7 +7,7 @@ namespace ExcelHandler
 {
     public class main
     {
-        private FileParser fp;
+        private FileHandler fp;
         public RulesManager rm { get; set; }
         public DataTable SourceItemsTable { get; set; }
         public ItemComparator ic { get; set; }
@@ -17,7 +17,7 @@ namespace ExcelHandler
     {
             this.form =  form;
             this.form.Visible = true;
-            fp = new FileParser();
+            fp = new FileHandler();
             rm = new RulesManager("rules.dat");
             form.FileSelected += parseFile;
             ic = new ItemComparator(rm.ptrl);

@@ -7,16 +7,21 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelHandler.FParser
 {
-    public class FileParser
+    /// <summary>
+    /// Класс загрузки и выгрузки файлов
+    /// </summary>
+    public class FileHandler
     {
-        string FileName;
+        string SourceFilePath;
         Excel.Application excellApp = new Excel.Application();
+        /// <summary>
+        /// Номер заказа
+        /// </summary>
         public string OrderNumber { get; private set; }
-        public string FileNamr { get; set; }
 
         internal DataTable parseFile(string filename)
         {
-            FileName = filename;
+            SourceFilePath = filename;
 
             DataTable ItemTable = createTable();
             try
@@ -76,13 +81,20 @@ namespace ExcelHandler.FParser
             return table;
         }
 
+        /// <summary>
+        /// Сохранение таблицы с распарсенными данными
+        /// </summary>
+        /// <param name="path">Путь сохранения</param>
+        /// <param name="table">Таблица с сохраняемыми данными</param>
+        /// <param name="pElement">Список столбцов для формирования столбца "Элемент№</param>
         public void saveTable(string path, DataTable table, List<string> pElement)
         {
+            
             string sortColumn = "13";
             List<DataTable> tables = getTables(table, sortColumn);
             //Подготавливаем список таблиц таблиц к выводу
             List<DataTable> PreparedTable = prepareTable(tables, pElement);
-
+            //Выводим список таблиц отдельным файлом на таблицу
             foreach (DataTable CurrentTable in PreparedTable)
             {
                 saveTableAsCSV(path, CurrentTable);
@@ -140,14 +152,14 @@ namespace ExcelHandler.FParser
 
         private void saveTableAsCSV(string path, DataTable currentTable)
         {
-            string[] path_blocs = FileName.Split('\\');
+            string[] path_blocs = SourceFilePath.Split('\\');
             string loadedFilename = path_blocs[path_blocs.Length - 1];
             int extentionPos = loadedFilename.LastIndexOf('.');
             loadedFilename = loadedFilename.Remove(extentionPos);
             string filename = path + "\\" + loadedFilename + "_" + currentTable.TableName + ".csv";
             try
             {
-                StreamWriter sw = new StreamWriter(filename, false, Encoding.UTF8);
+                StreamWriter sw = new StreamWriter(filename, false);
                 foreach (DataRow dr in currentTable.Rows)
                 {
                     string row = "";
