@@ -12,17 +12,17 @@ namespace ExcelHandler
         public event FileSelectedHandler FileSelected;
         private RulesManager rm;
         private main eh;
+        private SettingsKeeper sk;
 
         public MainForm()
         {
             InitializeComponent();
             eh = new main(this);
             rm = eh.rm;
+            sk = SettingsKeeper.getInstance();
             updateTypeRulesList();
-            fillParamElementsTab();
+            fillForm();
         }
-
- 
 
         private void btn_addRuleType_Click(object sender, EventArgs e)
         {
@@ -274,16 +274,22 @@ namespace ExcelHandler
                 MessageBox.Show("Таблица результатов пуста", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            FolderBrowserDialog fd = new FolderBrowserDialog();
-            DialogResult dr = fd.ShowDialog(this);
-            string path="";
-            if (dr == DialogResult.OK)
+            string path = "";
+            if (sk.AlwaysAskSavingPath)
             {
-                path = fd.SelectedPath;
-                eh.saveTable(path, SavedItems, pElement);
-                MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                FolderBrowserDialog fd = new FolderBrowserDialog();
+                DialogResult dr = fd.ShowDialog(this);
+                if (dr == DialogResult.OK)
+                {
+                    path = fd.SelectedPath;
+                }
             }
-
+            else
+            {
+                path = (sk.SaveResultsPath.Equals("")) ? "C:\\" : sk.SaveResultsPath;
+            }
+            eh.saveTable(path, SavedItems, pElement);
+            MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         private void btn_AddCol_Click(object sender, EventArgs e)
@@ -300,6 +306,38 @@ namespace ExcelHandler
             lsbx_SelCol.DataSource = null;
             lsbx_SelCol.DataSource = pElements.SelectedColumns;
             pElements.saveParams();
+        }
+
+        private void cxbx_AlwaysAskPath_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cxbx_AlwaysAskPath.Checked)
+            {
+                txbx_PathToSavedFiles.Enabled = false;
+                btn_browsePath.Enabled = false;
+                sk.AlwaysAskSavingPath = true;
+                sk.saveSettings(this, null);
+            }
+            else
+            {
+                sk.AlwaysAskSavingPath = false;
+                txbx_PathToSavedFiles.Enabled = true;
+                btn_browsePath.Enabled = true;
+                txbx_PathToSavedFiles.Text = sk.SaveResultsPath;
+                sk.saveSettings(this, null);
+            }
+        }
+
+        private void btn_browsePath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fd = new FolderBrowserDialog();
+            DialogResult dr = fd.ShowDialog(this);
+            string path = "";
+            if (dr == DialogResult.OK)
+            {
+                sk.SaveResultsPath = fd.SelectedPath;
+                txbx_PathToSavedFiles.Text = sk.SaveResultsPath;
+                sk.saveSettings(this, null);
+            }
         }
     }
 

@@ -16,8 +16,9 @@ namespace ExcelHandler
         public List<ProductTypeRuleList> RulesList { get; set; }
         public List<string> AccesibleColumns { get; set; }
         public List<string> SelectedColumns { get;  set; }
-        public string SaveResultsPath { get; private set; }
+        public string SaveResultsPath { get;  set; }
         private string FileName;
+        public Boolean AlwaysAskSavingPath { get; set; }
 
         private SettingsKeeper()
         {
@@ -50,6 +51,7 @@ namespace ExcelHandler
                     AccesibleColumns = sKeeper.AccesibleColumns;
                     SelectedColumns = sKeeper.SelectedColumns;
                     SaveResultsPath = sKeeper.SaveResultsPath;
+                    AlwaysAskSavingPath = sKeeper.AlwaysAskSavingPath;
                 }
                 catch (SerializationException)
                 {
