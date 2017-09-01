@@ -12,12 +12,16 @@ namespace ExcelHandler
     [Serializable]
     public class ParamElement
     {
+        public event EventHandler SettingsChanged;
+        private SettingsKeeper sk;
         public List<string> AccesibleColumns { get; private set; }
         public List<string> SelectedColumns { get; private set; }
         public string FileName { get; set; }
 
         public ParamElement()
         {
+            sk = SettingsKeeper.getInstance();
+            SettingsChanged += sk.saveSettings;
             AccesibleColumns = new List<string>() { "6","7","8","9","10","11","12","13" };
             SelectedColumns = new List<string>();
         }
@@ -27,7 +31,9 @@ namespace ExcelHandler
             FileName = filename;
             if (!filename.Equals(""))
             {
-                loadParams(filename);
+                //loadParams(filename);
+                AccesibleColumns = sk.AccesibleColumns;
+                SelectedColumns = sk.SelectedColumns;
             }
         }
 
@@ -61,6 +67,7 @@ namespace ExcelHandler
             SelectedColumns.Remove(removedElement);
         }
 
+        // убрать
         public void loadParams(string path)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -82,11 +89,14 @@ namespace ExcelHandler
 
         public void saveParams()
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, this);
-            }
+            //BinaryFormatter formatter = new BinaryFormatter();
+            //using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
+            //{
+            //    formatter.Serialize(fs, this);
+            //}
+            //sk.AccesibleColumns = AccesibleColumns;
+            //sk.SelectedColumns = SelectedColumns;
+            SettingsChanged(this, null);
         }
     }
 }

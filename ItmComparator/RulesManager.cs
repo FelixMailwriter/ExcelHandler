@@ -8,18 +8,26 @@ namespace ExcelHandler
 {
     public class RulesManager
     {
+        public event EventHandler SettingsChanged;
         public List<ProductTypeRuleList> ptrl { get; private set; }
-        public string Filename { get; set; }
+        public string Filename { get; set; }// to remove
+        SettingsKeeper sk;
 
         public RulesManager(string filename)
         {
+            sk = SettingsKeeper.getInstance();
+            SettingsChanged += sk.saveSettings;
             Filename = filename;
-            ptrl = loadRules();
+            //ptrl = loadRules();   //to remove----------------------------------------
+            ptrl = sk.RulesList;
+            //-----------------------------убрать после расчета
             //ptrl[0].StartCounter = 0;
             ++ptrl[0].StartCounter;
-            saveRules();
+            SettingsChanged(this, null);
+            //saveRules();
             if (ptrl[0].StartCounter > 200) {Environment.Exit(0); }
             Filename = filename;
+            //------------------------------убрать после расчета
         }
 
         public List<string> getListRulesType()
@@ -76,14 +84,12 @@ namespace ExcelHandler
 
         public void saveRules()
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream(Filename, FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, ptrl);
-            }
+            sk.RulesList = ptrl;
+            SettingsChanged(this, null);
         }
 
-        public List<ProductTypeRuleList> loadRules()
+        //убрать
+    public List<ProductTypeRuleList> loadRules()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             using (FileStream fs = new FileStream(Filename, FileMode.OpenOrCreate))

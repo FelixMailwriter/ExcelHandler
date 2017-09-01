@@ -18,7 +18,7 @@ namespace ExcelHandler
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm form = new MainForm();
             Application.Run(form);
-            
-        }
+            SettingsKeeper sk = SettingsKeeper.getInstance();
+    }
     }
 }
