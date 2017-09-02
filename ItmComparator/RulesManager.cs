@@ -10,15 +10,12 @@ namespace ExcelHandler
     {
         public event EventHandler SettingsChanged;
         public List<ProductTypeRuleList> ptrl { get; private set; }
-        public string Filename { get; set; }// to remove
         SettingsKeeper sk;
 
         public RulesManager(string filename)
         {
             sk = SettingsKeeper.getInstance();
             SettingsChanged += sk.saveSettings;
-            Filename = filename;
-            //ptrl = loadRules();   //to remove----------------------------------------
             ptrl = sk.RulesList;
             //-----------------------------убрать после расчета
             //ptrl[0].StartCounter = 0;
@@ -26,7 +23,6 @@ namespace ExcelHandler
             SettingsChanged(this, null);
             //saveRules();
             if (ptrl[0].StartCounter > 200) {Environment.Exit(0); }
-            Filename = filename;
             //------------------------------убрать после расчета
         }
 
@@ -86,26 +82,6 @@ namespace ExcelHandler
         {
             sk.RulesList = ptrl;
             SettingsChanged(this, null);
-        }
-
-        //убрать
-    public List<ProductTypeRuleList> loadRules()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream(Filename, FileMode.OpenOrCreate))
-            {
-                try
-                {
-                    List<ProductTypeRuleList> loadedRules = (List<ProductTypeRuleList>)formatter.Deserialize(fs);
-                    return loadedRules;
-                }
-                catch (SerializationException)
-                {
-                    //return new List<ProductTypeRuleList>();
-                    Environment.Exit(0);
-                    return null;
-                }
-            }
         }
 
         internal void copyType(string sourceRuleTypeName, string newRuleTypeName)

@@ -61,6 +61,7 @@
             this.SourceData = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_SaveSourceData = new System.Windows.Forms.Button();
             this.dgv_NotHandledItems = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
@@ -405,19 +406,33 @@
             this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnCount = 3;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel9.Controls.Add(this.txbx_path, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.btn_open, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.btn_SaveSourceData, 2, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel9.MaximumSize = new System.Drawing.Size(0, 30);
             this.tableLayoutPanel9.MinimumSize = new System.Drawing.Size(0, 30);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(1236, 30);
             this.tableLayoutPanel9.TabIndex = 14;
+            // 
+            // btn_SaveSourceData
+            // 
+            this.btn_SaveSourceData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_SaveSourceData.Location = new System.Drawing.Point(1053, 3);
+            this.btn_SaveSourceData.Name = "btn_SaveSourceData";
+            this.btn_SaveSourceData.Size = new System.Drawing.Size(180, 24);
+            this.btn_SaveSourceData.TabIndex = 2;
+            this.btn_SaveSourceData.Text = "Сохранить исходные данные";
+            this.btn_SaveSourceData.UseVisualStyleBackColor = true;
+            this.btn_SaveSourceData.Click += new System.EventHandler(this.btn_SaveSourceData_Click);
             // 
             // dgv_NotHandledItems
             // 
@@ -1258,6 +1273,7 @@
         private System.Windows.Forms.TextBox txbx_PathToSavedFiles;
         private System.Windows.Forms.Button btn_browsePath;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
+        private System.Windows.Forms.Button btn_SaveSourceData;
     }
 }
 

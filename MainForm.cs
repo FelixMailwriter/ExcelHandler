@@ -274,22 +274,28 @@ namespace ExcelHandler
                 MessageBox.Show("Таблица результатов пуста", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string path = "";
+            string path = (sk.SaveResultsPath.Equals("")) ? "C:\\" : sk.SaveResultsPath;
+
             if (sk.AlwaysAskSavingPath)
             {
                 FolderBrowserDialog fd = new FolderBrowserDialog();
+                fd.SelectedPath = path;
                 DialogResult dr = fd.ShowDialog(this);
                 if (dr == DialogResult.OK)
                 {
                     path = fd.SelectedPath;
                 }
+                else
+                {
+                    return;
+                }
             }
-            else
-            {
-                path = (sk.SaveResultsPath.Equals("")) ? "C:\\" : sk.SaveResultsPath;
-            }
-            eh.saveTable(path, SavedItems, pElement);
-            MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //else
+            //{
+            //    path = (sk.SaveResultsPath.Equals("")) ? "C:\\" : sk.SaveResultsPath;
+            //}
+                eh.saveTable(path, SavedItems, pElement);
+                MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         private void btn_AddCol_Click(object sender, EventArgs e)
@@ -338,6 +344,13 @@ namespace ExcelHandler
                 txbx_PathToSavedFiles.Text = sk.SaveResultsPath;
                 sk.saveSettings(this, null);
             }
+        }
+
+        private void btn_SaveSourceData_Click(object sender, EventArgs e)
+        {
+            DataTable SourceData = (DataTable)dataGridView1.DataSource;
+            eh.SaveSourceData(SourceData);
+            MessageBox.Show("Исходные данные сохранены", "Результат операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 

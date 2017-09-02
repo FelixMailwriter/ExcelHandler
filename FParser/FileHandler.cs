@@ -260,5 +260,10 @@ namespace ExcelHandler.FParser
                 dr[columnName] = NewCellValue;
             }
         }
+
+        internal void SaveSourceData(DataTable sourceData)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
