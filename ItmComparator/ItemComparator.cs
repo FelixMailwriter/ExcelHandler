@@ -21,10 +21,11 @@ namespace ExcelHandler
 
         public DataTable [] compareItems (DataTable SourceTable)
         {
-            DataTable[] HandledItems = new DataTable[2];
+            DataTable[] HandledItems = new DataTable[3];
             List<Item> SourceItems = ToItems(SourceTable);
             List<Item> RecognazedItems = new List<Item>();
             List<Item> NotRecognazedItems = new List<Item>();
+            List<Item> SkippedItems = new List<Item>();
 
             foreach (Item item in SourceItems)
             {
@@ -40,6 +41,10 @@ namespace ExcelHandler
                             {
                                 RecognazedItems.Add(NewItem);
                             }
+                            else
+                            {
+                                SkippedItems.Add(item);
+                            }
                         }
                         break;
                     }
@@ -51,8 +56,10 @@ namespace ExcelHandler
             }
             DataTable RecognaizedTable = ToDataTable(RecognazedItems);
             DataTable NotRecognaizedTable = ToDataTable(NotRecognazedItems);
+            DataTable SkippedItemsTable = ToDataTable(SkippedItems);
             HandledItems[0] = RecognaizedTable;
             HandledItems[1] = NotRecognaizedTable;
+            HandledItems[2] = SkippedItemsTable;
             return HandledItems;
          }
 
