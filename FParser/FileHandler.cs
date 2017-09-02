@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Text;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelHandler.FParser
@@ -12,6 +11,7 @@ namespace ExcelHandler.FParser
     /// </summary>
     public class FileHandler
     {
+        private const int START_ROW = 12;
         string SourceFilePath;
         Excel.Application excellApp = new Excel.Application();
         /// <summary>
@@ -27,7 +27,7 @@ namespace ExcelHandler.FParser
             try
             {
                 excellApp.Workbooks.Open(filename);
-                int row = 12;
+                int row = START_ROW;
                 bool isRows = true;
                 Excel.Worksheet currentSheet = (Excel.Worksheet)excellApp.Workbooks[1].Worksheets[1];
                 Excel.Range OrderNumberCellRange = (Excel.Range)currentSheet.Cells[2, 8];
@@ -261,9 +261,31 @@ namespace ExcelHandler.FParser
             }
         }
 
-        internal void SaveSourceData(DataTable sourceData)
+        internal void SaveSourceData(DataTable sourceData, string path)
         {
-            throw new NotImplementedException();
+            try
+            {
+                excellApp.Workbooks.Open(path);
+                int row = START_ROW;
+                Excel.Worksheet currentSheet = (Excel.Worksheet)excellApp.Workbooks[1].Worksheets[1];
+
+                foreach (DataRow dr in sourceData.Rows)
+                {
+                   object[] RowData = dr.ItemArray;
+                    for (int column = 1; column <= RowData.Length; column++)
+                    {
+                        Excel.Range cellRange = (Excel.Range)currentSheet.Cells[row, column];
+                        cellRange.Value2 = RowData[column - 1].ToString();
+                    }
+                    ++row;
+                }
+                excellApp.Quit();
+            }
+            catch (Exception eee)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(eee.Message);
+            }
         }
     }
 }

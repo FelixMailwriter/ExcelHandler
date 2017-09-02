@@ -34,9 +34,9 @@ namespace ExcelHandler
             fh.saveTable(path, table, pElement);
         }
 
-        internal void SaveSourceData(DataTable sourceData)
+        internal void SaveSourceData(DataTable sourceData, string path)
         {
-            fh.SaveSourceData(sourceData);
+            fh.SaveSourceData(sourceData, path);
         }
     }
 }

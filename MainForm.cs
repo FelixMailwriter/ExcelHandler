@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using ExcelHandler.Common;
 
 namespace ExcelHandler
 {
@@ -174,6 +173,7 @@ namespace ExcelHandler
             {
                 txbx_path.Text = fd.FileName;
                 FileSelected(fd.FileName);
+                sk.SourceFileName = fd.FileName;
             }
             fillSourceItemTable();
         }
@@ -290,10 +290,6 @@ namespace ExcelHandler
                     return;
                 }
             }
-            //else
-            //{
-            //    path = (sk.SaveResultsPath.Equals("")) ? "C:\\" : sk.SaveResultsPath;
-            //}
                 eh.saveTable(path, SavedItems, pElement);
                 MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
@@ -349,7 +345,15 @@ namespace ExcelHandler
         private void btn_SaveSourceData_Click(object sender, EventArgs e)
         {
             DataTable SourceData = (DataTable)dataGridView1.DataSource;
-            eh.SaveSourceData(SourceData);
+            try
+            {
+                eh.SaveSourceData(SourceData, sk.SourceFileName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка сохранения исходных данных", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             MessageBox.Show("Исходные данные сохранены", "Результат операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
