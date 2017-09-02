@@ -279,11 +279,12 @@ namespace ExcelHandler.FParser
                     }
                     ++row;
                 }
+                excellApp.Workbooks[1].Save();
                 excellApp.Quit();
             }
             catch (Exception eee)
             {
-                Console.WriteLine("The file could not be read:");
+                Console.WriteLine("The file could not be write:");
                 Console.WriteLine(eee.Message);
             }
         }

@@ -189,6 +189,10 @@ namespace ExcelHandler
             HandledItems = eh.ic.compareItems(eh.SourceItemsTable);
             dgv_Result.DataSource = HandledItems[0];
             dgv_Result.Refresh();
+            if (HandledItems[1].Rows.Count > 0)
+            {
+                MessageBox.Show("Есть данные, не прошедшие проверку", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             dgv_NotHandledItems.DataSource = HandledItems[1];
             //dgv_Result.DataSource = HandledItems[0];
         }
