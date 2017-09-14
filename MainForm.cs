@@ -185,7 +185,7 @@ namespace ExcelHandler
 
         private void btn_exec_Click(object sender, EventArgs e)
         {
-            DataTable [] HandledItems = new DataTable[3];
+            DataTable[] HandledItems = new DataTable[3];
             HandledItems = eh.ic.compareItems(eh.SourceItemsTable);
             dgv_Result.DataSource = HandledItems[0];
             dgv_Result.Refresh();
@@ -216,7 +216,7 @@ namespace ExcelHandler
         private void btn_removeRule_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Вы уверены?", "Подтверждение удаления", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (dr!=DialogResult.OK) { return; }
+            if (dr != DialogResult.OK) { return; }
             if (lsbx_Rule.SelectedIndex < 0) { return; }
             string TypeName = lsbx_Type.SelectedItem.ToString();
             ProductTypeRuleList pt = rm.getType(TypeName);
@@ -296,8 +296,35 @@ namespace ExcelHandler
                     return;
                 }
             }
-                eh.saveTable(path, SavedItems, pElement);
-                MessageBox.Show("Файл сохранен", "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            Dictionary<string, int> FileNames = eh.saveTable(path, SavedItems, pElement);
+            string SaveDescription = getSaveDescription(FileNames);
+            MessageBox.Show(SaveDescription, "Статус операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private string getSaveDescription(Dictionary<string, int> fileNames)
+        {
+            string result;
+            if (fileNames.Count == 0)
+            {
+                result = "Нет данных для сохранения";
+            }
+            else
+            {
+                result = "Сохранены следующие файлы: \r\n";
+                int RecordCount = 0;
+                foreach (KeyValuePair<string, int> filerecord in fileNames)
+                {
+                    result += "Имя файла: " + filerecord.Key.ToString() + "; Записей: " + filerecord.Value.ToString() + "\r\n";
+                    RecordCount += filerecord.Value;
+                }
+                result += "\r\n";
+                result += "Всего записей сохранено: " + RecordCount + "\r\n";
+                result += "---------------------------------------------------------"+"\r\n";
+                result += "\r\n";
+                result += "Записей пропущено: " + dgv_SkippedData.RowCount.ToString() + "\r\n";
+                result += "Записей не обработано: " + dgv_NotHandledItems.RowCount.ToString() + "\r\n";
+            }
+            return result;
         }
 
         private void btn_AddCol_Click(object sender, EventArgs e)

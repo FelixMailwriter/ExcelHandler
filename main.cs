@@ -29,9 +29,10 @@ namespace ExcelHandler
             SourceItemsTable = fh.parseFile(filename);
         }
 
-        public void saveTable(string path, DataTable table, List<string> pElement)
+        public Dictionary<string, int> saveTable(string path, DataTable table, List<string> pElement)
         {
-            fh.saveTable(path, table, pElement);
+            Dictionary<string,int> FileNames=fh.saveTable(path, table, pElement);
+            return FileNames;
         }
 
         internal void SaveSourceData(DataTable sourceData, string path)

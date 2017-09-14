@@ -442,6 +442,7 @@
             // 
             // dgv_NotHandledItems
             // 
+            this.dgv_NotHandledItems.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dgv_NotHandledItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -589,9 +590,11 @@
             this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_save.Location = new System.Drawing.Point(619, 3);
+            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_save.Location = new System.Drawing.Point(666, 3);
+            this.btn_save.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(611, 24);
+            this.btn_save.Size = new System.Drawing.Size(564, 24);
             this.btn_save.TabIndex = 9;
             this.btn_save.Text = "Сохранить";
             this.btn_save.UseVisualStyleBackColor = true;
@@ -602,9 +605,11 @@
             this.btn_exec.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_exec.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_exec.Location = new System.Drawing.Point(3, 3);
+            this.btn_exec.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.btn_exec.Name = "btn_exec";
-            this.btn_exec.Size = new System.Drawing.Size(610, 24);
+            this.btn_exec.Size = new System.Drawing.Size(563, 24);
             this.btn_exec.TabIndex = 12;
             this.btn_exec.Text = "Выполнить";
             this.btn_exec.UseVisualStyleBackColor = true;
@@ -668,6 +673,7 @@
             // 
             // dgv_SkippedData
             // 
+            this.dgv_SkippedData.AllowUserToAddRows = false;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgv_SkippedData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_SkippedData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -824,6 +830,7 @@
             // 
             this.btn_AddCol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_AddCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_AddCol.Location = new System.Drawing.Point(123, 102);
             this.btn_AddCol.Name = "btn_AddCol";
             this.btn_AddCol.Size = new System.Drawing.Size(54, 23);
@@ -836,6 +843,7 @@
             // 
             this.btn_DelCol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_DelCol.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_DelCol.Location = new System.Drawing.Point(123, 131);
             this.btn_DelCol.Name = "btn_DelCol";
             this.btn_DelCol.Size = new System.Drawing.Size(54, 23);
@@ -952,12 +960,11 @@
             // 
             // btn_browsePath
             // 
-            this.btn_browsePath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btn_browsePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_browsePath.Location = new System.Drawing.Point(567, 3);
             this.btn_browsePath.Name = "btn_browsePath";
-            this.btn_browsePath.Size = new System.Drawing.Size(37, 27);
+            this.btn_browsePath.Size = new System.Drawing.Size(37, 20);
             this.btn_browsePath.TabIndex = 1;
             this.btn_browsePath.Text = ",,,";
             this.btn_browsePath.UseVisualStyleBackColor = true;

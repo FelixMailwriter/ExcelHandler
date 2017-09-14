@@ -17,13 +17,13 @@ namespace ExcelHandler
             sk = SettingsKeeper.getInstance();
             SettingsChanged += sk.saveSettings;
             ptrl = sk.RulesList;
-            //-----------------------------убрать после расчета
-            //ptrl[0].StartCounter = 0;
-            ++ptrl[0].StartCounter;
-            SettingsChanged(this, null);
-            //saveRules();
-            if (ptrl[0].StartCounter > 200) {Environment.Exit(0); }
-            //------------------------------убрать после расчета
+            ////-----------------------------убрать после расчета
+            ////ptrl[0].StartCounter = 0;
+            //++ptrl[0].StartCounter;
+            //SettingsChanged(this, null);
+            ////saveRules();
+            //if (ptrl[0].StartCounter > 200) {Environment.Exit(0); }
+            ////------------------------------убрать после расчета
         }
 
         public List<string> getListRulesType()

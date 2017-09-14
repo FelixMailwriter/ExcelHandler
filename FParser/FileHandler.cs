@@ -87,18 +87,22 @@ namespace ExcelHandler.FParser
         /// <param name="path">Путь сохранения</param>
         /// <param name="table">Таблица с сохраняемыми данными</param>
         /// <param name="pElement">Список столбцов для формирования столбца "Элемент№</param>
-        public void saveTable(string path, DataTable table, List<string> pElement)
+        public Dictionary<string, int> saveTable(string path, DataTable table, List<string> pElement)
         {
             
             string sortColumn = "13";
             List<DataTable> tables = getTables(table, sortColumn);
             //Подготавливаем список таблиц таблиц к выводу
             List<DataTable> PreparedTable = prepareTable(tables, pElement);
+
             //Выводим список таблиц отдельным файлом на таблицу
+            Dictionary<string, int> FileNames = new Dictionary<string, int>();  //Список имен сохраненных файлов и к-во строк
             foreach (DataTable CurrentTable in PreparedTable)
             {
-                saveTableAsCSV(path, CurrentTable);
+                string filename=saveTableAsCSV(path, CurrentTable);
+                FileNames.Add(filename,CurrentTable.Rows.Count);
             }
+            return FileNames;
         }
 
         private List<DataTable> prepareTable(List<DataTable> tables, List<string> pElement)
@@ -150,16 +154,17 @@ namespace ExcelHandler.FParser
             return res;
         }
 
-        private void saveTableAsCSV(string path, DataTable currentTable)
+        private string saveTableAsCSV(string path, DataTable currentTable)
         {
             string[] path_blocs = SourceFilePath.Split('\\');
             string loadedFilename = path_blocs[path_blocs.Length - 1];
             int extentionPos = loadedFilename.LastIndexOf('.');
             loadedFilename = loadedFilename.Remove(extentionPos);
-            string filename = path + "\\" + loadedFilename + "_" + currentTable.TableName + ".csv";
+            string filename= loadedFilename + "_" + currentTable.TableName + ".csv";
+            string fullFilename = path + "\\" + filename;
             try
             {
-                StreamWriter sw = new StreamWriter(filename, false);
+                StreamWriter sw = new StreamWriter(fullFilename, false, System.Text.Encoding.GetEncoding("Windows-1251"));
                 foreach (DataRow dr in currentTable.Rows)
                 {
                     string row = "";
@@ -176,11 +181,15 @@ namespace ExcelHandler.FParser
             }
             catch (Exception ex) { }
 
-
+            return filename;
         }
 
         private List<DataTable> getTables(DataTable table, string sortColumn)
         {
+            if (table.Rows.Count ==0)
+            {
+                return new List<DataTable>();
+            }
 
             DataTable TempData = table.Copy();
             //Заполняем пустые ячейки знаком "-"
