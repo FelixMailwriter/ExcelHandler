@@ -1,0 +1,11 @@
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\bin\Debug\ExcelHandler.exe.config
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\bin\Debug\ExcelHandler.exe
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\bin\Debug\ExcelHandler.pdb
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.Properties.Resources.resources
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.csproj.GenerateResource.Cache
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.exe
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.pdb
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.csproj.ResolveComReference.cache
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.AddRule.resources
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.MainForm.resources
+Z:\Cloud\Projects\Repository\ExcelHandler\ExcelHandler\obj\Debug\ExcelHandler.csprojResolveAssemblyReference.cache
