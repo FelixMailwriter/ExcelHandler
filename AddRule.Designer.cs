@@ -53,6 +53,7 @@
             this.btn_DownCondition = new System.Windows.Forms.Button();
             this.btn_UpCondition = new System.Windows.Forms.Button();
             this.gb_additionCondition = new System.Windows.Forms.GroupBox();
+            this.btn_WriteCriteria = new System.Windows.Forms.Button();
             this.cbx_swap = new System.Windows.Forms.CheckBox();
             this.txbx_Param2_2 = new System.Windows.Forms.TextBox();
             this.txbx_Param2_1 = new System.Windows.Forms.TextBox();
@@ -67,7 +68,10 @@
             this.txbx_Param1_2 = new System.Windows.Forms.TextBox();
             this.btn_Ok = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.btn_WriteCriteria = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txbx_ChangedColumn = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txbx_ChangedValue = new System.Windows.Forms.TextBox();
             this.gb_mainCondition.SuspendLayout();
             this.gb_additionCondition.SuspendLayout();
             this.SuspendLayout();
@@ -90,7 +94,7 @@
             // 
             // txbx_TargetColumn
             // 
-            this.txbx_TargetColumn.Location = new System.Drawing.Point(514, 67);
+            this.txbx_TargetColumn.Location = new System.Drawing.Point(527, 67);
             this.txbx_TargetColumn.Name = "txbx_TargetColumn";
             this.txbx_TargetColumn.Size = new System.Drawing.Size(39, 20);
             this.txbx_TargetColumn.TabIndex = 6;
@@ -128,7 +132,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(413, 70);
+            this.label3.Location = new System.Drawing.Point(426, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 0;
@@ -136,6 +140,8 @@
             // 
             // gb_mainCondition
             // 
+            this.gb_mainCondition.Controls.Add(this.txbx_ChangedValue);
+            this.gb_mainCondition.Controls.Add(this.txbx_ChangedColumn);
             this.gb_mainCondition.Controls.Add(this.label11);
             this.gb_mainCondition.Controls.Add(this.txbx_DefaultValue);
             this.gb_mainCondition.Controls.Add(this.txbx_SourceValueColumn);
@@ -148,11 +154,13 @@
             this.gb_mainCondition.Controls.Add(this.label1);
             this.gb_mainCondition.Controls.Add(this.label9);
             this.gb_mainCondition.Controls.Add(this.label10);
+            this.gb_mainCondition.Controls.Add(this.label13);
+            this.gb_mainCondition.Controls.Add(this.label12);
             this.gb_mainCondition.Controls.Add(this.label3);
             this.gb_mainCondition.Controls.Add(this.txbx_TargetColumn);
             this.gb_mainCondition.Location = new System.Drawing.Point(21, 21);
             this.gb_mainCondition.Name = "gb_mainCondition";
-            this.gb_mainCondition.Size = new System.Drawing.Size(868, 112);
+            this.gb_mainCondition.Size = new System.Drawing.Size(868, 150);
             this.gb_mainCondition.TabIndex = 0;
             this.gb_mainCondition.TabStop = false;
             this.gb_mainCondition.Text = "Правило";
@@ -170,12 +178,12 @@
             // 
             this.txbx_DefaultValue.Location = new System.Drawing.Point(570, 26);
             this.txbx_DefaultValue.Name = "txbx_DefaultValue";
-            this.txbx_DefaultValue.Size = new System.Drawing.Size(127, 20);
+            this.txbx_DefaultValue.Size = new System.Drawing.Size(140, 20);
             this.txbx_DefaultValue.TabIndex = 8;
             // 
             // txbx_SourceValueColumn
             // 
-            this.txbx_SourceValueColumn.Location = new System.Drawing.Point(655, 67);
+            this.txbx_SourceValueColumn.Location = new System.Drawing.Point(668, 67);
             this.txbx_SourceValueColumn.Name = "txbx_SourceValueColumn";
             this.txbx_SourceValueColumn.Size = new System.Drawing.Size(42, 20);
             this.txbx_SourceValueColumn.TabIndex = 7;
@@ -199,7 +207,7 @@
             this.cmbx_Actions.FormattingEnabled = true;
             this.cmbx_Actions.Location = new System.Drawing.Point(226, 26);
             this.cmbx_Actions.Name = "cmbx_Actions";
-            this.cmbx_Actions.Size = new System.Drawing.Size(178, 21);
+            this.cmbx_Actions.Size = new System.Drawing.Size(181, 21);
             this.cmbx_Actions.TabIndex = 2;
             this.cmbx_Actions.SelectedIndexChanged += new System.EventHandler(this.cmbx_Actions_SelectedIndexChanged);
             this.cmbx_Actions.SelectionChangeCommitted += new System.EventHandler(this.cmbx_Actions_SelectionChangeCommitted);
@@ -249,7 +257,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(559, 70);
+            this.label10.Location = new System.Drawing.Point(572, 70);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 13);
             this.label10.TabIndex = 0;
@@ -316,12 +324,22 @@
             this.gb_additionCondition.Controls.Add(this.txbx_Param1_1);
             this.gb_additionCondition.Controls.Add(this.cmbx_Conditions1);
             this.gb_additionCondition.Enabled = false;
-            this.gb_additionCondition.Location = new System.Drawing.Point(21, 141);
+            this.gb_additionCondition.Location = new System.Drawing.Point(21, 187);
             this.gb_additionCondition.Name = "gb_additionCondition";
             this.gb_additionCondition.Size = new System.Drawing.Size(868, 183);
             this.gb_additionCondition.TabIndex = 6;
             this.gb_additionCondition.TabStop = false;
             this.gb_additionCondition.Text = "Условия";
+            // 
+            // btn_WriteCriteria
+            // 
+            this.btn_WriteCriteria.Location = new System.Drawing.Point(356, 131);
+            this.btn_WriteCriteria.Name = "btn_WriteCriteria";
+            this.btn_WriteCriteria.Size = new System.Drawing.Size(66, 23);
+            this.btn_WriteCriteria.TabIndex = 203;
+            this.btn_WriteCriteria.Text = "Записать";
+            this.btn_WriteCriteria.UseVisualStyleBackColor = true;
+            this.btn_WriteCriteria.Click += new System.EventHandler(this.btn_WriteCriteria_Click);
             // 
             // cbx_swap
             // 
@@ -428,7 +446,7 @@
             // 
             // btn_Ok
             // 
-            this.btn_Ok.Location = new System.Drawing.Point(715, 388);
+            this.btn_Ok.Location = new System.Drawing.Point(736, 391);
             this.btn_Ok.Name = "btn_Ok";
             this.btn_Ok.Size = new System.Drawing.Size(75, 23);
             this.btn_Ok.TabIndex = 20;
@@ -438,7 +456,7 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(794, 388);
+            this.btn_Cancel.Location = new System.Drawing.Point(815, 391);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 21;
@@ -446,21 +464,43 @@
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
-            // btn_WriteCriteria
+            // label12
             // 
-            this.btn_WriteCriteria.Location = new System.Drawing.Point(356, 131);
-            this.btn_WriteCriteria.Name = "btn_WriteCriteria";
-            this.btn_WriteCriteria.Size = new System.Drawing.Size(66, 23);
-            this.btn_WriteCriteria.TabIndex = 203;
-            this.btn_WriteCriteria.Text = "Записать";
-            this.btn_WriteCriteria.UseVisualStyleBackColor = true;
-            this.btn_WriteCriteria.Click += new System.EventHandler(this.btn_WriteCriteria_Click);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 113);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(151, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Заменить значение столбца";
+            // 
+            // txbx_ChangedColumn
+            // 
+            this.txbx_ChangedColumn.Location = new System.Drawing.Point(167, 110);
+            this.txbx_ChangedColumn.Name = "txbx_ChangedColumn";
+            this.txbx_ChangedColumn.Size = new System.Drawing.Size(49, 20);
+            this.txbx_ChangedColumn.TabIndex = 10;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(220, 113);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(63, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Значением";
+            // 
+            // txbx_ChangedValue
+            // 
+            this.txbx_ChangedValue.Location = new System.Drawing.Point(289, 110);
+            this.txbx_ChangedValue.Name = "txbx_ChangedValue";
+            this.txbx_ChangedValue.Size = new System.Drawing.Size(118, 20);
+            this.txbx_ChangedValue.TabIndex = 10;
             // 
             // AddRule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 458);
+            this.ClientSize = new System.Drawing.Size(919, 440);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Ok);
             this.Controls.Add(this.gb_additionCondition);
@@ -517,5 +557,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txbx_DefaultValue;
         private System.Windows.Forms.Button btn_WriteCriteria;
+        private System.Windows.Forms.TextBox txbx_ChangedValue;
+        private System.Windows.Forms.TextBox txbx_ChangedColumn;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }

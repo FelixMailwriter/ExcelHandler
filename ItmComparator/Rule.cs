@@ -21,6 +21,8 @@ namespace ExcelHandler
         public string DefaultValue { get; set; }
         public Action ActionInstance { get; set; }
         public bool SwapLengthWidth { get; set; }
+        public int ChangedColumn { get; set; }
+        public string ChangedValue { get; set; }
 
         public Rule()
         {
@@ -32,11 +34,14 @@ namespace ExcelHandler
             SourceValueColumn = 0;
             DefaultValue = "";
             ActionInstance = null;
+            ChangedColumn = 0;
+            ChangedValue = "";
             //Description = getDescription();
         }
 
         public Rule(string name, Condition mainCondition, int checkedColumn,
-                            int targetColumn, int sourceValueColumn, Action action, string defaultValue)
+                            int targetColumn, int sourceValueColumn, Action action, string defaultValue,
+                            int changedColumn, string changedValue)
         {
             Name = name;
             CheckedColumn = checkedColumn;
@@ -46,6 +51,8 @@ namespace ExcelHandler
             SourceValueColumn = sourceValueColumn;
             CriteriaList = new List<Criteria>();
             ActionInstance = action;
+            ChangedColumn = changedColumn;
+            ChangedValue = changedValue;
         }
 
         public Rule(Rule oldRule)
@@ -63,6 +70,8 @@ namespace ExcelHandler
             DefaultValue = oldRule.DefaultValue;
             ActionInstance = oldRule.ActionInstance;
             Description = oldRule.Description;
+            ChangedColumn = oldRule.ChangedColumn;
+            ChangedValue = oldRule.ChangedValue;
         }
 
         public List<string> getCriteriaDescriptionsList()
@@ -111,7 +120,7 @@ namespace ExcelHandler
                 }
                 if (CriteriaList.Count == 0)                                  //Если список критериев пуст, сразу делаем действие
                 {
-                    ActionInstance.doAction(ref item, TargetColumn, null, SourceValueColumn);
+                    ActionInstance.doAction(ref item, TargetColumn, null, SourceValueColumn, ChangedColumn, ChangedValue);
                     return item;
                 }
                 else                                                                    // иначе обрабатываем список критериев
@@ -131,8 +140,9 @@ namespace ExcelHandler
             {
                 if (crit.checkCriteria(item))                                   // если критерий выполняется
                 {
-                    ActionInstance.doAction(ref item, TargetColumn, crit.Suffix, SourceValueColumn);   // выполняем действие 
-                    return item;                                                                                                                //и возвращаем Item
+                    // выполняем действие //и возвращаем Item
+                    ActionInstance.doAction(ref item, TargetColumn, crit.Suffix, SourceValueColumn, ChangedColumn, ChangedValue);   
+                    return item;                                                                                                                
                 }
             }
             item[TargetColumn] = DefaultValue;   //Если ни один критерий не выполнился, 
@@ -157,10 +167,15 @@ namespace ExcelHandler
             {
                 description += " " + SourceValueColumn;
             }
+            if (ChangedColumn != 0)
+            {
+                description += " И " + ChangedColumn.ToString() + "-->" + ChangedValue;
+            }
             if (SwapLengthWidth)
             {
-                description += "<=>";
+                description += " <=>";
             }
+
             
             return description;
         }

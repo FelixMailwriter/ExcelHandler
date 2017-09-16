@@ -48,6 +48,8 @@ namespace ExcelHandler
             txbx_SourceValueColumn.Text = rule.SourceValueColumn.ToString();
             txbx_MainParameter.Text = rule.MainCondition.Param1;
             txbx_DefaultValue.Text = rule.DefaultValue;
+            txbx_ChangedColumn.Text = rule.ChangedColumn.ToString();
+            txbx_ChangedValue.Text = (rule.ChangedValue==null)?"":rule.ChangedValue.ToString();
             cbx_swap.Checked = rule.SwapLengthWidth;
             if (rule.ActionInstance != null)
             {
@@ -130,8 +132,12 @@ namespace ExcelHandler
 
                 int SourceValueColumn= (txbx_SourceValueColumn.Text.Equals(""))?
                                                         0: getValueColumn(txbx_SourceValueColumn.Text);
-            Rule NewRule = new Rule(Name, MainCondition, CheckedColumn, TargetColumn, 
-                                                    SourceValueColumn, act, txbx_DefaultValue.Text);
+                int ChangedColumn = (txbx_ChangedColumn.Text.Equals("")) ?
+                                        0 : getValueColumn(txbx_ChangedColumn.Text);
+
+                Rule NewRule = new Rule(Name, MainCondition, CheckedColumn, TargetColumn, 
+                                                    SourceValueColumn, act, txbx_DefaultValue.Text,
+                                                    ChangedColumn, txbx_ChangedValue.Text);
             NewRule.CriteriaList = rule.CriteriaList;
             NewRule.SwapLengthWidth = cbx_swap.Checked;
             rule = (NewRule == null) ? rule : NewRule;
@@ -169,11 +175,18 @@ namespace ExcelHandler
             {
                 txbx_SourceValueColumn.Enabled = true;
                 txbx_SourceValueColumn.Text = "0";
+                txbx_ChangedColumn.Enabled = true;
+                txbx_ChangedColumn.Text = "0";
+                txbx_ChangedValue.Enabled = true;
             }
             else
             {
                 txbx_SourceValueColumn.Enabled = false;
                 txbx_SourceValueColumn.Clear();
+                txbx_ChangedColumn.Enabled = false;
+                txbx_ChangedValue.Enabled = false;
+                txbx_ChangedColumn.Clear();
+                txbx_ChangedValue.Clear();
             }
             if ((cmbx_Actions.SelectedItem.Equals("Копировать строку")) ||
                     (cmbx_Actions.SelectedItem.Equals("Пропустить строку")))

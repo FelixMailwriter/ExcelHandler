@@ -8,11 +8,11 @@ namespace ExcelHandler.ItmComparator.Actions
     public class ActionChangeByCondition : Action
     {
         public static string description= "Заменить по условию";
-        public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
+        public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn, int changedColumn, string changedValue)
         {
-            int ColumnNumber = column;
-                Item[ColumnNumber] = suffix;
-                Item.Changed = true;
+            Item[column] = suffix;
+            Item.Changed = true;
+
         }
     }
 }

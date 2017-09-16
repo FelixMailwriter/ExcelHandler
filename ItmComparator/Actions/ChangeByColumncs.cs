@@ -11,11 +11,15 @@ namespace ExcelHandler.ItmComparator.Actions
     class ChangeByColumncs : Action
     {
         public static string description = "Заменить значением столбца";
-        public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn)
+        public void doAction(ref Item Item, int column, string suffix, int sourceValueColumn, int changedColumn, string changedValue)
         {
             string SourceValue = Item[sourceValueColumn];
             Item[column] = SourceValue;
             Item.Changed = true;
+            if (changedColumn != 0)
+            {
+                Item[changedColumn] = changedValue;
+            }
         }
     }
 }
