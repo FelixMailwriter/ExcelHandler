@@ -133,7 +133,7 @@ namespace ExcelHandler
             {
                 rule = ARForm.rule;
                 pt.addRule(rule);
-                pt.Rules.Sort();
+                //pt.Rules.Sort();
             }
             updateRulesList(pt);
         }
@@ -152,7 +152,7 @@ namespace ExcelHandler
             {
                 Rule NewRule = ARForm.rule;
                 pt.changeRule(rule, NewRule);
-                pt.Rules.Sort();
+                //pt.Rules.Sort();
             }
             updateRulesList(pt);
         }
@@ -388,6 +388,14 @@ namespace ExcelHandler
                 return;
             }
             MessageBox.Show("Исходные данные сохранены", "Результат операции", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private void btn_Sort_Click(object sender, EventArgs e)
+        {
+            string TypeName = lsbx_Type.SelectedItem.ToString();
+            ProductTypeRuleList pt = rm.getType(TypeName);
+            pt.Rules.Sort();
+            updateRulesList(pt);
         }
     }
 
