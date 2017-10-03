@@ -178,6 +178,9 @@ namespace ExcelHandler
                 sk.SourceFileName = fd.FileName;
             }
             fillSourceItemTable();
+            dgv_Result.DataSource = null;
+            dgv_SkippedData.DataSource = null;
+            dgv_NotHandledItems.DataSource = null;
         }
 
         private void fillSourceItemTable()

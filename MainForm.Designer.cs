@@ -102,6 +102,7 @@
             this.btn_saveRules = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_CopyRule = new System.Windows.Forms.Button();
+            this.btn_Sort = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
@@ -111,7 +112,6 @@
             this.btn_RuleDown = new System.Windows.Forms.Button();
             this.btn_RuleUp = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
-            this.btn_Sort = new System.Windows.Forms.Button();
             this.tab_main.SuspendLayout();
             this.SourceData.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -1091,6 +1091,19 @@
             this.btn_CopyRule.UseVisualStyleBackColor = true;
             this.btn_CopyRule.Click += new System.EventHandler(this.btn_CopyRule_Click);
             // 
+            // btn_Sort
+            // 
+            this.btn_Sort.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Sort.Location = new System.Drawing.Point(413, 3);
+            this.btn_Sort.Name = "btn_Sort";
+            this.btn_Sort.Size = new System.Drawing.Size(200, 27);
+            this.btn_Sort.TabIndex = 15;
+            this.btn_Sort.Text = "Сортировать";
+            this.btn_Sort.UseVisualStyleBackColor = true;
+            this.btn_Sort.Click += new System.EventHandler(this.btn_Sort_Click);
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1224,19 +1237,6 @@
             this.splitter1.Size = new System.Drawing.Size(3, 688);
             this.splitter1.TabIndex = 14;
             this.splitter1.TabStop = false;
-            // 
-            // btn_Sort
-            // 
-            this.btn_Sort.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Sort.Location = new System.Drawing.Point(413, 3);
-            this.btn_Sort.Name = "btn_Sort";
-            this.btn_Sort.Size = new System.Drawing.Size(200, 27);
-            this.btn_Sort.TabIndex = 15;
-            this.btn_Sort.Text = "Сортировать";
-            this.btn_Sort.UseVisualStyleBackColor = true;
-            this.btn_Sort.Click += new System.EventHandler(this.btn_Sort_Click);
             // 
             // MainForm
             // 

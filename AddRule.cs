@@ -65,6 +65,10 @@ namespace ExcelHandler
                     cmbx_MainCondition.SelectedItem = opAlias;
                 }
             }
+            //if (rule.MainCondition.CondOperation != null)
+            //{
+            //    cmbx_Actions.SelectedItem = rule.MainCondition.CondOperation;
+            //}
         }
 
         private Dictionary<string, Operation> getCommonOperationList()
@@ -356,7 +360,6 @@ namespace ExcelHandler
             }
         }
 
-
         private void lsbx_Criterias_DoubleClick(object sender, EventArgs e)
         {
             int CriteriaIndex = lsbx_Criterias.SelectedIndex;
@@ -377,7 +380,7 @@ namespace ExcelHandler
             if (CurrentCriteria.Conditions.Count > 1)
             {
                 txbx_column2.Text = CurrentCriteria.Conditions[1].TestValueColumn.ToString();
-                cmbx_Conditions2.SelectedItem = CurrentCriteria.Conditions[1].CondOperation;
+                cmbx_Conditions2.SelectedIndex = cmbx_Conditions2.FindString(CurrentCriteria.Conditions[1].CondOperation.ToString());
                 txbx_Param2_1.Text = CurrentCriteria.Conditions[1].Param1;
                 txbx_Param2_2.Text = CurrentCriteria.Conditions[1].Param2;
             }
@@ -387,6 +390,11 @@ namespace ExcelHandler
         {
             Criteria NewCriteria = CreateCriteria();
             int CriteriaIndex = lsbx_Criterias.SelectedIndex;
+            if (CriteriaIndex < 0)
+            {
+                btn_addCondition_Click(sender, e);
+                return;
+            }
             rule.CriteriaList.RemoveAt(CriteriaIndex);
             rule.CriteriaList.Insert(CriteriaIndex, NewCriteria);
             lsbx_Criterias.DataSource = GetCriteriaDescriptionList();

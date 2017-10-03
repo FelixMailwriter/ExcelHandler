@@ -20,3 +20,4 @@ Z:\Cloud\Projects\Repository\ExcelHandler\obj\Debug\ExcelHandler.Properties.Reso
 Z:\Cloud\Projects\Repository\ExcelHandler\obj\Debug\ExcelHandler.csproj.GenerateResource.Cache
 Z:\Cloud\Projects\Repository\ExcelHandler\obj\Debug\ExcelHandler.exe
 Z:\Cloud\Projects\Repository\ExcelHandler\obj\Debug\ExcelHandler.pdb
+Z:\Cloud\Projects\Repository\ExcelHandler\obj\Debug\ExcelHandler.csproj.CoreCompileInputs.cache
